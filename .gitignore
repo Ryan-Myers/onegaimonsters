@@ -1,0 +1,43 @@
+# ignore all rom files
+*.z64
+*.n64
+*.v64
+
+#compiled or ripped asm
+asm/*
+asm
+build/*
+build/
+
+#binaries ripped from the ROMs
+assets/
+assets/*
+bin/
+bin/*
+ucode/*
+
+
+
+#compiled object files
+*.slo
+*.lo
+*.o
+*.obj
+
+tools/gcc_kmc
+
+tools/n64crc
+
+__pycache__/
+*__pycache__/
+expected/
+splat/symbols/*.ld
+*.map
+*/*.map
+*auto.txt
+*_auto.*.txt
+*.*auto.txt
+*/.splat_cache
+.splat_cache
+.splat_cache*
+.venv/
