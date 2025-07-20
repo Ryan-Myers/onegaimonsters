@@ -31,7 +31,8 @@ tools/n64crc
 __pycache__/
 *__pycache__/
 expected/
-splat/symbols/*.ld
+splat/*.ld
+splat/*.d
 *.map
 */*.map
 *auto.txt

@@ -76,9 +76,9 @@ S_FILES         = $(foreach dir,$(ASM_DIRS) $(HASM_DIRS),$(wildcard $(dir)/*.s))
 C_FILES         = $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c))
 BIN_FILES       = $(foreach dir,$(BIN_DIRS),$(wildcard $(dir)/*.bin))
 
-O_FILES := $(foreach file,$(S_FILES),$(BUILD_DIR)/$(file).o) \
-           $(foreach file,$(C_FILES),$(BUILD_DIR)/$(file).o) \
-           $(foreach file,$(BIN_FILES),$(BUILD_DIR)/$(file).o)
+O_FILES := $(foreach file,$(S_FILES),$(BUILD_DIR)/$(basename $(file)).o) \
+           $(foreach file,$(C_FILES),$(BUILD_DIR)/$(basename $(file)).o) \
+           $(foreach file,$(BIN_FILES),$(BUILD_DIR)/$(basename $(file)).o)
 
 
 find-command = $(shell which $(1) 2>/dev/null)
@@ -133,7 +133,7 @@ INCLUDE_CFLAGS  = -I . -I include -I include/libc  -I include/PR -I include/sys 
 INCLUDE_CFLAGS += -I $(LIBULTRA_DIR)/src/gu -I $(LIBULTRA_DIR)/src/libc -I $(LIBULTRA_DIR)/src/io  -I $(LIBULTRA_DIR)/src/sc 
 INCLUDE_CFLAGS += -I $(LIBULTRA_DIR)/src/audio -I $(LIBULTRA_DIR)/src/os
 
-ASFLAGS        = -march=vr4300 -mabi=32 -G0 $(ASM_DEFINES) -no-pad-sections $(INCLUDE_CFLAGS)
+ASFLAGS        = -march=vr4300 -mabi=32 -G0 $(ASM_DEFINES) -no-pad-sections -EB $(INCLUDE_CFLAGS)
 OBJCOPYFLAGS   = -O binary
 
 # Pad to 16MB if matching, otherwise build to a necessary minimum of 1.004MB
@@ -164,7 +164,7 @@ endif
 TARGET     = $(BUILD_DIR)/$(BASENAME)
 LD_SCRIPT  = splat/$(BASENAME).ld
 
-LD_FLAGS   = -T $(LD_SCRIPT) -T $(SYMBOLS_DIR)/undefined_syms.txt -T $(SYMBOLS_DIR)/undefined_funcs_auto.txt  -T $(SYMBOLS_DIR)/undefined_syms_auto.txt -T $(SYMBOLS_DIR)/libultra_undefined_syms.txt
+LD_FLAGS   = -T $(LD_SCRIPT) -T $(SYMBOLS_DIR)/undefined_syms.txt  -T $(SYMBOLS_DIR)/undefined_funcs_auto.txt  -T $(SYMBOLS_DIR)/undefined_syms_auto.txt
 LD_FLAGS  += -Map $(TARGET).map
 
 ### Optimisation Overrides
@@ -266,9 +266,6 @@ distcleanall: cleanall
 #When you just need to wipe old symbol names and re-extract
 cleanextract: distclean extract
 
-#When you just need to wipe old symbol names and re-extract
-cleanextractall: distcleanall extractall
-
 #Put the build folder into expected for use with asm-differ. Only run this with a matching build.
 expected: verify
 	mkdir -p expected
@@ -296,11 +293,11 @@ $(BUILD_DIR)/%.c.o: %.c
 # 	@$(CC) -c $(CFLAGS) $(CC_WARNINGS) $(OPT_FLAGS) $(MIPSISET) -o $@ $<
 # 	$(V)$(PYTHON) $(TOOLS_DIR)/patchmips3.py $@ || rm $@
 
-$(BUILD_DIR)/%.s.o: %.s
+$(BUILD_DIR)/%.o: %.s
 	$(call print,Assembling:,$<,$@)
 	$(V)$(AS) $(ASFLAGS) -MD $(BUILD_DIR)/$*.d -o $@ $< 
 
-$(BUILD_DIR)/%.bin.o: %.bin
+$(BUILD_DIR)/%.o: %.bin
 	$(call print,Linking Binary:,$<,$@)
 	$(V)$(LD) -r -b binary -o $@ $<
 

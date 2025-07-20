@@ -2,9 +2,9 @@ name: Onegai Monster (Japanese)
 sha1: 7592f4c16b8e040539b5dcc201fab2965a5e8c8d
 options:
   basename: onegaimonsters
-  target_path: ../onegaimonsters.z64
+  target_path: onegaimonsters.z64
   elf_path: build/onegaimonsters.elf
-  base_path: .
+  base_path: ../
   platform: n64
   compiler: KMC
 
@@ -13,7 +13,7 @@ options:
   # build_path: build
   # create_asm_dependencies: True
 
-  ld_script_path: splay/onegaimonsters.ld
+  ld_script_path: splat/onegaimonsters.ld
   ld_dependencies: True
 
   find_file_boundaries: True
@@ -26,6 +26,7 @@ options:
   asm_function_macro: glabel
   asm_jtbl_label_macro: jlabel
   asm_data_macro: dlabel
+  asm_emit_size_directive: False
 
   # section_order: [".text", ".data", ".rodata", ".bss"]
   # auto_link_sections: [".data", ".rodata", ".bss"]
@@ -35,8 +36,8 @@ options:
   reloc_addrs_path:
     - splat/symbols/reloc_addrs.txt
 
-  # undefined_funcs_auto_path: undefined_funcs_auto.txt
-  # undefined_syms_auto_path: undefined_syms_auto.txt
+  undefined_funcs_auto_path: splat/symbols/undefined_funcs_auto.txt
+  undefined_syms_auto_path: splat/symbols/undefined_syms_auto.txt
 
   extensions_path: tools/splat_ext
 
@@ -225,7 +226,7 @@ segments:
       - [0x29FA0, asm]
       - [0x2A310, asm]
       - [0x2A3C0, asm]
-      - [0x2A3D0, hasm, libultra/getcause]
+      - [0x2A3D0, asm, getcause]
       - [0x2A3E0, asm]
       - [0x2A3F0, asm]
       - [0x2A460, asm]
