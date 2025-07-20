@@ -134,7 +134,7 @@ segments:
       - [0x1D5A0, asm]
       - [0x1DD70, asm]
       - [0x1E160, asm]
-      - [0x1E210, asm]
+      - [0x1E210, c, 1E210]
       - [0x1E250, asm]
       - [0x1E290, asm]
       - [0x1E2B0, asm]

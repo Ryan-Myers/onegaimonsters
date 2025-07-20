@@ -101,7 +101,7 @@ PYTHON   = $(VENV)/bin/python3
 GCC      = gcc
 
 #Options
-CC       = $(KMC_GCC)
+CC       = COMPILER_PATH=$(KMC_DIR) $(KMC_GCC)
 SPLAT    ?= $(PYTHON) -m splat split
 CRC      = $(TOOLS_DIR)/n64crc $(BUILD_DIR)/$(BASENAME).z64 $(COLORIZE)
 
@@ -146,7 +146,7 @@ endif
 #IDO Warnings to Ignore. These are coding style warnings we don't follow
 CC_WARNINGS := -w
 
-CFLAGS := -G 0 -verbose -nostdinc -fno-PIC -G 0
+CFLAGS := -G 0 -nostdinc -fno-PIC -G 0
 CFLAGS += $(C_DEFINES)
 CFLAGS += $(INCLUDE_CFLAGS)
 
