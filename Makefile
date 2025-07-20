@@ -278,7 +278,7 @@ $(TARGET).elf: dirs $(LD_SCRIPT) $(O_FILES)
 	@$(PRINT) "$(GREEN)Linking: $(BLUE)$@$(NO_COL)\n"
 	$(V)$(LD) $(LD_FLAGS) -o $@
 
-$(BUILD_DIR)/%.c.o: %.c
+$(BUILD_DIR)/%.o: %.c
 	$(call print,Compiling:,$<,$@)
 	$(V)$(CC_CHECK) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(V)$(CC) -c $(CFLAGS) $(CC_WARNINGS) $(OPT_FLAGS) $(MIPSISET) -o $@ $<
@@ -301,13 +301,9 @@ $(BUILD_DIR)/%.o: %.bin
 	$(call print,Linking Binary:,$<,$@)
 	$(V)$(LD) -r -b binary -o $@ $<
 
-$(TARGET).bin: $(TARGET).elf
+$(TARGET).z64: $(TARGET).elf
 	$(call print,Objcopy:,$<,$@)
 	$(V)$(OBJCOPY) $(OBJCOPYFLAGS) $< $@
-
-$(TARGET).z64: $(TARGET).bin
-	$(call print,CopyRom:,$<,$@)
-	$(V)$(PYTHON) $(TOOLS_DIR)/CopyRom.py $< $@
 
 ### Settings
 .PHONY: all clean cleanextract default

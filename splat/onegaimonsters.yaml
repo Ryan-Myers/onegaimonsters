@@ -31,10 +31,8 @@ options:
   # section_order: [".text", ".data", ".rodata", ".bss"]
   # auto_link_sections: [".data", ".rodata", ".bss"]
 
-  symbol_addrs_path:
-    - splat/symbols/symbol_addrs.txt
-  reloc_addrs_path:
-    - splat/symbols/reloc_addrs.txt
+  symbol_addrs_path: splat/symbols/symbol_addrs.txt
+  reloc_addrs_path: splat/symbols/reloc_addrs.txt
 
   undefined_funcs_auto_path: splat/symbols/undefined_funcs_auto.txt
   undefined_syms_auto_path: splat/symbols/undefined_syms_auto.txt
@@ -71,6 +69,7 @@ segments:
     follows_vram: entry
     bss_size: 0x4DAE0
     subsegments:
+      - [0x1050, asm]
       - [0xD3A0, asm]
       - [0xDB50, asm]
       - [0x133F0, asm]
