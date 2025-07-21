@@ -177,8 +177,9 @@ segments:
       - [0x21E60, asm]
       - [0x21E90, asm]
       - [0x22090, asm]
+      - [0x221C0, asm, setthreadpri]
       - [0x22290, asm]
-      - [0x223B0, asm]
+      - [0x223B0, asm, thread]
       - [0x223F0, asm]
       - [0x22450, asm]
       - [0x22460, asm]
@@ -236,7 +237,7 @@ segments:
       - [0x2A530, asm, setsr]
       - [0x2A540, asm, unmaptlball]
       - [0x2A590, asm, maptlbrdb]
-      - [0x2A5F0, asm]
+      - [0x2A5F0, asm, destroythread]
       - [0x2A6C0, asm]
       - [0x2A6E0, asm]
       - [0x2A770, asm]
@@ -273,10 +274,16 @@ segments:
       - [0x2EB70, asm]
       - [0x2EBD0, asm]
       - [0x2EE00, data]
+      - [0x667B0, data, exceptasm]
+      - [0x667E0, data]
       - [0x68940, rodata]
       - [0x68F00, rodata, setintmask]
       - [0x68F80, rodata]
-      - { type: bss, vram: 0x8015B680 }
+      - [0x691D0, rodata, exceptasm]
+      - [0x69220, rodata]
+      - { type: bss, vram: 0x8015B680, name: bss1}
+      # - { type: bss, vram: 0x80170F98, name: exceptasm } # What is this alignment?
+      # - { type: bss, vram: 0x80171148, name: bss2 }
 
   - type: bin
     start: 0x69280
