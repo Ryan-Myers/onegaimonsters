@@ -41,3 +41,5 @@ __osEventStateTab = 0x80188268;
 osDestroyThread = 0x8011C9F0;
 __osDequeueThread = 0x801147B0;
 osSetThreadPri = 0x801145C0;
+alCSPPlay = 0x80109CD0;
+alEvtqPostEvent = 0x8010A964;
