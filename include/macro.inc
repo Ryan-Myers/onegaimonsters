@@ -1,4 +1,4 @@
-# common macros
+.include "labels.inc"
 
 # Assembly Macros
 
@@ -76,50 +76,3 @@
 .set $fs4f,         $f29
 .set $fs5,          $f30
 .set $fs5f,         $f31
-
-
-.macro glabel label
-    .global \label
-    .type \label, @function
-    \label:
-.endm
-
-.macro endlabel label
-.endm
-
-.macro alabel label
-    .global \label
-    \label:
-.endm
-
-.macro dlabel label
-    .global \label
-    \label:
-.endm
-
-.macro .word32 x
-    .word \x
-.endm
-
-.macro BANK_INDEX bank, index
-	.half \bank
-	.half \index
-.endm
-
-.macro move a, b
-    addu \a, \b, $zero
-.endm
-
-.macro leaf label
-    .global \label
-    \label:
-    .ent    \label
-.endm
-
-.macro jlabel label
-#if VERSION_CN
-    .global \label
-    .type \label, @function
-#endif
-    \label:
-.endm

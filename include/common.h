@@ -4,3 +4,4 @@
 #endif
 
 #include <ultra64.h>
+#include "include_asm.h"
