@@ -68,6 +68,7 @@ segments:
     vram: 0x800F3450
     follows_vram: entry
     bss_size: 0x4DAE0
+    subalign: 0x8
     subsegments:
       - [0x1050, asm]
       - [0xD3A0, asm]
@@ -282,8 +283,8 @@ segments:
       - [0x691D0, rodata, exceptasm]
       - [0x69220, rodata]
       - { type: bss, vram: 0x8015B680, name: bss1}
-      # - { type: bss, vram: 0x80170F98, name: exceptasm } # What is this alignment?
-      # - { type: bss, vram: 0x80171148, name: bss2 }
+      - { type: bss, vram: 0x80170F98, name: exceptasm } # What is this alignment?
+      - { type: bss, vram: 0x80171148, name: bss2 }
 
   - type: bin
     start: 0x69280

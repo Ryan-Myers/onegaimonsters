@@ -121,13 +121,12 @@ ifeq ($(NON_MATCHING),1)
 	MIPSISET = -mips2
 	C_STANDARD := -std=gnu99
 else
-	MATCHDEFS += ANTI_TAMPER=1
 	C_STANDARD := -std=gnu90
 endif
 
 DEFINES += $(MATCHDEFS)
 C_DEFINES := $(foreach d,$(DEFINES),-D$(d)) $(LIBULTRA_VERSION_DEFINE) -D_MIPS_SZLONG=32 -D__USE_ISOC99
-ASM_DEFINES = $(foreach d,$(DEFINES),$(if $(findstring =,$(d)),--defsym $(d),)) --defsym _MIPS_SIM=1 --defsym mips=1
+ASM_DEFINES = $(foreach d,$(DEFINES),$(if $(findstring =,$(d)),--defsym $(d),))
 
 INCLUDE_CFLAGS  = -I . -I include -I include/libc  -I include/PR -I include/sys -I $(BIN_DIRS) -I $(SRC_DIR) -I $(LIBULTRA_DIR)
 INCLUDE_CFLAGS += -I $(LIBULTRA_DIR)/src/gu -I $(LIBULTRA_DIR)/src/libc -I $(LIBULTRA_DIR)/src/io  -I $(LIBULTRA_DIR)/src/sc 
@@ -146,7 +145,7 @@ endif
 #IDO Warnings to Ignore. These are coding style warnings we don't follow
 CC_WARNINGS := -w
 
-CFLAGS := -G 0 -nostdinc -fno-PIC -G 0
+CFLAGS := -G 0 -nostdinc -fno-PIC -G 0 -mno-abicalls
 CFLAGS += $(C_DEFINES)
 CFLAGS += $(INCLUDE_CFLAGS)
 
