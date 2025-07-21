@@ -43,8 +43,8 @@ options:
   # data_string_encoding: ASCII
   rodata_string_guesser_level: 2
   data_string_guesser_level: 2
-  # libultra_symbols: True
-  # hardware_regs: True
+  libultra_symbols: True
+  hardware_regs: True
   # gfx_ucode: # one of [f3d, f3db, f3dex, f3dexb, f3dex2]
 segments:
   - name: header
@@ -171,6 +171,7 @@ segments:
       - [0x21BB0, asm]
       - [0x21BE0, asm]
       - [0x21D10, hasm, setintmask]
+      - [0x21DB0, hasm, writebackdcache]
       - [0x21E30, asm]
       - [0x21E60, asm]
       - [0x21E90, asm]
@@ -268,6 +269,8 @@ segments:
       - [0x2EB70, asm]
       - [0x2EE00, data]
       - [0x68940, rodata]
+      - [0x68F00, rodata, setintmask]
+      - [0x68F80, rodata]
       - { type: bss, vram: 0x8015B680 }
 
   - type: bin

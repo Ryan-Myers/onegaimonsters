@@ -2,3 +2,6 @@ func_84001008 = 0x84001008; // ignore:True
 func_84001064 = 0x84001064; // ignore:True
 func_840010D4 = 0x840010D4; // ignore:True
 osSetIntMask = 0x80114110;
+__osRcpImTable = 0x8015B300;
+osWritebackDCache = 0x801141B0;
+__OSGlobalIntMask = 0x80158BF0;
