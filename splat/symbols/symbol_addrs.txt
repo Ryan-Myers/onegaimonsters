@@ -1,3 +1,4 @@
 func_84001008 = 0x84001008; // ignore:True
 func_84001064 = 0x84001064; // ignore:True
 func_840010D4 = 0x840010D4; // ignore:True
+osSetIntMask = 0x80114110;

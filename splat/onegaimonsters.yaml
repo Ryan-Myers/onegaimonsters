@@ -170,7 +170,7 @@ segments:
       - [0x21940, asm]
       - [0x21BB0, asm]
       - [0x21BE0, asm]
-      - [0x21D10, asm]
+      - [0x21D10, hasm, setintmask]
       - [0x21E30, asm]
       - [0x21E60, asm]
       - [0x21E90, asm]
