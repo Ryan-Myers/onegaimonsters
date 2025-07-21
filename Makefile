@@ -40,6 +40,7 @@ BIN_DIRS  = assets
 BUILD_DIR = build
 SRC_DIR   = src
 LIBULTRA_DIR = libultra
+ULTRALIB_DIR = ultralib
 ASM_DIRS  = asm asm/data asm/nonmatchings asm/data/libultra
 HASM_DIRS = $(SRC_DIR)/hasm $(LIBULTRA_DIR)/src/os $(LIBULTRA_DIR)/src/gu $(LIBULTRA_DIR)/src/libc
 LIBULTRA_SRC_DIRS  = $(LIBULTRA_DIR) $(LIBULTRA_DIR)/src $(LIBULTRA_DIR)/src/audio
@@ -129,7 +130,7 @@ C_DEFINES := $(foreach d,$(DEFINES),-D$(d)) $(LIBULTRA_VERSION_DEFINE) -D_MIPS_S
 ASM_DEFINES = $(foreach d,$(DEFINES),$(if $(findstring =,$(d)),--defsym $(d),))
 
 INCLUDE_CFLAGS  = -I . -I include -I include/libc  -I include/PR -I include/sys -I $(BIN_DIRS) -I $(SRC_DIR) -I $(LIBULTRA_DIR)
-# INCLUDE_CFLAGS += -I $(LIBULTRA_DIR)/include -I $(LIBULTRA_DIR)/include/libc -I $(LIBULTRA_DIR)/include/PR -I $(LIBULTRA_DIR)/include/sys
+INCLUDE_CFLAGS += -I $(ULTRALIB_DIR)/include -I $(ULTRALIB_DIR)/include/libc -I $(ULTRALIB_DIR)/include/PR -I $(ULTRALIB_DIR)/include/sys
 INCLUDE_CFLAGS += -I $(LIBULTRA_DIR)/src/gu -I $(LIBULTRA_DIR)/src/libc -I $(LIBULTRA_DIR)/src/io  -I $(LIBULTRA_DIR)/src/sc 
 INCLUDE_CFLAGS += -I $(LIBULTRA_DIR)/src/audio -I $(LIBULTRA_DIR)/src/os
 
