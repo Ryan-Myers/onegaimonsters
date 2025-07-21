@@ -101,7 +101,7 @@ segments:
       - [0x16080, asm]
       - [0x160A0, asm]
       - [0x166D0, asm]
-      - [0x178B0, asm]
+      - [0x178B0, c, 178B0]
       - [0x178C0, asm]
       - [0x178D0, asm]
       - [0x17900, asm]
