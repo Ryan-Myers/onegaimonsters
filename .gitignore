@@ -24,6 +24,10 @@ ucode/*
 *.o
 *.obj
 
+ctx.c
+ctx.c.m2c
+m2cfiles/
+
 tools/gcc_kmc
 
 tools/n64crc
