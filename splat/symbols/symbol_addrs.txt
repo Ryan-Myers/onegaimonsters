@@ -43,3 +43,5 @@ __osDequeueThread = 0x801147B0;
 osSetThreadPri = 0x801145C0;
 alCSPPlay = 0x80109CD0;
 alEvtqPostEvent = 0x8010A964;
+osCreateThread = 0x80114290;
+__osActiveQueue = 0x801576DC;

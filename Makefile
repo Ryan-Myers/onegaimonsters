@@ -39,7 +39,8 @@ endef
 BIN_DIRS  = assets
 BUILD_DIR = build
 SRC_DIR   = src
-LIBULTRA_DIR = libultra
+# Workaround for an ultralib dir in src/ for now.
+LIBULTRA_DIR = src/ultralib
 ULTRALIB_DIR = ultralib
 ASM_DIRS  = asm asm/data asm/nonmatchings asm/data/libultra
 HASM_DIRS = $(SRC_DIR)/hasm $(LIBULTRA_DIR)/src/os $(LIBULTRA_DIR)/src/gu $(LIBULTRA_DIR)/src/libc
