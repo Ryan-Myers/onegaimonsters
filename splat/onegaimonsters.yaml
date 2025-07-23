@@ -262,8 +262,8 @@ segments:
       - [0x2CCA0, asm]
       - [0x2CEA0, asm]
       - [0x2D0C0, asm]
-      - [0x2D1B0, asm]
-      - [0x2D570, asm]
+      - [0x2D1B0, asm, devmgr]
+      - [0x2D570, asm, epirawdma]
       - [0x2D760, asm]
       - [0x2D8D0, asm]
       - [0x2DA40, asm]
@@ -288,6 +288,7 @@ segments:
       - [0x68F80, rodata]
       - [0x691D0, rodata, exceptasm]
       - [0x69220, rodata]
+      - [0x69260, rodata, devmgr]
       - { type: bss, vram: 0x8015B680, name: bss1 }
       - { type: bss, vram: 0x8016D820, name: pimgr }
       - { type: bss, vram: 0x8016E9F0, name: vimgr }
