@@ -227,7 +227,7 @@ segments:
       - [0x28DE0, asm]
       - [0x28E70, asm, vimgr]
       - [0x291B0, asm]
-      - [0x29320, asm]
+      - [0x29320, asm, viswapcontext]
       - [0x29630, asm, exceptasm]
       - [0x29FA0, asm]
       - [0x2A280, asm, interrupt]
@@ -278,6 +278,9 @@ segments:
       - [0x2EB70, asm]
       - [0x2EBD0, asm]
       - [0x2EE00, data]
+      - [0x655E0, data, pimgr]
+      - [0x65610, data, vimgr]
+      - [0x65630, data]
       - [0x667B0, data, exceptasm]
       - [0x667E0, data]
       - [0x68940, rodata]
@@ -285,9 +288,12 @@ segments:
       - [0x68F80, rodata]
       - [0x691D0, rodata, exceptasm]
       - [0x69220, rodata]
-      - { type: bss, vram: 0x8015B680, name: bss1}
+      - { type: bss, vram: 0x8015B680, name: bss1 }
+      - { type: bss, vram: 0x8016D820, name: pimgr }
+      - { type: bss, vram: 0x8016E9F0, name: vimgr }
+      - { type: bss, vram: 0x8016FC10, name: bss2 }
       - { type: bss, vram: 0x80170F98, name: exceptasm } # What is this alignment?
-      - { type: bss, vram: 0x80171148, name: bss2 }
+      - { type: bss, vram: 0x80171148, name: bss3 }
 
   - type: bin
     start: 0x69280
