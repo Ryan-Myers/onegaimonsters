@@ -180,7 +180,7 @@ segments:
       - [0x21F60, asm]
       - [0x22090, asm]
       - [0x221C0, asm, setthreadpri]
-      - [0x22290, asm]
+      - [0x22290, asm, startthread]
       - [0x223B0, asm, thread]
       - [0x223F0, asm, virtualtophysical]
       - [0x22450, asm]
