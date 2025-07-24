@@ -26,6 +26,7 @@ ucode/*
 
 ctx.c
 ctx.c.m2c
+ctx_includes.c
 m2cfiles/
 
 tools/gcc_kmc

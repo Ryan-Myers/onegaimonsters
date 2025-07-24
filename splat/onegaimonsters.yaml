@@ -212,7 +212,7 @@ segments:
       - [0x27070, asm]
       - [0x271F0, asm]
       - [0x273D0, asm]
-      - [0x27760, asm]
+      - [0x27760, asm, pfsallocatefile]
       - [0x27B90, asm]
       - [0x27DB0, asm]
       - [0x27F40, asm]
