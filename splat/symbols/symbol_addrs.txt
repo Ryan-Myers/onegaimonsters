@@ -135,3 +135,4 @@ bcmp = 0x8011E500;
 __osPfsInodeCacheBank = 0x80158DA4;
 __osPfsInodeCacheChannel = 0x80158DA0;
 __osPfsInodeCache = 0x80187FC0;
+__osViCurr = 0x80158C80;
