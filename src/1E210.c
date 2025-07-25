@@ -1,13 +1,13 @@
 #include "common.h"
 
 s32 func_801106B0(void);
-extern s32 D_80157640;
+extern void (*D_80157640)(s32);
 
-void func_80110610(s32 arg0) {
-    OSIntMask mask;
+void func_80110610(void (*func)(s32)) {
+    OSIntMask savedMask;
 
     func_801106B0();
-    mask = osSetIntMask(OS_IM_NONE);
-    D_80157640 = arg0;
-    osSetIntMask(mask);
+    savedMask = osSetIntMask(OS_IM_NONE);
+    D_80157640 = func;
+    osSetIntMask(savedMask);
 }
