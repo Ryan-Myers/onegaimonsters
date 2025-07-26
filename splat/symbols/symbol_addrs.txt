@@ -167,3 +167,4 @@ osViGetNextFramebuffer = 0x80116180;
 osViSwapBuffer = 0x80116270;
 
 swap_vi_buffer = 0x80110690;
+n_alSynSetPriority = 0x8010F990;
