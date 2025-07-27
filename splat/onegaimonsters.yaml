@@ -360,4 +360,18 @@ segments:
     start: 0x69280
     follows_vram: main
 
+  # - name: code1
+  #   type: code
+  #   start: 0x69280
+  #   follows_vram: main
+  #   vram: 0x801A9160
+  #   subsegments:
+  #     - [0x69280, asm]
+  #     - [0x6A7B0, data]
+  #     - [0x6A930, rodata, 69280]
+
+  - type: bin
+    start: 0x6A960
+    follows_vram: main
+
   - [0x1000000]
