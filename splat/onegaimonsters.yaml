@@ -753,4 +753,8 @@ segments:
     start: 0x945D70
     follows_vram: main
 
+  - type: bin
+    start: 0x958D70
+    follows_vram: main
+
   - [0x1000000]
