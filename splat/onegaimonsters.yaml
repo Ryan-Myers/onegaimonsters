@@ -305,7 +305,7 @@ segments:
       - [0x655D0, data, 27070]
       - [0x655E0, data, pimgr]
       - [0x65610, data, vimgr]
-      - [0x65630, data, vitbl]
+      - [0x65630, .data, ultralib/src/io/vitbl]
       - [0x667B0, data, exceptasm]
       - [0x667E0, data]
       - [0x66820, data, vi]
