@@ -42,7 +42,9 @@ SRC_DIR   = src
 # Workaround for an ultralib dir in src/ for now.
 LIBULTRA_DIR = src/ultralib
 ULTRALIB_DIR = ultralib
-ASM_DIRS  = asm asm/data asm/nonmatchings asm/data/libultra
+ASM_DIRS  = asm asm/data asm/nonmatchings asm/data/libultra 
+ASM_DIRS += asm/overlays/code1 asm/data/overlays/code1
+ASM_DIRS += asm/overlays/code2 asm/data/overlays/code2
 HASM_DIRS = $(SRC_DIR)/hasm $(LIBULTRA_DIR)/src/os $(LIBULTRA_DIR)/src/gu $(LIBULTRA_DIR)/src/libc
 LIBULTRA_SRC_DIRS  = $(LIBULTRA_DIR) $(LIBULTRA_DIR)/src $(LIBULTRA_DIR)/src/audio
 LIBULTRA_SRC_DIRS += $(LIBULTRA_DIR)/src/debug $(LIBULTRA_DIR)/src/gu $(LIBULTRA_DIR)/src/io

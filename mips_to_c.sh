@@ -13,7 +13,7 @@ fi
 
 if [[ ! -f ctx.c ]]; then
     echo "ctx.c not found, creating a new one..."
-    generate_ctx.sh
+    ./generate_ctx.sh
 fi
 
 if [[ ! -f .venv/bin/python3 ]]; then

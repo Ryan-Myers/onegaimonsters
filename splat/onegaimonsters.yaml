@@ -366,14 +366,32 @@ segments:
     follows_vram: main
     # bss_size: 0x10000
     vram: 0x801A9160
+    dir: overlays/code1
+    name: code1
+    exclusive_ram_id: code1
+    symbol_name_format: $VRAM_$ROM_$SEG
     subsegments:
       - [0x69280, asm]
       - [0x6A7B0, data]
       - [0x6A930, rodata, 69280]
       # - { type: bss, vram: 0x801AA840, name: code1_bss1 }
 
-  - type: bin
+  - name: code2
+    type: code
     start: 0x6A960
+    follows_vram: main
+    vram: 0x801A9160
+    dir: overlays/code2
+    name: code2
+    exclusive_ram_id: code2
+    symbol_name_format: $VRAM_$ROM_$SEG
+    subsegments:
+      - [0x6A960, asm]
+      - [0x86790, data]
+      - [0x90A20, rodata]
+
+  - type: bin
+    start: 0x911F0
     follows_vram: main
 
   - [0x1000000]
