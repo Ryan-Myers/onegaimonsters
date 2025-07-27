@@ -356,19 +356,21 @@ segments:
       - { type: bss, vram: 0x80170F98, name: exceptasm } # What is this alignment?
       - { type: bss, vram: 0x80171148, name: bss3 }
 
-  - type: bin
-    start: 0x69280
-    follows_vram: main
-
-  # - name: code1
-  #   type: code
+  # - type: bin
   #   start: 0x69280
   #   follows_vram: main
-  #   vram: 0x801A9160
-  #   subsegments:
-  #     - [0x69280, asm]
-  #     - [0x6A7B0, data]
-  #     - [0x6A930, rodata, 69280]
+
+  - name: code1
+    type: code
+    start: 0x69280
+    follows_vram: main
+    # bss_size: 0x10000
+    vram: 0x801A9160
+    subsegments:
+      - [0x69280, asm]
+      - [0x6A7B0, data]
+      - [0x6A930, rodata, 69280]
+      # - { type: bss, vram: 0x801AA840, name: code1_bss1 }
 
   - type: bin
     start: 0x6A960
