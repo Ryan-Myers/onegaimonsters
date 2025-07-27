@@ -390,11 +390,12 @@ segments:
       - [0x6A960, asm]
       - [0x86790, data]
       - [0x90A20, rodata]
-      - { type: bss, vram: 0x801CF9F0, name: bss1 }
+      - { type: bss, vram: 0x801CF9F0, name: bss1_code2 }
 
   - name: code3
     type: code
     start: 0x911F0
+    bss_size: 0xC0
     follows_vram: code2
     vram: 0x801DC8D0
     dir: overlays/code3
@@ -405,9 +406,26 @@ segments:
       - [0x911F0, asm]
       - [0x99B60, data]
       - [0xABBD0, rodata]
+      - { type: bss, vram: 0x801F7420, name: bss1_code3 }
+
+  - name: code4
+    type: code
+    start: 0xABD40
+    bss_size: 0x1010
+    follows_vram: code3
+    vram: 0x801F74E0
+    dir: overlays/code4
+    name: code4
+    exclusive_ram_id: code4
+    symbol_name_format: $VRAM_$ROM_$SEG
+    subsegments:
+      - [0xABD40, asm]
+      - [0xB6860, data]
+      - [0xBA640, rodata]
+      - { type: bss, vram: 0x80206360, name: bss1_code4}
 
   - type: bin
-    start: 0xABD40
+    start: 0xBABC0
     follows_vram: main
 
   - [0x1000000]
