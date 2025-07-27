@@ -384,9 +384,20 @@ segments:
     symbol_name_format: $VRAM_$ROM_$SEG
     subsegments:
       - [0x6A960, asm]
+      - [0x76CF0, asm]
+      - [0x7F6A0, asm]
+      - [0x82CB0, asm]
+      - [0x85D50, asm]
       - [0x86790, data]
-      - [0x90A20, rodata]
-      - { type: bss, vram: 0x801CF9F0, name: bss1_code2 }
+      - [0x90A20, rodata, 6A960]
+      - [0x90AC0, rodata, 76CF0]
+      - [0x90DD0, rodata, 7F6A0]
+      - [0x90E10, rodata, 82CB0]
+      - [0x911C0, rodata, 85D50]
+      - { type: bss, vram: 0x801CF9F0, name: 6A960 }
+      - { type: bss, vram: 0x801D12A0, name: 76CF0 }
+      - { type: bss, vram: 0x801D4890, name: 7F6A0 }
+      - { type: bss, vram: 0x801DC0A0, name: 82CB0 }
 
   - name: code3
     type: code
@@ -400,8 +411,13 @@ segments:
     symbol_name_format: $VRAM_$ROM_$SEG
     subsegments:
       - [0x911F0, asm]
+      - [0x97520, asm]
+      - [0x97880, asm]
+      - [0x992B0, asm]
       - [0x99B60, data]
       - [0xABBD0, rodata]
+      - [0xABCF0, rodata]
+      - [0xABD00, rodata]
       - { type: bss, vram: 0x801F7420, name: bss1_code3 }
 
   - name: code4
@@ -416,6 +432,10 @@ segments:
     symbol_name_format: $VRAM_$ROM_$SEG
     subsegments:
       - [0xABD40, asm]
+      - [0xAEFE0, asm]
+      - [0xAFB00, asm]
+      - [0xB25D0, asm]
+      - [0xB54B0, asm]
       - [0xB6860, data]
       - [0xBA640, rodata]
       - { type: bss, vram: 0x80206360, name: bss1_code4 }
@@ -432,6 +452,9 @@ segments:
     symbol_name_format: $VRAM_$ROM_$SEG
     subsegments:
       - [0xBABC0, asm]
+      - [0xC5120, asm]
+      - [0xC6450, asm]
+      - [0xC7330, asm]
       - [0xC7AC0, data]
       - [0xC9FB0, rodata]
       - { type: bss, vram: 0x80206D10, name: bss1_code5 }
