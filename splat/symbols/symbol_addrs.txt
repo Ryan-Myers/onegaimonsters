@@ -172,3 +172,6 @@ __osAiDeviceBusy = 0x8011E150;
 osAiSetNextBuffer = 0x80115DF0;
 hdwrBugFlag = 0x80157700;
 __osThreadTail = 0x801576D0; // size:0x8
+__osPreNMI = 0x80158C00;
+__osTimerList = 0x80158C10;
+__osBaseTimer = 0x80183080;
