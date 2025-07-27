@@ -356,15 +356,11 @@ segments:
       - { type: bss, vram: 0x80170F98, name: exceptasm } # What is this alignment?
       - { type: bss, vram: 0x80171148, name: bss3 }
 
-  # - type: bin
-  #   start: 0x69280
-  #   follows_vram: main
-
   - name: code1
     type: code
     start: 0x69280
     follows_vram: main
-    # bss_size: 0x10000
+    bss_size: 0x270
     vram: 0x801A9160
     dir: overlays/code1
     name: code1
@@ -374,7 +370,7 @@ segments:
       - [0x69280, asm]
       - [0x6A7B0, data]
       - [0x6A930, rodata, 69280]
-      # - { type: bss, vram: 0x801AA840, name: code1_bss1 }
+      - { type: bss, vram: 0x801AA840, name: bss1_code1 }
 
   - name: code2
     type: code
@@ -422,7 +418,7 @@ segments:
       - [0xABD40, asm]
       - [0xB6860, data]
       - [0xBA640, rodata]
-      - { type: bss, vram: 0x80206360, name: bss1_code4}
+      - { type: bss, vram: 0x80206360, name: bss1_code4 }
 
   - name: code5
     type: code
@@ -438,7 +434,7 @@ segments:
       - [0xBABC0, asm]
       - [0xC7AC0, data]
       - [0xC9FB0, rodata]
-      - { type: bss, vram: 0x80206D10, name: bss1_code5}
+      - { type: bss, vram: 0x80206D10, name: bss1_code5 }
 
   - name: code6
     type: code
@@ -454,7 +450,7 @@ segments:
       - [0xCA3F0, asm]
       - [0xD0BD0, data]
       - [0xD0D20, rodata]
-      - { type: bss, vram: 0x801FE080, name: bss1_code6}
+      - { type: bss, vram: 0x801FE080, name: bss1_code6 }
 
   - name: code7
     type: bin
@@ -479,6 +475,254 @@ segments:
 
   - type: bin
     start: 0xEEA20
+    follows_vram: main
+
+  - type: bin
+    start: 0xF1B70
+    follows_vram: main
+
+  - type: bin
+    start: 0xF55E0
+    follows_vram: main
+
+  - type: bin
+    start: 0xF8750
+    follows_vram: main
+
+  - type: bin
+    start: 0xFAE40
+    follows_vram: main
+
+  - type: bin
+    start: 0xFD6C0
+    follows_vram: main
+
+  - type: bin
+    start: 0xFFFD0
+    follows_vram: main
+
+  - type: bin
+    start: 0x103480
+    follows_vram: main
+
+  - type: bin
+    start: 0x106460
+    follows_vram: main
+
+  - type: bin
+    start: 0x108490
+    follows_vram: main
+
+  - type: bin
+    start: 0x10BA30
+    follows_vram: main
+
+  - type: bin
+    start: 0x10E220
+    follows_vram: main
+
+  - type: bin
+    start: 0x110C40
+    follows_vram: main
+
+  - type: bin
+    start: 0x113F10
+    follows_vram: main
+
+  - type: bin
+    start: 0x1157D0
+    follows_vram: main
+
+  - type: bin
+    start: 0x118D70
+    follows_vram: main
+
+  - type: bin
+    start: 0x11C640
+    follows_vram: main
+
+  - type: bin
+    start: 0x120170
+    follows_vram: main
+
+  - type: bin
+    start: 0x123A50
+    follows_vram: main
+
+  - type: bin
+    start: 0x1267F0
+    follows_vram: main
+
+  - type: bin
+    start: 0x1290E0
+    follows_vram: main
+
+  - type: bin
+    start: 0x12C680
+    follows_vram: main
+
+  - type: bin
+    start: 0x12F1A0
+    follows_vram: main
+
+  - type: bin
+    start: 0x131590
+    follows_vram: main
+
+  - type: bin
+    start: 0x134CA0
+    follows_vram: main
+
+  - type: bin
+    start: 0x1375A0
+    follows_vram: main
+
+  - type: bin
+    start: 0x13B0F0
+    follows_vram: main
+
+  - type: bin
+    start: 0x13CAB0
+    follows_vram: main
+
+  - type: bin
+    start: 0x13FCA0
+    follows_vram: main
+
+  - type: bin
+    start: 0x142790
+    follows_vram: main
+
+  - type: bin
+    start: 0x144620
+    follows_vram: main
+
+  - type: bin
+    start: 0x145BA0
+    follows_vram: main
+
+  - type: bin
+    start: 0x1498E0
+    follows_vram: main
+
+  - type: bin
+    start: 0x14D170
+    follows_vram: main
+
+  - type: bin
+    start: 0x150380
+    follows_vram: main
+
+  - type: bin
+    start: 0x152ED0
+    follows_vram: main
+
+  - type: bin
+    start: 0x1562B0
+    follows_vram: main
+
+  - type: bin
+    start: 0x15A5C0
+    follows_vram: main
+
+  - type: bin
+    start: 0x15D6E0
+    follows_vram: main
+
+  - type: bin
+    start: 0x1612C0
+    follows_vram: main
+
+  - type: bin
+    start: 0x1647C0
+    follows_vram: main
+
+  - type: bin
+    start: 0x166B10
+    follows_vram: main
+
+  - type: bin
+    start: 0x167DF0
+    follows_vram: main
+
+  - type: bin
+    start: 0x16D410
+    follows_vram: main
+
+  - type: bin
+    start: 0x174380
+    follows_vram: main
+
+  - type: bin
+    start: 0x175BF0
+    follows_vram: main
+
+  - type: bin
+    start: 0x17F480
+    follows_vram: main
+
+  - type: bin
+    start: 0x188C80
+    follows_vram: main
+
+  - type: bin
+    start: 0x18D3A0
+    follows_vram: main
+
+  - type: bin
+    start: 0x198910
+    follows_vram: main
+
+  - type: bin
+    start: 0x19ECB0
+    follows_vram: main
+
+  - type: bin
+    start: 0x1A39D0
+    follows_vram: main
+
+  - type: bin
+    start: 0x1A3C40
+    follows_vram: main
+
+  - type: bin
+    start: 0x1A7470
+    follows_vram: main
+
+  - type: bin
+    start: 0x1A8F70
+    follows_vram: main
+
+  - type: bin
+    start: 0x1A9850
+    follows_vram: main
+
+  - type: bin
+    start: 0x1ABBC0
+    follows_vram: main
+
+  - type: bin
+    start: 0x1AE8F0
+    follows_vram: main
+
+  - name: code_1B10E0
+    type: code
+    start: 0x1B10E0
+    bss_size: 0x7840
+    follows_vram: code3
+    vram: 0x801F74E0
+    dir: overlays/code_1B10E0
+    name: code_1B10E0
+    exclusive_ram_id: code4
+    symbol_name_format: $VRAM_$ROM_$SEG
+    subsegments:
+      - [0x1B10E0, asm]
+      - [0x1B34A0, data]
+      - [0x1B3DA0, rodata]
+      - { type: bss, vram: 0x801FA470, name: bss1_code_1B10E0 }
+
+  - type: bin
+    start: 0x1B4070
     follows_vram: main
 
   - [0x1000000]
