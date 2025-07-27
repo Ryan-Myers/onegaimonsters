@@ -454,9 +454,10 @@ segments:
       - [0xCA3F0, asm]
       - [0xD0BD0, data]
       - [0xD0D20, rodata]
-      # - { type: bss, vram: 0x801FE080, name: bss1_code6}
+      - { type: bss, vram: 0x801FE080, name: bss1_code6}
 
-  - type: bin
+  - name: code7
+    type: bin
     start: 0xD0F90
     follows_vram: main
 
