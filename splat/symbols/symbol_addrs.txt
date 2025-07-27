@@ -171,3 +171,4 @@ n_alSynSetPriority = 0x8010F990;
 __osAiDeviceBusy = 0x8011E150;
 osAiSetNextBuffer = 0x80115DF0;
 hdwrBugFlag = 0x80157700;
+__osThreadTail = 0x801576D0; // size:0x8
