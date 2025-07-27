@@ -315,7 +315,10 @@ segments:
       - [0x668A0, .data, ultralib/src/vimodes/vimodentsclan1]
       - [0x668F0, .data, ultralib/src/vimodes/vimodepallan1]
       - [0x66940, .data, ultralib/src/vimodes/vimodempallan1]
-      - [0x66990, data]
+      - [0x66990, data, piacs]
+      - [0x669A0, data, contpfs]
+      - [0x669B0, data, contramread]
+      - [0x669C0, data] # unreferenced at the start.
       - [0x68730, rodata, 1050]
       - [0x68940, rodata, D3A0]
       - [0x68980, rodata, DB50]
