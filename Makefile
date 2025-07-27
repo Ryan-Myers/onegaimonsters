@@ -52,6 +52,7 @@ ASM_DIRS += asm/overlays/code6 asm/data/overlays/code6
 ASM_DIRS += asm/overlays/code7 asm/data/overlays/code7
 ASM_DIRS += asm/overlays/code8 asm/data/overlays/code8
 ASM_DIRS += asm/overlays/code_1B10E0 asm/data/overlays/code_1B10E0
+ASM_DIRS += asm/overlays/code_944550 asm/data/overlays/code_944550
 HASM_DIRS = $(SRC_DIR)/hasm $(LIBULTRA_DIR)/src/os $(LIBULTRA_DIR)/src/gu $(LIBULTRA_DIR)/src/libc
 LIBULTRA_SRC_DIRS  = $(LIBULTRA_DIR) $(LIBULTRA_DIR)/src $(LIBULTRA_DIR)/src/audio
 LIBULTRA_SRC_DIRS += $(LIBULTRA_DIR)/src/debug $(LIBULTRA_DIR)/src/gu $(LIBULTRA_DIR)/src/io
