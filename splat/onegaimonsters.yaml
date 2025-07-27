@@ -440,8 +440,24 @@ segments:
       - [0xC9FB0, rodata]
       - { type: bss, vram: 0x80206D10, name: bss1_code5}
 
-  - type: bin
+  - name: code6
+    type: code
     start: 0xCA3F0
+    bss_size: 0x7750
+    follows_vram: code3
+    vram: 0x801F74E0
+    dir: overlays/code6
+    name: code6
+    exclusive_ram_id: code6
+    symbol_name_format: $VRAM_$ROM_$SEG
+    subsegments:
+      - [0xCA3F0, asm]
+      - [0xD0BD0, data]
+      - [0xD0D20, rodata]
+      # - { type: bss, vram: 0x801FE080, name: bss1_code6}
+
+  - type: bin
+    start: 0xD0F90
     follows_vram: main
 
   - [0x1000000]
