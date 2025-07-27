@@ -39,27 +39,31 @@ endef
 BIN_DIRS  = assets
 BUILD_DIR = build
 SRC_DIR   = src
+OVERLAY_DIR = src/overlays
 # Workaround for an ultralib dir in src/ for now.
 LIBULTRA_DIR = src/ultralib
 ULTRALIB_DIR = ultralib
 ASM_DIRS  = asm asm/data asm/nonmatchings asm/data/libultra 
-ASM_DIRS += asm/overlays/code1 asm/data/overlays/code1
-ASM_DIRS += asm/overlays/code2 asm/data/overlays/code2
-ASM_DIRS += asm/overlays/code3 asm/data/overlays/code3
-ASM_DIRS += asm/overlays/code4 asm/data/overlays/code4
-ASM_DIRS += asm/overlays/code5 asm/data/overlays/code5
-ASM_DIRS += asm/overlays/code6 asm/data/overlays/code6
-ASM_DIRS += asm/overlays/code7 asm/data/overlays/code7
-ASM_DIRS += asm/overlays/code8 asm/data/overlays/code8
-ASM_DIRS += asm/overlays/code_1B10E0 asm/data/overlays/code_1B10E0
-ASM_DIRS += asm/overlays/code_944550 asm/data/overlays/code_944550
+# ASM_DIRS += asm/overlays/code1 asm/data/overlays/code1
+# ASM_DIRS += asm/overlays/code2 asm/data/overlays/code2
+# ASM_DIRS += asm/overlays/code3 asm/data/overlays/code3
+# ASM_DIRS += asm/overlays/code4 asm/data/overlays/code4
+# ASM_DIRS += asm/overlays/code5 asm/data/overlays/code5
+# ASM_DIRS += asm/overlays/code6 asm/data/overlays/code6
+# ASM_DIRS += asm/overlays/code7 asm/data/overlays/code7
+# ASM_DIRS += asm/overlays/code8 asm/data/overlays/code8
+# ASM_DIRS += asm/overlays/code_1B10E0 asm/data/overlays/code_1B10E0
+# ASM_DIRS += asm/overlays/code_944550 asm/data/overlays/code_944550
 HASM_DIRS = $(SRC_DIR)/hasm $(LIBULTRA_DIR)/src/os $(LIBULTRA_DIR)/src/gu $(LIBULTRA_DIR)/src/libc
 LIBULTRA_SRC_DIRS  = $(LIBULTRA_DIR) $(LIBULTRA_DIR)/src $(LIBULTRA_DIR)/src/audio
 LIBULTRA_SRC_DIRS += $(LIBULTRA_DIR)/src/debug $(LIBULTRA_DIR)/src/gu $(LIBULTRA_DIR)/src/io
 LIBULTRA_SRC_DIRS += $(LIBULTRA_DIR)/src/libc $(LIBULTRA_DIR)/src/os $(LIBULTRA_DIR)/src/sc
 LIBULTRA_SRC_DIRS += $(LIBULTRA_DIR)/src/vimodes
 
-SRC_DIRS = $(SRC_DIR) $(LIBULTRA_SRC_DIRS)
+SRC_DIRS = $(SRC_DIR) $(LIBULTRA_SRC_DIRS) $(OVERLAY_DIR)
+SRC_OVERLAYS_DIRS = $(patsubst %/,%,$(dir $(wildcard src/overlays/*/)))
+ASM_OVERLAYS_DIRS = $(patsubst %/,%,$(dir $(wildcard asm/overlays/*/)))
+ASM_OVERLAYS_DIRS += $(patsubst %/,%,$(dir $(wildcard asm/nonmatchings/overlays/*/)))
 SYMBOLS_DIR = splat/symbols
 
 TOOLS_DIR = tools
@@ -85,8 +89,8 @@ KMC_BINUTILS    := $(KMC_DIR)/as
 
 # Files
 
-S_FILES         = $(foreach dir,$(ASM_DIRS) $(HASM_DIRS),$(wildcard $(dir)/*.s))
-C_FILES         = $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c))
+S_FILES         = $(foreach dir,$(ASM_DIRS) $(HASM_DIRS) $(ASM_OVERLAYS_DIRS),$(wildcard $(dir)/*.s))
+C_FILES         = $(foreach dir,$(SRC_DIRS) $(SRC_OVERLAYS_DIRS),$(wildcard $(dir)/*.c))
 BIN_FILES       = $(foreach dir,$(BIN_DIRS),$(wildcard $(dir)/*.bin))
 
 O_FILES := $(foreach file,$(S_FILES),$(BUILD_DIR)/$(basename $(file)).o) \
@@ -141,7 +145,8 @@ DEFINES += $(MATCHDEFS)
 C_DEFINES := $(foreach d,$(DEFINES),-D$(d)) $(LIBULTRA_VERSION_DEFINE) -D_MIPS_SZLONG=32 -D__USE_ISOC99 -D_LANGUAGE_C
 ASM_DEFINES = $(foreach d,$(DEFINES),$(if $(findstring =,$(d)),--defsym $(d),))
 
-INCLUDE_CFLAGS  = -I . -I include -I include/libc  -I include/PR -I include/sys -I $(BIN_DIRS) -I $(SRC_DIR) -I $(LIBULTRA_DIR)
+INCLUDE_CFLAGS = $(foreach d,$(SRC_OVERLAYS_DIRS),-I $(d)) $(foreach d,$(ASM_OVERLAYS_DIRS),-I $(d))
+INCLUDE_CFLAGS += -I . -I include -I include/libc  -I include/PR -I include/sys -I $(BIN_DIRS) -I $(SRC_DIR) -I $(LIBULTRA_DIR)
 INCLUDE_CFLAGS += -I $(ULTRALIB_DIR)/include -I $(ULTRALIB_DIR)/include/libc -I $(ULTRALIB_DIR)/include/PR -I $(ULTRALIB_DIR)/include/sys
 INCLUDE_CFLAGS += -I $(ULTRALIB_DIR)/src/audio -I $(ULTRALIB_DIR)/include/PRinternal
 INCLUDE_CFLAGS += -I $(LIBULTRA_DIR)/src/gu -I $(LIBULTRA_DIR)/src/libc -I $(LIBULTRA_DIR)/src/io  -I $(LIBULTRA_DIR)/src/sc 
@@ -227,7 +232,7 @@ default: all
 all: $(VERIFY)
 
 dirs:
-	$(foreach dir,$(SRC_DIRS) $(ASM_DIRS) $(HASM_DIRS) $(BIN_DIRS),$(shell mkdir -p $(BUILD_DIR)/$(dir)))
+	$(foreach dir,$(SRC_DIRS) $(ASM_DIRS) $(HASM_DIRS) $(BIN_DIRS) $(SRC_OVERLAYS_DIRS) $(ASM_OVERLAYS_DIRS),$(shell mkdir -p $(BUILD_DIR)/$(dir)))
 
 verify: $(TARGET).z64
 	$(V)$(CRC)
@@ -276,6 +281,9 @@ distcleanall: cleanall
 	rm -rf assets
 	rm -f $(SYMBOLS_DIR)/*auto.txt
 	rm -f splat/onegaimonsters.ld
+
+test:
+	$(call print,Compiling:,$(OVERLAY_DIR),$(INCLUDE_CFLAGS)) 
 
 #When you just need to wipe old symbol names and re-extract
 cleanextract: distclean extract

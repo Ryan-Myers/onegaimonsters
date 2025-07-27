@@ -366,11 +366,12 @@ segments:
     name: code1
     exclusive_ram_id: code1
     symbol_name_format: $VRAM_$ROM_$SEG
+    migrate_rodata_to_functions: True
     subsegments:
-      - [0x69280, asm]
-      - [0x6A7B0, data]
-      - [0x6A930, rodata, 69280]
-      - { type: bss, vram: 0x801AA840, name: bss1_code1 }
+      - [0x69280, c, code_69280]
+      - [0x6A7B0, data, code_69280]
+      - [0x6A930, .rodata, code_69280]
+      - { type: bss, vram: 0x801AA840, name: code_69280 }
 
   - name: code2
     type: code
