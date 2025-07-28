@@ -356,22 +356,21 @@ segments:
       - { type: bss, vram: 0x80170F98, name: exceptasm } # What is this alignment?
       - { type: bss, vram: 0x80171148, name: bss3 }
 
-  - name: code1
+  - name: o1
     type: code
     start: 0x69280
     follows_vram: main
     bss_size: 0x270
     vram: 0x801A9160
-    dir: overlays/code1
-    name: code1
-    exclusive_ram_id: code1
-    symbol_name_format: $VRAM_$ROM_$SEG
+    dir: overlays/o1
+    exclusive_ram_id: ramid1
+    symbol_name_format: $SEG_$VRAM_$ROM
     migrate_rodata_to_functions: True
     subsegments:
-      - [0x69280, c, code_69280]
-      - [0x6A7B0, data, code_69280]
-      - [0x6A930, .rodata, code_69280]
-      - { type: bss, vram: 0x801AA840, name: code_69280 }
+      - [0x69280, c, o1_69280]
+      - [0x6A7B0, data, o1_69280]
+      - [0x6A930, .rodata, o1_69280]
+      - { type: bss, vram: 0x801AA840, name: o1_69280 }
 
   - name: code2
     type: code
@@ -380,8 +379,7 @@ segments:
     follows_vram: main
     vram: 0x801A9160
     dir: overlays/code2
-    name: code2
-    exclusive_ram_id: code1
+    exclusive_ram_id: ramid1
     symbol_name_format: $VRAM_$ROM_$SEG
     subsegments:
       - [0x6A960, asm]
@@ -407,7 +405,6 @@ segments:
     follows_vram: code2
     vram: 0x801DC8D0
     dir: overlays/code3
-    name: code3
     exclusive_ram_id: code3
     symbol_name_format: $VRAM_$ROM_$SEG
     subsegments:
@@ -428,7 +425,6 @@ segments:
     follows_vram: code3
     vram: 0x801F74E0
     dir: overlays/code4
-    name: code4
     exclusive_ram_id: code4
     symbol_name_format: $VRAM_$ROM_$SEG
     subsegments:
@@ -448,7 +444,6 @@ segments:
     follows_vram: code3
     vram: 0x801F74E0
     dir: overlays/code5
-    name: code5
     exclusive_ram_id: code4
     symbol_name_format: $VRAM_$ROM_$SEG
     subsegments:
@@ -467,7 +462,6 @@ segments:
     follows_vram: code3
     vram: 0x801F74E0
     dir: overlays/code6
-    name: code6
     exclusive_ram_id: code4
     symbol_name_format: $VRAM_$ROM_$SEG
     subsegments:
@@ -488,7 +482,6 @@ segments:
   #   follows_vram: code3
   #   vram: 0x801DC8D0
   #   dir: overlays/code7
-  #   name: code7
   #   exclusive_ram_id: code3
   #   symbol_name_format: $VRAM_$ROM_$SEG
   #   subsegments:
@@ -736,7 +729,6 @@ segments:
     follows_vram: code3
     vram: 0x801F74E0
     dir: overlays/code_1B10E0
-    name: code_1B10E0
     exclusive_ram_id: code4
     symbol_name_format: $VRAM_$ROM_$SEG
     subsegments:
@@ -764,7 +756,6 @@ segments:
     follows_vram: code3
     vram: 0x801F74E0
     dir: overlays/code_944550
-    name: code_944550
     exclusive_ram_id: code4
     symbol_name_format: $VRAM_$ROM_$SEG
     subsegments:
