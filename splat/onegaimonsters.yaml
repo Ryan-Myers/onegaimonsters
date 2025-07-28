@@ -599,9 +599,19 @@ segments:
       - [0x105C80, data]
       - [0x1061D0, rodata]
 
-  - type: bin
+  - name: o16
+    type: code
     start: 0x106460
-    follows_vram: main
+    bss_size: 0x0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o16
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x106460, asm]
+      - [0x107F60, data]
+      - [0x1083F0, rodata]
 
   - type: bin
     start: 0x108490
