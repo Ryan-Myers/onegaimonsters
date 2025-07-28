@@ -529,13 +529,33 @@ segments:
       - [0xF7430, data]
       - [0xF8650, rodata]
 
-  - type: bin
+  - name: o11
+    type: code
     start: 0xF8750
-    follows_vram: main
+    bss_size: 0x0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o11
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0xF8750, asm]
+      - [0xFABF0, data]
+      - [0xFAD50, rodata]
 
-  - type: bin
+  - name: o12
+    type: code
     start: 0xFAE40
-    follows_vram: main
+    bss_size: 0x0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o12
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0xFAE40, asm]
+      - [0xFBFC0, data]
+      # - [0xFD678, rodata] # This alignment doesn't work
 
   - type: bin
     start: 0xFD6C0
