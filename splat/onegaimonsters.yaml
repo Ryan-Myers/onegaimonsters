@@ -557,13 +557,33 @@ segments:
       - [0xFBFC0, data]
       # - [0xFD678, rodata] # This alignment doesn't work
 
-  - type: bin
+  - name: o13
+    type: code
     start: 0xFD6C0
-    follows_vram: main
+    bss_size: 0x0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o13
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0xFD6C0, asm]
+      - [0xFFEE0, data]
+      - [0xFFEF0, rodata]
 
-  - type: bin
+  - name: o14
+    type: code
     start: 0xFFFD0
-    follows_vram: main
+    bss_size: 0x0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o14
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0xFFFD0, asm]
+      - [0x101980, data]
+      - [0x103390, rodata]
 
   - type: bin
     start: 0x103480
