@@ -43,17 +43,7 @@ OVERLAY_DIR = src/overlays
 # Workaround for an ultralib dir in src/ for now.
 LIBULTRA_DIR = src/ultralib
 ULTRALIB_DIR = ultralib
-ASM_DIRS  = asm asm/data asm/nonmatchings asm/data/libultra 
-# ASM_DIRS += asm/overlays/code1 asm/data/overlays/code1
-# ASM_DIRS += asm/overlays/code2 asm/data/overlays/code2
-# ASM_DIRS += asm/overlays/code3 asm/data/overlays/code3
-# ASM_DIRS += asm/overlays/code4 asm/data/overlays/code4
-# ASM_DIRS += asm/overlays/code5 asm/data/overlays/code5
-# ASM_DIRS += asm/overlays/code6 asm/data/overlays/code6
-# ASM_DIRS += asm/overlays/code7 asm/data/overlays/code7
-# ASM_DIRS += asm/overlays/code8 asm/data/overlays/code8
-# ASM_DIRS += asm/overlays/code_1B10E0 asm/data/overlays/code_1B10E0
-# ASM_DIRS += asm/overlays/code_944550 asm/data/overlays/code_944550
+ASM_DIRS  = asm asm/data asm/nonmatchings asm/data/libultra
 HASM_DIRS = $(SRC_DIR)/hasm $(LIBULTRA_DIR)/src/os $(LIBULTRA_DIR)/src/gu $(LIBULTRA_DIR)/src/libc
 LIBULTRA_SRC_DIRS  = $(LIBULTRA_DIR) $(LIBULTRA_DIR)/src $(LIBULTRA_DIR)/src/audio
 LIBULTRA_SRC_DIRS += $(LIBULTRA_DIR)/src/debug $(LIBULTRA_DIR)/src/gu $(LIBULTRA_DIR)/src/io
@@ -64,6 +54,7 @@ SRC_DIRS = $(SRC_DIR) $(LIBULTRA_SRC_DIRS) $(OVERLAY_DIR)
 SRC_OVERLAYS_DIRS = $(patsubst %/,%,$(dir $(wildcard src/overlays/*/)))
 ASM_OVERLAYS_DIRS = $(patsubst %/,%,$(dir $(wildcard asm/overlays/*/)))
 ASM_OVERLAYS_DIRS += $(patsubst %/,%,$(dir $(wildcard asm/nonmatchings/overlays/*/)))
+ASM_OVERLAYS_DIRS += $(patsubst %/,%,$(dir $(wildcard asm/data/overlays/*/)))
 SYMBOLS_DIR = splat/symbols
 
 TOOLS_DIR = tools
@@ -281,9 +272,6 @@ distcleanall: cleanall
 	rm -rf assets
 	rm -f $(SYMBOLS_DIR)/*auto.txt
 	rm -f splat/onegaimonsters.ld
-
-test:
-	$(call print,Compiling:,$(OVERLAY_DIR),$(INCLUDE_CFLAGS)) 
 
 #When you just need to wipe old symbol names and re-extract
 cleanextract: distclean extract
