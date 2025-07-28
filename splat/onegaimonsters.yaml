@@ -555,7 +555,7 @@ segments:
     subsegments:
       - [0xFAE40, asm]
       - [0xFBFC0, data]
-      # - [0xFD678, rodata] # This alignment doesn't work
+      - [0xFD3C0, rodata]
 
   - name: o13
     type: code
@@ -585,9 +585,19 @@ segments:
       - [0x101980, data]
       - [0x103390, rodata]
 
-  - type: bin
+  - name: o15
+    type: code
     start: 0x103480
-    follows_vram: main
+    bss_size: 0x0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o15
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x103480, asm]
+      - [0x105C80, data]
+      - [0x1061D0, rodata]
 
   - type: bin
     start: 0x106460
