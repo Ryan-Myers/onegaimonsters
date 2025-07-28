@@ -397,6 +397,7 @@ segments:
       - { type: bss, vram: 0x801D12A0, name: o2_76CF0 }
       - { type: bss, vram: 0x801D4890, name: o2_7F6A0 }
       - { type: bss, vram: 0x801DC0A0, name: o2_82CB0 }
+      # 0x801DC8D0 end
 
   - name: o3
     type: code
@@ -417,6 +418,7 @@ segments:
       - [0xABCF0, rodata]
       - [0xABD00, rodata]
       - { type: bss, vram: 0x801F7420, name: bss1_code3 }
+      # 801F74E0 end
 
   - name: o4
     type: code
@@ -425,7 +427,7 @@ segments:
     follows_vram: o3
     vram: 0x801F74E0
     dir: overlays/o4
-    exclusive_ram_id: ramid4
+    exclusive_ram_id: ramid3
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0xABD40, asm]
@@ -444,7 +446,7 @@ segments:
     follows_vram: o3
     vram: 0x801F74E0
     dir: overlays/o5
-    exclusive_ram_id: ramid4
+    exclusive_ram_id: ramid3
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0xBABC0, asm]
@@ -462,7 +464,7 @@ segments:
     follows_vram: o3
     vram: 0x801F74E0
     dir: overlays/o6
-    exclusive_ram_id: ramid4
+    exclusive_ram_id: ramid3
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0xCA3F0, asm]
@@ -471,28 +473,33 @@ segments:
       - { type: bss, vram: 0x801FE080, name: bss1_code6 }
 
   - name: o7
-    type: bin
+    type: code
     start: 0xD0F90
-    follows_vram: main
+    bss_size: 0x9350
+    follows_vram: o2
+    vram: 0x801DC8D0
+    dir: overlays/o7
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0xD0F90, asm]
+      - [0xEB3A0, data]
+      - [0xEDAC0, rodata]
+      - { type: bss, vram: 0x801FA360, name: bss1_code7 }
 
-  # - name: o7
-  #   type: code
-  #   start: 0xD0F90
-  #   bss_size: 0x9350
-  #   follows_vram: o3
-  #   vram: 0x801DC8D0
-  #   dir: overlays/o7
-  #   exclusive_ram_id: ramid3
-  #   symbol_name_format: $SEG_$VRAM_$ROM
-  #   subsegments:
-  #     - [0xD0F90, asm]
-  #     - [0xEB3A0, data]
-  #     - [0xEDAC0, rodata]
-  #     # - { type: bss, vram: 0x801FA360, name: bss1_code7 }
-
-  - type: bin
+  - name: o8
+    type: code
     start: 0xEEA20
-    follows_vram: main
+    bss_size: 0x0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o8
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0xEEA20, asm]
+      - [0xF1650, data]
+      - [0xF19A0, rodata]
 
   - type: bin
     start: 0xF1B70
@@ -729,7 +736,7 @@ segments:
     follows_vram: o3
     vram: 0x801F74E0
     dir: overlays/code_1B10E0
-    exclusive_ram_id: ramid4
+    exclusive_ram_id: ramid3
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0x1B10E0, asm]
@@ -756,7 +763,7 @@ segments:
     follows_vram: o3
     vram: 0x801F74E0
     dir: overlays/code_944550
-    exclusive_ram_id: ramid4
+    exclusive_ram_id: ramid3
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0x944550, asm]
