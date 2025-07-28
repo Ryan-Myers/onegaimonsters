@@ -483,6 +483,10 @@ segments:
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0xD0F90, asm]
+      - [0xD6230, asm]
+      - [0xDB420, asm]
+      - [0xE9140, asm]
+      - [0xE9EB0, asm]
       - [0xEB3A0, data]
       - [0xEDAC0, rodata]
       - { type: bss, vram: 0x801FA360, name: bss1_code7 }
@@ -669,29 +673,89 @@ segments:
       - [0x113420, data]
       - [0x113D60, rodata]
 
-  - type: bin
+  - name: o21
+    type: code
     start: 0x113F10
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o21
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x113F10, asm]
+      - [0x1154E0, data]
+      - [0x115710, rodata]
 
-  - type: bin
+  - name: o22
+    type: code
     start: 0x1157D0
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o22
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x1157D0, asm]
+      - [0x116B80, data]
+      - [0x118CE0, rodata]
 
-  - type: bin
+  - name: o23
+    type: code
     start: 0x118D70
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o23
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x118D70, asm]
+      - [0x11A9D0, data]
+      - [0x11C4B0, rodata]
 
-  - type: bin
+  - name: o24
+    type: code
     start: 0x11C640
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o24
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x11C640, asm]
+      - [0x11F470, data]
+      - [0x11FFF0, rodata]
 
-  - type: bin
+  - name: o25
+    type: code
     start: 0x120170
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o25
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x120170, asm]
+      - [0x123070, data]
+      - [0x1238E0, rodata]
 
-  - type: bin
+  - name: o26
+    type: code
     start: 0x123A50
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o26
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x123A50, asm]
+      - [0x125990, data]
+      - [0x126620, rodata]
 
   - type: bin
     start: 0x1267F0
