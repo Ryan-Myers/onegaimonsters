@@ -490,7 +490,7 @@ segments:
   - name: o8
     type: code
     start: 0xEEA20
-    bss_size: 0x0
+    bss_size: 0
     follows_vram: o7
     vram: 0x802036B0
     dir: overlays/o8
@@ -504,7 +504,7 @@ segments:
   - name: o9
     type: code
     start: 0xF1B70
-    bss_size: 0x0
+    bss_size: 0
     follows_vram: o7
     vram: 0x802036B0
     dir: overlays/o9
@@ -518,7 +518,7 @@ segments:
   - name: o10
     type: code
     start: 0xF55E0
-    bss_size: 0x0
+    bss_size: 0
     follows_vram: o7
     vram: 0x802036B0
     dir: overlays/o10
@@ -532,7 +532,7 @@ segments:
   - name: o11
     type: code
     start: 0xF8750
-    bss_size: 0x0
+    bss_size: 0
     follows_vram: o7
     vram: 0x802036B0
     dir: overlays/o11
@@ -546,7 +546,7 @@ segments:
   - name: o12
     type: code
     start: 0xFAE40
-    bss_size: 0x0
+    bss_size: 0
     follows_vram: o7
     vram: 0x802036B0
     dir: overlays/o12
@@ -560,7 +560,7 @@ segments:
   - name: o13
     type: code
     start: 0xFD6C0
-    bss_size: 0x0
+    bss_size: 0
     follows_vram: o7
     vram: 0x802036B0
     dir: overlays/o13
@@ -574,7 +574,7 @@ segments:
   - name: o14
     type: code
     start: 0xFFFD0
-    bss_size: 0x0
+    bss_size: 0
     follows_vram: o7
     vram: 0x802036B0
     dir: overlays/o14
@@ -588,7 +588,7 @@ segments:
   - name: o15
     type: code
     start: 0x103480
-    bss_size: 0x0
+    bss_size: 0
     follows_vram: o7
     vram: 0x802036B0
     dir: overlays/o15
@@ -602,7 +602,7 @@ segments:
   - name: o16
     type: code
     start: 0x106460
-    bss_size: 0x0
+    bss_size: 0
     follows_vram: o7
     vram: 0x802036B0
     dir: overlays/o16
@@ -613,21 +613,61 @@ segments:
       - [0x107F60, data]
       - [0x1083F0, rodata]
 
-  - type: bin
+  - name: o17
+    type: code
     start: 0x108490
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o17
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x108490, asm]
+      - [0x10A590, data]
+      - [0x10B960, rodata]
 
-  - type: bin
+  - name: o18
+    type: code
     start: 0x10BA30
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o18
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x10BA30, asm]
+      - [0x10D840, data]
+      - [0x10E190, rodata]
 
-  - type: bin
+  - name: o19
+    type: code
     start: 0x10E220
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o19
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x10E220, asm]
+      - [0x10FCE0, data]
+      - [0x110B10, rodata]
 
-  - type: bin
+  - name: o20
+    type: code
     start: 0x110C40
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o20
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x110C40, asm]
+      - [0x113420, data]
+      - [0x113D60, rodata]
 
   - type: bin
     start: 0x113F10
