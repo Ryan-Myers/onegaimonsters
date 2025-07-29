@@ -536,7 +536,7 @@ segments:
   - name: o11
     type: code
     start: 0xF8750
-    bss_size: 0
+    bss_size: 0x120
     follows_vram: o7
     vram: 0x802036B0
     dir: overlays/o11
@@ -546,6 +546,7 @@ segments:
       - [0xF8750, asm]
       - [0xFABF0, data]
       - [0xFAD50, rodata]
+      - { type: bss, vram: 0x80205DA0, name: o11_bss }
 
   - name: o12
     type: code
@@ -746,7 +747,7 @@ segments:
   - name: o26
     type: code
     start: 0x123A50
-    bss_size: 0
+    bss_size: 0x30
     follows_vram: o7
     vram: 0x802036B0
     dir: overlays/o26
@@ -756,10 +757,19 @@ segments:
       - [0x123A50, asm]
       - [0x125990, data]
       - [0x126620, rodata]
+      - { type: bss, vram: 0x80206450, name: o26_bss }
 
-  - type: bin
+  - name: o27
+    type: code
     start: 0x1267F0
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o27
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x1267F0, asm]
 
   - type: bin
     start: 0x1290E0
