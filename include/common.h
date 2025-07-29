@@ -5,3 +5,5 @@
 
 #include <ultra64.h>
 #include "include_asm.h"
+
+#define ARRAY_COUNT(x) ((s32)(sizeof(x) / sizeof(x[0])))
