@@ -770,6 +770,7 @@ segments:
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0x1267F0, asm]
+      - [0x128710, data]
 
   - name: o28
     type: code
@@ -782,6 +783,7 @@ segments:
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0x1290E0, asm]
+      - [0x12B350, data]
 
   - name: o29
     type: code
@@ -794,6 +796,7 @@ segments:
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0x12C680, asm]
+      - [0x12D690, data]
 
   - name: o30
     type: code
@@ -806,6 +809,7 @@ segments:
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0x12F1A0, asm]
+      - [0x130150, data]
 
   - name: o31
     type: code
@@ -818,6 +822,7 @@ segments:
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0x131590, asm]
+      - [0x1331E0, data]
 
   - name: o32
     type: code
@@ -830,6 +835,7 @@ segments:
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0x134CA0, asm]
+      - [0x136BA0, data]
       - { type: bss, vram: 0x80205FB0, name: o32_bss }
 
   - name: o33
@@ -843,6 +849,7 @@ segments:
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0x1375A0, asm]
+      - [0x139E60, data]
 
   - name: o34
     type: code
@@ -855,6 +862,7 @@ segments:
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0x13B0F0, asm]
+      - [0x13CA30, data]
       - { type: bss, vram: 0x80205070, name: o34_bss }
 
   - name: o35
@@ -868,6 +876,7 @@ segments:
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0x13CAB0, asm]
+      - [0x13F4A0, data]
 
   - name: o36
     type: code
@@ -880,6 +889,7 @@ segments:
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0x13FCA0, asm]
+      - [0x141BB0, data]
 
   - name: o37
     type: code
@@ -892,6 +902,8 @@ segments:
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0x142790, asm]
+      # No data?
+      - [0x144520, rodata]
 
   - name: o38
     type: code
@@ -904,6 +916,7 @@ segments:
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0x144620, asm]
+      - [0x145990, data]
 
   - name: o39
     type: code
@@ -916,6 +929,7 @@ segments:
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0x145BA0, asm]
+      - [0x148150, data]
       - { type: bss, vram: 0x802073F0, name: o39_bss }
 
   - name: o40
@@ -929,6 +943,7 @@ segments:
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0x1498E0, asm]
+      - [0x14AE90, data]
       - { type: bss, vram: 0x80206F40, name: o40_bss }
 
   - name: o41
@@ -942,6 +957,7 @@ segments:
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0x14D170, asm]
+      - [0x14FDE0, data]
 
   - name: o42
     type: code
@@ -954,6 +970,7 @@ segments:
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0x150380, asm]
+      - [0x151B40, data]
       - { type: bss, vram: 0x80206200, name: o42_bss }
 
   - name: o43
@@ -967,6 +984,7 @@ segments:
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0x152ED0, asm]
+      - [0x155EC0, data]
 
   - name: o44
     type: code
@@ -979,6 +997,7 @@ segments:
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0x1562B0, asm]
+      - [0x158250, data]
 
   - name: o45
     type: code
@@ -991,6 +1010,7 @@ segments:
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0x15A5C0, asm]
+      - [0x15CC60, data]
 
   - name: o46
     type: code
@@ -1003,6 +1023,7 @@ segments:
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0x15D6E0, asm]
+      - [0x15F6E0, data]
       - { type: bss, vram: 0x80207290, name: o46_bss }
 
   - name: o47
@@ -1016,6 +1037,7 @@ segments:
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0x1612C0, asm]
+      - [0x1632B0, data]
 
   - name: o48
     type: code
@@ -1028,6 +1050,7 @@ segments:
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0x1647C0, asm]
+      - [0x166120, data]
 
   - name: o49
     type: code
@@ -1040,6 +1063,7 @@ segments:
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0x166B10, asm]
+      - [0x1679C0, data]
 
   - type: bin
     start: 0x167DF0
