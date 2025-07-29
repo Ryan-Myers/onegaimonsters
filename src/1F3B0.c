@@ -1,28 +1,19 @@
 #include "common.h"
 #include "PR/sched.h"
+#include "PRinternal/macros.h"
+#include "1F3B0.h"
 
-extern OSMesgQueue D_80169250;
-extern void *D_80169268;
+static void thread5_main(void *);
 
-typedef struct unk801821A0 {
-    struct unk801821A0 *next;
-    s32 (*func)(void *);
-} unk801821A0;
-
-void func_80111938(void *);
-void func_801163C0(OSMesgQueue *, u32 *, OSIoMesg *);
-extern OSMesg D_80169330;
-extern OSThread D_80169350;
-extern void *D_8016B500;
-extern unk801821A0 *D_801821A0;
-extern s32 D_801821A4;
-extern OSMesgQueue D_80189048;
-void osScAddClient_alt(OSScClient *c, OSMesgQueue *msgQ, s16 id);
-
-extern OSMesgQueue D_80182158;
+// These must be static to prevent bss reordering of the stack
+static OSMesgQueue piMQ ALIGNED(0x8);
+static OSMesg piMsgs[50] ALIGNED(0x8);
+static OSMesg siMsgs[8] ALIGNED(0x8);
+static OSThread thread5_thread;
+static STACK(thread5_stack, 0x2000) ALIGNED(0x10);
 
 void func_801117B0(void) {
-    osCreatePiManager(OS_PRIORITY_PIMGR, &D_80169250, &D_80169268, 50);
+    osCreatePiManager(OS_PRIORITY_PIMGR, &piMQ, piMsgs, ARRAY_COUNT(piMsgs));
 }
 
 void func_801117E0(u32 devAddr, void *dramAddr, s32 size) {
@@ -46,30 +37,30 @@ void func_801117E0(u32 devAddr, void *dramAddr, s32 size) {
 u8 func_80111890(void) {
     OSIoMesg ioMesg;
 
-    D_801821A0 = 0;
+    D_801821A0 = NULL;
     D_801821A4 = 0;
-    osCreateMesgQueue(&D_80189048, &D_80169330, 8);
-    osSetEventMesg(5, &D_80189048, NULL);
-    func_801163C0(&D_80189048, &ioMesg.size, &ioMesg);
-    osCreateThread(&D_80169350, 5, func_80111938, NULL, &D_8016B500, 115);
-    osStartThread(&D_80169350);
+    osCreateMesgQueue(&siEventQueue, siMsgs, ARRAY_COUNT(siMsgs));
+    osSetEventMesg(OS_EVENT_SI, &siEventQueue, NULL);
+    func_801163C0(&siEventQueue, &ioMesg.size, &ioMesg);
+    osCreateThread(&thread5_thread, 5, thread5_main, NULL, STACK_START(thread5_stack), 115);
+    osStartThread(&thread5_thread);
     return ioMesg.size >> 24;
 }
 
-void func_80111938(void *unused) {
+static void thread5_main(void *unused) {
     OSScClient client;
     volatile s32 pad;  // TODO: Fix this
-    OSMesg sp20[8];
+    OSMesg msgs[8];
     volatile s32 pad1[2]; // TODO: Fix this
     unk801821A0 *var_s0;
 
-    osCreateMesgQueue(&D_80182158, &sp20, ARRAY_COUNT(sp20));
+    osCreateMesgQueue(&D_80182158, msgs, ARRAY_COUNT(msgs));
     osScAddClient_alt(&client, &D_80182158, 3);
     while (1) {
-        osRecvMesg(&D_80182158, &sp20[8], 1);
+        osRecvMesg(&D_80182158, &msgs[8], OS_MESG_BLOCK);
         var_s0 = D_801821A0;
         while (var_s0 != NULL) {
-            if (var_s0->func != NULL && var_s0->func(sp20[8]) != 0) {
+            if (var_s0->func != NULL && var_s0->func(msgs[8]) != 0) {
                 break;
             }
             var_s0 = var_s0->next;
@@ -97,7 +88,7 @@ void func_801119D0(unk801821A0 *arg0, s32 (*func)(void *)) {
         }
     }
     savedMask = osSetIntMask(OS_IM_NONE);
-    arg0->next = var_s0->next;
+    arg0->next = var_s0->next; // @bug: var_s0 can be unassigned.
     arg0->func = func;
     var_s0->next = arg0;
     osSetIntMask(savedMask);
