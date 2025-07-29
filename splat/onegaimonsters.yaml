@@ -1144,8 +1144,26 @@ segments:
       - [0x1B3DA0, rodata]
       - { type: bss, vram: 0x801FA470, name: bss1_code_1B10E0 }
 
-  - type: bin
+# Loaded from func_801001E4
+# Seems to be special, it has some osInvalICache code. Maybe it loads other overlays?
+# Might have a bug on load, it invalidates 0x801F74E0 on, but loads into 0x801DC8D0 on.
+  - name: code_1B4070
+    type: code
     start: 0x1B4070
+    bss_size: 0
+    follows_vram: o2
+    vram: 0x801DC8D0
+    dir: overlays/code_1B4070
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x1B4070, asm]
+      - [0x1B4480, asm]
+      - [0x1B79D0, data]
+      - [0x1B7B90, rodata]
+
+  - type: bin
+    start: 0x1B7D00
     follows_vram: main
 
   - type: bin
@@ -1154,6 +1172,55 @@ segments:
 
   - type: bin
     start: 0x56BB50
+    follows_vram: main
+  
+# osInvalICache 80000400, 0x53330 bytes for some reason. Replaces all code from boot address?
+  - type: bin
+    start: 0x60A840
+    follows_vram: main
+
+  # - name: code_60A840
+  #   type: code
+  #   start: 0x60A840
+  #   bss_size: 0
+  #   follows_vram: boot
+  #   vram: 0x80000400
+  #   dir: overlays/code_60A840
+  #   exclusive_ram_id: boot
+  #   symbol_name_format: $SEG_$VRAM_$ROM
+  #   subsegments:
+  #     - [0x60A840, asm]
+  #     - [0x61E290, asm]
+  #     - [0x61E3B0, asm]
+  #     - [0x61E590, asm]
+  #     - [0x61E780, asm]
+  #     - [0x621BE0, asm]
+  #     - [0x629F60, asm]
+  #     - [0x62BB80, asm]
+  #     - [0x62C050, asm]
+  #     - [0x62C4D0, data]
+  #     - [0x65D090, rodata]
+  
+  - type: bin
+    start: 0x65DB70
+    follows_vram: main
+  
+  # Invalid instructions Must have split this wrong
+  # Might have a bug on load, it invalidates 0x801F74E0 on, but loads into 0x802D4000 on.
+  # - name: code_682020
+  #   type: code
+  #   start: 0x682020
+  #   bss_size: 0
+  #   follows_vram: o3
+  #   vram: 0x802D4000
+  #   dir: overlays/code_682020
+  #   exclusive_ram_id: ramid3
+  #   symbol_name_format: $SEG_$VRAM_$ROM
+  #   subsegments:
+  #     - [0x682020, asm]
+
+  - type: bin
+    start: 0x728410
     follows_vram: main
 
   - name: code_944550
