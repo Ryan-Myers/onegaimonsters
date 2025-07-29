@@ -771,93 +771,275 @@ segments:
     subsegments:
       - [0x1267F0, asm]
 
-  - type: bin
+  - name: o28
+    type: code
     start: 0x1290E0
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o28
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x1290E0, asm]
 
-  - type: bin
+  - name: o29
+    type: code
     start: 0x12C680
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o29
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x12C680, asm]
 
-  - type: bin
+  - name: o30
+    type: code
     start: 0x12F1A0
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o30
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x12F1A0, asm]
 
-  - type: bin
+  - name: o31
+    type: code
     start: 0x131590
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o31
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x131590, asm]
 
-  - type: bin
+  - name: o32
+    type: code
     start: 0x134CA0
-    follows_vram: main
+    bss_size: 0x14A0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o32
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x134CA0, asm]
+      - { type: bss, vram: 0x80205FB0, name: o32_bss }
 
-  - type: bin
+  - name: o33
+    type: code
     start: 0x1375A0
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o33
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x1375A0, asm]
 
-  - type: bin
+  - name: o34
+    type: code
     start: 0x13B0F0
-    follows_vram: main
+    bss_size: 0x3D40
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o34
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x13B0F0, asm]
+      - { type: bss, vram: 0x80205070, name: o34_bss }
 
-  - type: bin
+  - name: o35
+    type: code
     start: 0x13CAB0
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o35
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x13CAB0, asm]
 
-  - type: bin
+  - name: o36
+    type: code
     start: 0x13FCA0
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o36
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x13FCA0, asm]
 
-  - type: bin
+  - name: o37
+    type: code
     start: 0x142790
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o37
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x142790, asm]
 
-  - type: bin
+  - name: o38
+    type: code
     start: 0x144620
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o38
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x144620, asm]
 
-  - type: bin
+  - name: o39
+    type: code
     start: 0x145BA0
-    follows_vram: main
+    bss_size: 0x110
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o39
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x145BA0, asm]
+      - { type: bss, vram: 0x802073F0, name: o39_bss }
 
-  - type: bin
+  - name: o40
+    type: code
     start: 0x1498E0
-    follows_vram: main
+    bss_size: 0xAC0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o40
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x1498E0, asm]
+      - { type: bss, vram: 0x80206F40, name: o40_bss }
 
-  - type: bin
+  - name: o41
+    type: code
     start: 0x14D170
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o41
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x14D170, asm]
 
-  - type: bin
+  - name: o42
+    type: code
     start: 0x150380
-    follows_vram: main
+    bss_size: 0x5C0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o42
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x150380, asm]
+      - { type: bss, vram: 0x80206200, name: o42_bss }
 
-  - type: bin
+  - name: o43
+    type: code
     start: 0x152ED0
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o43
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x152ED0, asm]
 
-  - type: bin
+  - name: o44
+    type: code
     start: 0x1562B0
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o44
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x1562B0, asm]
 
-  - type: bin
+  - name: o45
+    type: code
     start: 0x15A5C0
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o45
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x15A5C0, asm]
 
-  - type: bin
+  - name: o46
+    type: code
     start: 0x15D6E0
-    follows_vram: main
+    bss_size: 0x10
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o46
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x15D6E0, asm]
+      - { type: bss, vram: 0x80207290, name: o46_bss }
 
-  - type: bin
+  - name: o47
+    type: code
     start: 0x1612C0
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o47
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x1612C0, asm]
 
-  - type: bin
+  - name: o48
+    type: code
     start: 0x1647C0
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o48
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x1647C0, asm]
 
-  - type: bin
+  - name: o49
+    type: code
     start: 0x166B10
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o7
+    vram: 0x802036B0
+    dir: overlays/o49
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x166B10, asm]
 
   - type: bin
     start: 0x167DF0
