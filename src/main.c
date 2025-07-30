@@ -15,7 +15,7 @@ void mainproc(void) {
 
 void thread3_main(void *);
 void osViSetSpecialFeatures(u32);
-void osCreateScheduler_alt(s32, s32);
+void osCreateScheduler_alt(u8 mode, u8 numFields);
 extern OSThread D_8015C010;
 extern s32 (*D_801842F0)();
 extern OSThread thread1_thread;
@@ -27,8 +27,8 @@ void thread1_main(void *unused) {
     s32 (*func)();
     D_801842F0 = NULL;
     func_801117B0();
-    osCreateScheduler_alt(11, 1);
-    osViSetSpecialFeatures(90);
+    osCreateScheduler_alt(OS_VI_NTSC_HAF1, 1);
+    osViSetSpecialFeatures(OS_VI_GAMMA_OFF | OS_VI_GAMMA_DITHER_OFF | OS_VI_DIVOT_ON | OS_VI_DITHER_FILTER_ON);
     osCreateThread(&thread3_thread, 3, thread3_main, NULL, STACK_START(entrypointThreadStack), 10);
     osStartThread(&thread3_thread);
     osSetThreadPri(&thread1_thread, 0);
