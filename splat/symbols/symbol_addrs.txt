@@ -196,4 +196,5 @@ D_80182158 = 0x80182158; // size:0x18
 entrypoint = 0x800F3400;
 mainproc = 0x801058E0;
 D_80175DA8 = 0x80175DA8; // size:0x78
-entrypointThreadStack = 0x80175E20;
+entrypointThreadStack = 0x80175E20; // size:0x2000
+osViSetSpecialFeatures = 0x8011B5B0;
