@@ -6,7 +6,7 @@ extern void *D_80157120;
 
 void func_800FFF50(void) {
     func_80105A80(&D_80157120);
-    while ( func_80105F00(0) != 1 ) {}
+    while (func_80105F00(0) != 1) {}
 }
 
 void func_80100110(u32 devAddr, void *dramAddr, s32 size);
@@ -22,7 +22,7 @@ void func_800FFF90(void) {
     size = &D_911F0 - &D_6A960;
     osInvalICache(&func_801A9160, size);
     func_80100110(&D_6A960, &func_801A9160, size);
-    bzero(&D_801CF9F0, (u32)&func_801DC8D0 - (u32)&D_801CF9F0);
+    bzero(&D_801CF9F0, (u32) &func_801DC8D0 - (u32) &D_801CF9F0);
 }
 
 // Warning, the above function could potentially be in a different file,
