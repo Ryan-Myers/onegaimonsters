@@ -200,3 +200,4 @@ entrypointThreadStack = 0x80175E20; // size:0x2000
 osViSetSpecialFeatures = 0x8011B5B0;
 setupPiManager = 0x801117B0;
 loadOverlay = 0x801117E0;
+loadOverlay2 = 0x800FFF90;

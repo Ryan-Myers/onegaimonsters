@@ -10,19 +10,22 @@ void func_800FFF50(void) {
 }
 
 void func_80100110(u32 devAddr, void *dramAddr, s32 size);
-extern u8 D_6A960;
-extern u32 D_801CF9F0;
-extern u8 D_911F0;
-extern void func_801A9160();
-extern void func_801DC8D0();
+extern u8 o2_ROM_START;
+extern u32 o2_BSS_START;
+extern u8 o3_ROM_START;
+extern u32 o2_VRAM;
+extern u32 o2_BSS_END;
 
-void func_800FFF90(void) {
-    s32 size;
+/**
+ * Loads Overlay 2
+ */
+void loadOverlay2(void) {
+    s32 overlaySize;
 
-    size = &D_911F0 - &D_6A960;
-    osInvalICache(&func_801A9160, size);
-    func_80100110(&D_6A960, &func_801A9160, size);
-    bzero(&D_801CF9F0, (u32) &func_801DC8D0 - (u32) &D_801CF9F0);
+    overlaySize = &o3_ROM_START - &o2_ROM_START;
+    osInvalICache(&o2_VRAM, overlaySize);
+    func_80100110(&o2_ROM_START, &o2_VRAM, overlaySize);
+    bzero(&o2_BSS_START, (u32) &o2_BSS_END - (u32) &o2_BSS_START);
 }
 
 // Warning, the above function could potentially be in a different file,
