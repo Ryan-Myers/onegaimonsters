@@ -201,4 +201,5 @@ osViSetSpecialFeatures = 0x8011B5B0;
 setupPiManager = 0x801117B0;
 dmaOverlay = 0x801117E0;
 loadOverlay2 = 0x800FFF90;
+loadOverlay3 = 0x80100010;
 loadOverlayAtAddress = 0x80100110;

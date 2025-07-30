@@ -15,7 +15,7 @@ void func_800FFF50(void) {
  * Loads Overlay 2 into memory
  */
 void loadOverlay2(void) {
-    s32 overlaySize;
+    u32 overlaySize;
 
     overlaySize = &o3_ROM_START - &o2_ROM_START;
     osInvalICache(&o2_VRAM, overlaySize);
@@ -23,7 +23,17 @@ void loadOverlay2(void) {
     bzero(&o2_BSS_START, (u32) &o2_BSS_END - (u32) &o2_BSS_START);
 }
 
-INCLUDE_ASM("asm/nonmatchings/DB50", func_80100010);
+/**
+ * Loads Overlay 3 into memory
+ */
+void loadOverlay3(void) {
+    u32 overlaySize;
+
+    overlaySize = &o4_ROM_START - &o3_ROM_START;
+    osInvalICache(&o3_VRAM, overlaySize);
+    loadOverlayAtAddress(&o3_ROM_START, &o3_VRAM, overlaySize);
+    bzero(&o3_BSS_START, (u32) &o3_BSS_END - (u32) &o3_BSS_START);
+}
 
 INCLUDE_ASM("asm/nonmatchings/DB50", func_80100090);
 

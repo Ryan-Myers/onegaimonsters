@@ -12,6 +12,13 @@ extern u32 o2_BSS_END;
 
 // Overlay 3
 extern u8 o3_ROM_START;
+extern u32 o3_VRAM;
+extern u32 o3_BSS_START;
+extern u32 o3_BSS_END;
+
+// Overlay 4
+extern u8 o4_ROM_START;
+
 
 void func_800FFF50(void);
 void loadOverlayAtAddress(u32 devAddr, void *dramAddr, u32 size);
