@@ -202,4 +202,5 @@ setupPiManager = 0x801117B0;
 dmaOverlay = 0x801117E0;
 loadOverlay2 = 0x800FFF90;
 loadOverlay3 = 0x80100010;
+loadOverlay4 = 0x80100090;
 loadOverlayAtAddress = 0x80100110;
