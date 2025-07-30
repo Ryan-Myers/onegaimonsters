@@ -1,7 +1,7 @@
+#include "1F3B0.h"
 #include "common.h"
 #include "PR/sched.h"
 #include "PRinternal/macros.h"
-#include "1F3B0.h"
 
 static void thread5_main(void *);
 
@@ -49,7 +49,7 @@ u8 func_80111890(void) {
 
 static void thread5_main(void *unused) {
     OSScClient client;
-    volatile s32 pad;  // TODO: Fix this
+    volatile s32 pad; // TODO: Fix this
     OSMesg msgs[8];
     volatile s32 pad1[2]; // TODO: Fix this
     unk801821A0 *var_s0;
@@ -64,7 +64,7 @@ static void thread5_main(void *unused) {
                 break;
             }
             var_s0 = var_s0->next;
-        } 
+        }
     }
 }
 
