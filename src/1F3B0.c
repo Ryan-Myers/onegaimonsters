@@ -25,7 +25,7 @@ void setupPiManager(void) {
  * @param dramAddr The RAM address to load the code into
  * @param size The size of overlay. Max 0x18000 at a time.
  */
-void loadOverlay(u32 devAddr, void *dramAddr, s32 size) {
+void dmaOverlay(u32 devAddr, void *dramAddr, u32 size) {
     OSIoMesg ioMesg;
     OSMesgQueue queue;
     OSMesg mesg;

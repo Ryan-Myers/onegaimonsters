@@ -1202,9 +1202,22 @@ segments:
   #     - [0x62C050, asm]
   #     - [0x62C4D0, data]
   #     - [0x65D090, rodata]
+
+# Could this be data only?
+  - name: code_65DB70
+    type: code
+    start: 0x65DB70
+    bss_size: 0
+    follows_vram: code_1B4070
+    vram: 0x801E0560
+    dir: overlays/code_65DB70
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x65DB70, data]
   
   - type: bin
-    start: 0x65DB70
+    start: 0x670D20
     follows_vram: main
   
   # Invalid instructions Must have split this wrong

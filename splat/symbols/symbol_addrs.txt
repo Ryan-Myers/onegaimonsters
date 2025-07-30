@@ -199,5 +199,6 @@ D_80175DA8 = 0x80175DA8; // size:0x78
 entrypointThreadStack = 0x80175E20; // size:0x2000
 osViSetSpecialFeatures = 0x8011B5B0;
 setupPiManager = 0x801117B0;
-loadOverlay = 0x801117E0;
+dmaOverlay = 0x801117E0;
 loadOverlay2 = 0x800FFF90;
+loadOverlayAtAddress = 0x80100110;

@@ -21,7 +21,7 @@ extern s32 D_801821A4;  // bss6
 extern OSMesgQueue siEventQueue; // bss6
 
 void setupPiManager(void);
-void loadOverlay(u32 devAddr, void *dramAddr, s32 size);
+void dmaOverlay(u32 devAddr, void *dramAddr, u32 size);
 u8 func_80111890(void);
 void func_801119D0(unk801821A0 *arg0, s32 (*func)(void *));
 
