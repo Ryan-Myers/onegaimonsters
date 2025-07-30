@@ -1,6 +1,6 @@
 #include "PR/os_internal.h"
-#include "PR/ultraerror.h"
 #include "PR/rcp.h"
+#include "PR/ultraerror.h"
 #include "PRinternal/osint.h"
 
 // TODO: this comes from a header
@@ -19,9 +19,9 @@
  * @param size Length of next audio buffer in bytes, maximum size 0x40000 bytes / 256 KiB. Should be a multiple of 8.
  * @return 0 if the DMA was enqueued successfully, -1 if the DMA could not yet be queued.
  */
-s32 osAiSetNextBuffer(void* bufPtr, u32 size) {
+s32 osAiSetNextBuffer(void *bufPtr, u32 size) {
     static u8 hdwrBugFlag = FALSE;
-    char* bptr;
+    char *bptr;
 
 #if BUILD_VERSION >= VERSION_J
     if (__osAiDeviceBusy()) {
@@ -30,12 +30,12 @@ s32 osAiSetNextBuffer(void* bufPtr, u32 size) {
 #endif
 
 #ifdef _DEBUG
-    if ((u32)bufPtr & (8 - 1)) {
+    if ((u32) bufPtr & (8 - 1)) {
         __osError(ERR_OSAISETNEXTBUFFER_ADDR, 1, bufPtr);
         return -1;
     }
 
-    if ((u32)size & (8 - 1)) {
+    if ((u32) size & (8 - 1)) {
         __osError(ERR_OSAISETNEXTBUFFER_SIZE, 1, size);
         return -1;
     }
@@ -44,10 +44,10 @@ s32 osAiSetNextBuffer(void* bufPtr, u32 size) {
     bptr = bufPtr;
 
     if (hdwrBugFlag) {
-        bptr = (char*)bufPtr - 0x2000;
+        bptr = (char *) bufPtr - 0x2000;
     }
 
-    if ((((u32)bufPtr + size) & 0x1fff) == 0) {
+    if ((((u32) bufPtr + size) & 0x1fff) == 0) {
         hdwrBugFlag = TRUE;
     } else {
         hdwrBugFlag = FALSE;

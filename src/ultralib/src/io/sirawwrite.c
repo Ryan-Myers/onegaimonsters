@@ -1,45 +1,6 @@
+#include "assert.h"
 #include "PR/os_internal.h"
 #include "PRinternal/siint.h"
-#include "assert.h"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Adjust line numbers to match assert
 #if BUILD_VERSION < VERSION_J
