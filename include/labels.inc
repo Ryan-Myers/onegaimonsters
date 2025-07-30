@@ -24,3 +24,9 @@
 #endif
     \label:
 .endm
+
+.macro leaf label
+    .global \label
+    \label:
+    .ent    \label
+.endm

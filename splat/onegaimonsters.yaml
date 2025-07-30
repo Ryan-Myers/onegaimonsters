@@ -46,6 +46,7 @@ options:
   libultra_symbols: True
   hardware_regs: True
   # gfx_ucode: # one of [f3d, f3db, f3dex, f3dexb, f3dex2]
+  hasm_in_src_path: True
 segments:
   - name: header
     type: header
@@ -55,27 +56,20 @@ segments:
     type: bin
     start: 0x40
 
-  - name: entry
+  - name: main
     type: code
     start: 0x1000
     vram: 0x800F3400
-    subsegments:
-      - [0x1000, hasm]
-
-  - name: main
-    type: code
-    start: 0x1050
-    vram: 0x800F3450
-    follows_vram: entry
     bss_size: 0x4DAE0
     subalign: 0x8
     bss_contains_common: True
     subsegments:
+      - [0x1000, hasm, hasm/entrypoint]
       - [0x1050, asm]
       - [0xD3A0, asm]
       - [0xDB50, asm]
       - [0x133F0, asm]
-      - [0x134E0, asm]
+      - [0x134E0, c, main]
       - [0x135F0, asm]
       - [0x13630, asm]
       - [0x13680, asm]
@@ -175,8 +169,8 @@ segments:
       - [0x21BB0, asm]
       - [0x21BE0, asm, invaldcache]
       - [0x21C90, asm, invalicache]
-      - [0x21D10, hasm, setintmask]
-      - [0x21DB0, hasm, writebackdcache]
+      - [0x21D10, asm, setintmask]
+      - [0x21DB0, asm, writebackdcache]
       - [0x21E30, asm, writebackdcacheall]
       - [0x21E60, asm, createmesgqueue]
       - [0x21E90, c, ultralib/src/os/createthread]
@@ -238,7 +232,7 @@ segments:
       - [0x29FA0, asm, initialize]
       - [0x2A280, asm, interrupt]
       - [0x2A310, asm, seteventmesg]
-      - [0x2A3C0, hasm, sqrtf]
+      - [0x2A3C0, asm, sqrtf]
       - [0x2A3D0, asm, getcause]
       - [0x2A3E0, asm, getcount]
       - [0x2A3F0, asm, getsr]
@@ -268,7 +262,7 @@ segments:
       - [0x2BF00, asm]
       - [0x2BFF0, asm, pigetcmdq]
       - [0x2C010, asm, piacs]
-      - [0x2C100, hasm, bcmp]
+      - [0x2C100, asm, bcmp]
       - [0x2C210, asm, contpfs]
       - [0x2CCA0, asm, contramread]
       - [0x2CEA0, asm, contramwrite]
@@ -359,6 +353,8 @@ segments:
       - { type: bss, vram: 0x8016FC10, name: bss3 }
       - { type: bss, vram: 0x80170F98, name: exceptasm } # What is this alignment?
       - { type: bss, vram: 0x80171148, name: bss4 }
+      - { type: .bss, vram: 0x80175E20, name: hasm/entrypoint }
+      - { type: bss, vram: 0x80177E20, name: bss5 }
 
   - name: o1
     type: code
