@@ -12,11 +12,20 @@ static OSMesg siMsgs[8] ALIGNED(0x8);
 static OSThread thread5_thread;
 static STACK(thread5_stack, 0x2000) ALIGNED(0x10);
 
-void func_801117B0(void) {
+/**
+ * Just runs osCreatePiManager
+ */
+void setupPiManager(void) {
     osCreatePiManager(OS_PRIORITY_PIMGR, &piMQ, piMsgs, ARRAY_COUNT(piMsgs));
 }
 
-void func_801117E0(u32 devAddr, void *dramAddr, s32 size) {
+/**
+ * Handles loading new code from the ROM for overlays.
+ * @param devAddr The offset in ROM where the new code lives
+ * @param dramAddr The RAM address to load the code into
+ * @param size The size of overlay. Max 0x18000 at a time.
+ */
+void loadOverlay(u32 devAddr, void *dramAddr, s32 size) {
     OSIoMesg ioMesg;
     OSMesgQueue queue;
     OSMesg mesg;
@@ -34,6 +43,10 @@ void func_801117E0(u32 devAddr, void *dramAddr, s32 size) {
     osRecvMesg(&queue, &mesg, OS_MESG_BLOCK);
 }
 
+/**
+ * Sets up si events, and starts thread 5
+ * @return size of the si ioMesg
+ */
 u8 func_80111890(void) {
     OSIoMesg ioMesg;
 

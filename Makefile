@@ -178,6 +178,9 @@ LD_FLAGS   = -T $(LD_SCRIPT) -T $(SYMBOLS_DIR)/undefined_syms.txt  -T $(SYMBOLS_
 LD_FLAGS  += -Map $(TARGET).map
 
 ### Optimisation Overrides
+
+$(BUILD_DIR)/$(SRC_DIR)/DB50.o: OPT_FLAGS := -O2 -g2
+
 ####################### LIBULTRA #########################
 
 $(BUILD_DIR)/$(OLD_LIBULTRA_DIR)/%.c.o: OPT_FLAGS := -O2

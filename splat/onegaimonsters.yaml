@@ -67,7 +67,7 @@ segments:
       - [0x1000, hasm, hasm/entrypoint]
       - [0x1050, asm]
       - [0xD3A0, asm]
-      - [0xDB50, asm]
+      - [0xDB50, c]
       - [0x133F0, asm]
       - [0x134E0, c, main]
       - [0x135F0, asm]
@@ -317,7 +317,7 @@ segments:
       - [0x669C0, data] # unreferenced at the start.
       - [0x68730, rodata, 1050]
       - [0x68940, rodata, D3A0]
-      - [0x68980, rodata, DB50]
+      - [0x68980, rodata]
       - [0x68B38, rodata, 13CF0]
       - [0x68B58, rodata, 160A0]
       - [0x68B70, rodata, 166D0]

@@ -15,12 +15,13 @@ void osScAddClient_alt(OSScClient *c, OSMesgQueue *msgQ, s16 id);
 void func_801163C0(OSMesgQueue *, u32 *, OSIoMesg *);
 
 // These BSS vars are defined in another file
-extern OSMesgQueue D_80182158;  // bss4
-extern unk801821A0 *D_801821A0; // bss4
-extern s32 D_801821A4;  // bss4
-extern OSMesgQueue siEventQueue; // bss4
+extern OSMesgQueue D_80182158;  // bss6
+extern unk801821A0 *D_801821A0; // bss6
+extern s32 D_801821A4;  // bss6
+extern OSMesgQueue siEventQueue; // bss6
 
-void func_801117B0(void);
+void setupPiManager(void);
+void loadOverlay(u32 devAddr, void *dramAddr, s32 size);
 u8 func_80111890(void);
 void func_801119D0(unk801821A0 *arg0, s32 (*func)(void *));
 
