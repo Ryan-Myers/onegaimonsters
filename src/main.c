@@ -3,9 +3,18 @@
 #include "PR/sched.h"
 #include "PRinternal/macros.h"
 
-void thread1_main(void *);
-extern OSThread thread1_thread;
-extern STACK(thread1_stack, 0x2000) ALIGNED(0x10);
+extern void thread3_main(void *);
+extern void osViSetSpecialFeatures(u32);
+extern void osCreateScheduler_alt(u8 mode, u8 numFields);
+extern s32 (*D_801842F0)();
+extern STACK(entrypointThreadStack, 0x2000) ALIGNED(0x10);
+
+static void thread1_main(void *);
+
+// These must be static to prevent bss reordering of the stack
+static OSThread thread1_thread;
+static OSThread thread3_thread;
+static STACK(thread1_stack, 0x2000) ALIGNED(0x10);
 
 void mainproc(void) {
     osInitialize();
@@ -13,17 +22,7 @@ void mainproc(void) {
     osStartThread(&thread1_thread);
 }
 
-void thread3_main(void *);
-void osViSetSpecialFeatures(u32);
-void osCreateScheduler_alt(u8 mode, u8 numFields);
-extern OSThread D_8015C010;
-extern s32 (*D_801842F0)();
-extern OSThread thread1_thread;
-
-extern OSThread thread3_thread;
-extern STACK(entrypointThreadStack, 0x2000) ALIGNED(0x10);
-
-void thread1_main(void *unused) {
+static void thread1_main(void *unused) {
     s32 (*func)();
     D_801842F0 = NULL;
     func_801117B0();

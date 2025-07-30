@@ -346,15 +346,17 @@ segments:
       - [0x69230, rodata, 2B890]
       - [0x69260, rodata, devmgr]
       - { type: bss, vram: 0x8015B680, name: bss1 }
+      - { type: .bss, vram: 0x8015BE60, name: main }
+      - { type: bss, vram: 0x8015E1C0, name: bss2 }
       - { type: .bss, vram: 0x80169250, name: 1F3B0 }
-      - { type: bss, vram: 0x8016B500, name: bss2 }
+      - { type: bss, vram: 0x8016B500, name: bss3 }
       - { type: bss, vram: 0x8016D820, name: pimgr }
       - { type: bss, vram: 0x8016E9F0, name: vimgr }
-      - { type: bss, vram: 0x8016FC10, name: bss3 }
+      - { type: bss, vram: 0x8016FC10, name: bss4 }
       - { type: bss, vram: 0x80170F98, name: exceptasm } # What is this alignment?
-      - { type: bss, vram: 0x80171148, name: bss4 }
+      - { type: bss, vram: 0x80171148, name: bss5 }
       - { type: .bss, vram: 0x80175E20, name: hasm/entrypoint }
-      - { type: bss, vram: 0x80177E20, name: bss5 }
+      - { type: bss, vram: 0x80177E20, name: bss6 }
 
   - name: o1
     type: code
