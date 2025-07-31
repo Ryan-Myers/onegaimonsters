@@ -37,6 +37,7 @@ endef
 
 # Directories
 BIN_DIRS  = assets
+BIN_OVERLAY_DIRS = assets/overlays/code_682020
 BUILD_DIR = build
 SRC_DIR   = src
 OVERLAY_DIR = src/overlays
@@ -82,7 +83,7 @@ KMC_BINUTILS    := $(KMC_DIR)/as
 
 S_FILES         = $(foreach dir,$(ASM_DIRS) $(HASM_DIRS) $(ASM_OVERLAYS_DIRS),$(wildcard $(dir)/*.s))
 C_FILES         = $(foreach dir,$(SRC_DIRS) $(SRC_OVERLAYS_DIRS),$(wildcard $(dir)/*.c))
-BIN_FILES       = $(foreach dir,$(BIN_DIRS),$(wildcard $(dir)/*.bin))
+BIN_FILES       = $(foreach dir,$(BIN_DIRS) $(BIN_OVERLAY_DIRS),$(wildcard $(dir)/*.bin))
 
 O_FILES := $(foreach file,$(S_FILES),$(BUILD_DIR)/$(basename $(file)).o) \
            $(foreach file,$(C_FILES),$(BUILD_DIR)/$(basename $(file)).o) \
@@ -137,7 +138,7 @@ C_DEFINES := $(foreach d,$(DEFINES),-D$(d)) $(LIBULTRA_VERSION_DEFINE) -D_MIPS_S
 ASM_DEFINES = $(foreach d,$(DEFINES),$(if $(findstring =,$(d)),--defsym $(d),))
 
 INCLUDE_CFLAGS = $(foreach d,$(SRC_OVERLAYS_DIRS),-I $(d)) $(foreach d,$(ASM_OVERLAYS_DIRS),-I $(d))
-INCLUDE_CFLAGS += -I . -I include -I include/libc  -I include/PR -I include/sys -I $(BIN_DIRS) -I $(SRC_DIR) -I $(LIBULTRA_DIR)
+INCLUDE_CFLAGS += -I . -I include -I include/libc  -I include/PR -I include/sys -I $(BIN_DIRS) -I $(BIN_OVERLAY_DIRS) -I $(SRC_DIR) -I $(LIBULTRA_DIR)
 INCLUDE_CFLAGS += -I $(ULTRALIB_DIR)/include -I $(ULTRALIB_DIR)/include/libc -I $(ULTRALIB_DIR)/include/PR -I $(ULTRALIB_DIR)/include/sys
 INCLUDE_CFLAGS += -I $(ULTRALIB_DIR)/src/audio -I $(ULTRALIB_DIR)/include/PRinternal
 INCLUDE_CFLAGS += -I $(LIBULTRA_DIR)/src/gu -I $(LIBULTRA_DIR)/src/libc -I $(LIBULTRA_DIR)/src/io  -I $(LIBULTRA_DIR)/src/sc 
@@ -226,7 +227,7 @@ default: all
 all: $(VERIFY)
 
 dirs:
-	$(foreach dir,$(SRC_DIRS) $(ASM_DIRS) $(HASM_DIRS) $(BIN_DIRS) $(SRC_OVERLAYS_DIRS) $(ASM_OVERLAYS_DIRS),$(shell mkdir -p $(BUILD_DIR)/$(dir)))
+	$(foreach dir,$(SRC_DIRS) $(ASM_DIRS) $(HASM_DIRS) $(BIN_DIRS) $(BIN_OVERLAY_DIRS) $(SRC_OVERLAYS_DIRS) $(ASM_OVERLAYS_DIRS),$(shell mkdir -p $(BUILD_DIR)/$(dir)))
 
 verify: $(TARGET).z64
 	$(V)$(CRC)
