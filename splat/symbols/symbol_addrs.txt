@@ -204,3 +204,4 @@ loadOverlay2 = 0x800FFF90;
 loadOverlay3 = 0x80100010;
 loadOverlay4 = 0x80100090;
 loadOverlayAtAddress = 0x80100110;
+getAbs = 0x801057D4;

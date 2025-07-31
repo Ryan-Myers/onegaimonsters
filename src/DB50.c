@@ -131,4 +131,6 @@ INCLUDE_ASM("asm/nonmatchings/DB50", func_80105164);
 
 INCLUDE_ASM("asm/nonmatchings/DB50", func_80105364);
 
-INCLUDE_ASM("asm/nonmatchings/DB50", func_801057D4);
+s32 getAbs(s32 value) {
+    return (value < 0) ? -value : value;
+}

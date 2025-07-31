@@ -1,5 +1,5 @@
-#include "common.h"
 #include "1E210.h"
+#include "common.h"
 
 s32 func_801106B0(void);
 
