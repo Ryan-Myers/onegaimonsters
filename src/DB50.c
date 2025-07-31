@@ -1,10 +1,20 @@
 #include "DB50.h"
+#include "1E210.h"
 #include "1F3B0.h"
 #include "common.h"
 
+extern void func_800FF7A0(s32);
+extern void func_800FF9D8(void);
+extern void func_800FFABC(void *, f32, f32);
+extern void func_80106140(void);
 void func_80105A80(void *);
-s32 func_80105F00(s32 arg0);
+s32 func_80105F00(s32);
+
 extern void *D_80157120;
+extern s32 D_801529B8; // Almost definitely something like a struct or an array.
+extern s32 D_80171E98;
+extern s32 D_80174374;
+extern s32 D_80184310; // Almost definitely something like a struct or an array.
 
 void func_800FFF50(void) {
     func_80105A80(&D_80157120);
@@ -89,7 +99,21 @@ void func_801001E4(void) {
     LOAD_OVERLAY(code_60A840);
 }
 
-INCLUDE_ASM("asm/nonmatchings/DB50", func_801003EC);
+void func_801003EC(s32 arg0) {
+    void *temp_s0;
+
+    if (arg0 < 2) {
+        temp_s0 = (D_801529B8 << 5) + &D_80184310;
+        func_800FF7A0(1);
+        func_800FFABC(temp_s0, 0.0f, 2000.0f);
+        func_800FF9D8();
+    }
+    if ((D_80188E74 == D_801883B0) || (func_80105F00(0) == 1)) {
+        func_80110610(NULL);
+        D_80174374 = D_80171E98;
+    }
+    func_80106140();
+}
 
 INCLUDE_ASM("asm/nonmatchings/DB50", thread3_main);
 
