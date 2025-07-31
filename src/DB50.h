@@ -52,16 +52,20 @@ extern u32 code_60A840_VRAM;
 // Overlay code_728410
 extern u8 code_728410_ROM_START;
 
-#define LOAD_OVERLAY(overlay_name, VRAM_START, DRAM_START) \
+/**
+ * This has VRAM and DRAM seperated as for some reason, sometimes they invalidate I cache and dma different addresses in VRAM
+ * That could be a bug though.
+ */
+#define LOAD_OVERLAY_ALT(overlay_name, vram_name) \
     { \
         u32 devAddr; \
         u32 size; \
         void *dramAddr; \
         \
-        osInvalICache(&(VRAM_START##_VRAM), &(overlay_name##_ROM_END) - &(overlay_name##_ROM_START)); \
+        osInvalICache(&(vram_name##_VRAM), &(overlay_name##_ROM_END) - &(overlay_name##_ROM_START)); \
         devAddr = (u32)&(overlay_name##_ROM_START); \
         size = (u32)&(overlay_name##_ROM_END) - (u32)&(overlay_name##_ROM_START); \
-        dramAddr = &(DRAM_START##_VRAM); \
+        dramAddr = &(overlay_name##_VRAM); \
         while (size != 0) { \
             if (size < 0x18000) { \
                 dmaOverlay(devAddr, dramAddr, size); \
@@ -75,6 +79,7 @@ extern u8 code_728410_ROM_START;
         } \
     }
 
+#define LOAD_OVERLAY(overlay_name) LOAD_OVERLAY_ALT(overlay_name, overlay_name)
 #define ZERO_OVERLAY_BSS(overlay_name) bzero(&overlay_name##_BSS_START, (u32) &overlay_name##_BSS_END - (u32) &overlay_name##_BSS_START);
 
 void func_800FFF50(void);
