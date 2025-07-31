@@ -81,75 +81,18 @@ void func_801001C4(s32 newVal) {
 
 void func_801001E4(void) {
     // Load Overlay code_1B4070
-    {
-        u32 devAddr;
-        u32 size;
-        void *dramAddr;
-
-        osInvalICache(&code_1B10E0_VRAM, &code_1B7D00_ROM_START - &code_1B4070_ROM_START); // Bug? Invalidates the previous overlay VRAM address
-        devAddr = &code_1B4070_ROM_START;
-        size = &code_1B7D00_ROM_START - &code_1B4070_ROM_START;
-        dramAddr = &code_1B4070_VRAM;
-        while (size != 0){
-            if (size < 0x18000) {
-                dmaOverlay(devAddr, dramAddr, size);
-                size = 0;
-            } else {
-                dmaOverlay(devAddr, dramAddr, 0x18000);
-                size -= 0x18000;
-                devAddr += 0x18000;
-                dramAddr += 0x18000;
-            }
-        }
-    }
+    
+    // Bug? Invalidates the previous overlay VRAM address
+    LOAD_OVERLAY(code_1B4070_ROM_START, code_1B4070_ROM_END, code_1B10E0_VRAM, code_1B4070_VRAM);
     
     bzero(&code_1B4070_BSS_START, (u32) &code_1B4070_BSS_END - (u32) &code_1B4070_BSS_START);
-
+    
     // Load Overlay code_1B4070
-    {
-        u32 devAddr;
-        u32 size;
-        void *dramAddr;
-
-        osInvalICache(&code_1B10E0_VRAM, &code_682020_ROM_END - &code_682020_ROM_START); // Bug? Invalidates the same old VRAM address
-        devAddr = &code_682020_ROM_START;
-        size = &code_682020_ROM_END - &code_682020_ROM_START;
-        dramAddr = &code_682020_VRAM;
-        while (size != 0){
-            if (size < 0x18000) {
-                dmaOverlay(devAddr, dramAddr, size);
-                size = 0;
-            } else {
-                dmaOverlay(devAddr, dramAddr, 0x18000);
-                size -= 0x18000;
-                devAddr += 0x18000;
-                dramAddr += 0x18000;
-            }
-        }
-    }
+    // Bug? Invalidates the same old VRAM address
+    LOAD_OVERLAY(code_682020_ROM_START, code_682020_ROM_END, code_1B10E0_VRAM, code_682020_VRAM);
 
     // Load Overlay code_60A840 
-    {
-        u32 devAddr;
-        u32 size;
-        void *dramAddr;
-
-        osInvalICache(&code_60A840_VRAM, &code_60A840_ROM_END - &code_60A840_ROM_START);
-        devAddr = &code_60A840_ROM_START;
-        size = &code_60A840_ROM_END - &code_60A840_ROM_START;
-        dramAddr = &code_60A840_VRAM;
-        while (size != 0){
-            if (size < 0x18000) {
-                dmaOverlay(devAddr, dramAddr, size);
-                size = 0;
-            } else {
-                dmaOverlay(devAddr, dramAddr, 0x18000);
-                size -= 0x18000;
-                devAddr += 0x18000;
-                dramAddr += 0x18000;
-            }
-        }
-    }
+    LOAD_OVERLAY(code_60A840_ROM_START, code_60A840_ROM_END, code_60A840_VRAM, code_60A840_VRAM);
 }
 
 INCLUDE_ASM("asm/nonmatchings/DB50", func_801003EC);

@@ -30,6 +30,7 @@ extern u32 code_1B10E0_VRAM;
 
 // Overlay code_1B4070
 extern u8 code_1B4070_ROM_START;
+extern u8 code_1B4070_ROM_END;
 extern u32 code_1B4070_VRAM;
 extern u32 code_1B4070_BSS_START;
 extern u32 code_1B4070_BSS_END;
@@ -50,6 +51,29 @@ extern u32 code_60A840_VRAM;
 
 // Overlay code_728410
 extern u8 code_728410_ROM_START;
+
+#define LOAD_OVERLAY(ROM_START, ROM_END, VRAM_START, DRAM_START) \
+    { \
+        u32 devAddr; \
+        u32 size; \
+        void *dramAddr; \
+        \
+        osInvalICache(&(VRAM_START), &(ROM_END) - &(ROM_START)); \
+        devAddr = (u32)&(ROM_START); \
+        size = (u32)&(ROM_END) - (u32)&(ROM_START); \
+        dramAddr = &(DRAM_START); \
+        while (size != 0) { \
+            if (size < 0x18000) { \
+                dmaOverlay(devAddr, dramAddr, size); \
+                size = 0; \
+            } else { \
+                dmaOverlay(devAddr, dramAddr, 0x18000); \
+                size -= 0x18000; \
+                devAddr += 0x18000; \
+                dramAddr = (void*)((u32)dramAddr + 0x18000); \
+            } \
+        } \
+    }
 
 
 
