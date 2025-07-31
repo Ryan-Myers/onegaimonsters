@@ -1,6 +1,6 @@
-#include "common.h"
-#include "1F3B0.h"
 #include "DB50.h"
+#include "1F3B0.h"
+#include "common.h"
 
 void func_80105A80(void *);
 s32 func_80105F00(s32 arg0);
@@ -55,7 +55,7 @@ void loadOverlay4(void) {
  * @param size The size of overlay.
  */
 void loadOverlayAtAddress(u32 devAddr, void *dramAddr, u32 size) {
-    while (size != 0){
+    while (size != 0) {
         if (size < 0x18000) {
             dmaOverlay(devAddr, dramAddr, size);
             size = 0;
@@ -80,19 +80,10 @@ void func_801001C4(s32 newVal) {
 }
 
 void func_801001E4(void) {
-    // Load Overlay code_1B4070
-    
-    // Bug? Invalidates the previous overlay VRAM address
-    LOAD_OVERLAY(code_1B4070_ROM_START, code_1B4070_ROM_END, code_1B10E0_VRAM, code_1B4070_VRAM);
-    
-    bzero(&code_1B4070_BSS_START, (u32) &code_1B4070_BSS_END - (u32) &code_1B4070_BSS_START);
-    
-    // Load Overlay code_1B4070
-    // Bug? Invalidates the same old VRAM address
-    LOAD_OVERLAY(code_682020_ROM_START, code_682020_ROM_END, code_1B10E0_VRAM, code_682020_VRAM);
-
-    // Load Overlay code_60A840 
-    LOAD_OVERLAY(code_60A840_ROM_START, code_60A840_ROM_END, code_60A840_VRAM, code_60A840_VRAM);
+    LOAD_OVERLAY(code_1B4070, code_1B10E0, code_1B4070); // Bug? Invalidates the previous overlay VRAM address
+    ZERO_OVERLAY_BSS(code_1B4070);
+    LOAD_OVERLAY(code_682020, code_1B10E0, code_682020); // Bug? Invalidates the same old VRAM address
+    LOAD_OVERLAY(code_60A840, code_60A840, code_60A840);
 }
 
 INCLUDE_ASM("asm/nonmatchings/DB50", func_801003EC);

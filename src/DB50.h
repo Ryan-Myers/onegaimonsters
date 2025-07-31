@@ -52,16 +52,16 @@ extern u32 code_60A840_VRAM;
 // Overlay code_728410
 extern u8 code_728410_ROM_START;
 
-#define LOAD_OVERLAY(ROM_START, ROM_END, VRAM_START, DRAM_START) \
+#define LOAD_OVERLAY(overlay_name, VRAM_START, DRAM_START) \
     { \
         u32 devAddr; \
         u32 size; \
         void *dramAddr; \
         \
-        osInvalICache(&(VRAM_START), &(ROM_END) - &(ROM_START)); \
-        devAddr = (u32)&(ROM_START); \
-        size = (u32)&(ROM_END) - (u32)&(ROM_START); \
-        dramAddr = &(DRAM_START); \
+        osInvalICache(&(VRAM_START##_VRAM), &(overlay_name##_ROM_END) - &(overlay_name##_ROM_START)); \
+        devAddr = (u32)&(overlay_name##_ROM_START); \
+        size = (u32)&(overlay_name##_ROM_END) - (u32)&(overlay_name##_ROM_START); \
+        dramAddr = &(DRAM_START##_VRAM); \
         while (size != 0) { \
             if (size < 0x18000) { \
                 dmaOverlay(devAddr, dramAddr, size); \
@@ -75,8 +75,7 @@ extern u8 code_728410_ROM_START;
         } \
     }
 
-
-
+#define ZERO_OVERLAY_BSS(overlay_name) bzero(&overlay_name##_BSS_START, (u32) &overlay_name##_BSS_END - (u32) &overlay_name##_BSS_START);
 
 void func_800FFF50(void);
 void loadOverlayAtAddress(u32 devAddr, void *dramAddr, u32 size);
