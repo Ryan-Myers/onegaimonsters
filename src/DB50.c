@@ -117,6 +117,14 @@ void func_801003EC(s32 arg0) {
 
 INCLUDE_ASM("asm/nonmatchings/DB50", thread3_main);
 
+const char D_8015AF0C[] = "9H";
+const char D_8015AF10[] = "NOMJ";
+const char D_8015AF18[] = "ONEGAI MONSTER";
+const char D_8015AF28[] = "";
+const char D_8015AF2C[] = "A";
+const char D_8015AF30[] = "B";
+const char D_8015AF34[] = "";
+
 INCLUDE_ASM("asm/nonmatchings/DB50", func_80104C38);
 
 INCLUDE_ASM("asm/nonmatchings/DB50", func_80104CE0);
