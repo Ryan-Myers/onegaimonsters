@@ -93,9 +93,9 @@ void func_801001C4(s32 newVal) {
  * Loads overlays at code_1B4070, code_682020, and code_60A840
  */
 void func_801001E4(void) {
-    LOAD_OVERLAY_ALT(code_1B4070, code_1B10E0); // Bug? Invalidates the previous overlay VRAM address
-    ZERO_OVERLAY_BSS(code_1B4070);
-    LOAD_OVERLAY_ALT(code_682020, code_1B10E0); // Bug? Invalidates the same old VRAM address
+    LOAD_OVERLAY_ALT(o67, o66); // Bug? Invalidates the previous overlay VRAM address
+    ZERO_OVERLAY_BSS(o67);
+    LOAD_OVERLAY_ALT(code_682020, o66); // Bug? Invalidates the same old VRAM address
     LOAD_OVERLAY(code_60A840);
 }
 

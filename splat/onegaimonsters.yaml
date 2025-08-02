@@ -1284,31 +1284,31 @@ segments:
       - [0x1B0CC0, data]
       - { type: bss, vram: 0x801F9CD0, name: o65_bss }
 
-  - name: code_1B10E0
+  - name: o66
     type: code
     start: 0x1B10E0
     bss_size: 0x7840
     follows_vram: o3
     vram: 0x801F74E0
-    dir: overlays/code_1B10E0
+    dir: overlays/o66
     exclusive_ram_id: ramid3
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
       - [0x1B10E0, asm]
       - [0x1B34A0, data]
       - [0x1B3DA0, rodata]
-      - { type: bss, vram: 0x801FA470, name: bss1_code_1B10E0 }
+      - { type: bss, vram: 0x801FA470, name: o66_bss }
 
 # Loaded from func_801001E4
 # Seems to be special, it has some osInvalICache code. Maybe it loads other overlays?
 # Might have a bug on load, it invalidates 0x801F74E0 on, but loads into 0x801DC8D0 on.
-  - name: code_1B4070
+  - name: o67
     type: code
     start: 0x1B4070
     bss_size: 0
     follows_vram: o2
     vram: 0x801DC8D0
-    dir: overlays/code_1B4070
+    dir: overlays/o67
     exclusive_ram_id: ramid3
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
@@ -1383,7 +1383,7 @@ segments:
     type: code
     start: 0x65DB70
     bss_size: 0
-    follows_vram: code_1B4070
+    follows_vram: o67
     vram: 0x801E0560 #801DC8D0?
     dir: overlays/code_65DB70
     exclusive_ram_id: ramid3

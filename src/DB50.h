@@ -25,15 +25,15 @@ extern u32 o4_BSS_END;
 // Overlay 5
 extern u8 o5_ROM_START;
 
-// Overlay code_1B10E0
-extern u32 code_1B10E0_VRAM;
+// Overlay 66
+extern u32 o66_VRAM;
 
-// Overlay code_1B4070
-extern u8 code_1B4070_ROM_START;
-extern u8 code_1B4070_ROM_END;
-extern u32 code_1B4070_VRAM;
-extern u32 code_1B4070_BSS_START;
-extern u32 code_1B4070_BSS_END;
+// Overlay 67
+extern u8 o67_ROM_START;
+extern u8 o67_ROM_END;
+extern u32 o67_VRAM;
+extern u32 o67_BSS_START;
+extern u32 o67_BSS_END;
 
 // Overlay code_1B7D00
 extern u8 code_1B7D00_ROM_START;
