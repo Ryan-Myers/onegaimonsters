@@ -1317,17 +1317,32 @@ segments:
       - [0x1B79D0, data]
       - [0x1B7B90, rodata]
 
+  # So far unreferenced, but 1B7DD0 is, and it looks the same, so I'm formatting this,
+  # to look the same.
   - name: code_1B7D00
-    type: bin
+    type: code
     start: 0x1B7D00
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/code_1B7D00
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x1B7D00, data] # Data only?
 
   - name: code_1B7DD0
-    type: bin
+    type: code
     start: 0x1B7DD0
+    bss_size: 0
+    follows_vram: o67
     vram: 0x801E0560
+    dir: overlays/code_1B7DD0
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
     size: 0xE820
-    follows_vram: main
+    subsegments:
+      - [0x1B7DD0, data] # Data only?
 
   - name: code_1C65F0
     type: bin
@@ -1338,11 +1353,13 @@ segments:
     type: bin
     start: 0x258690
     vram: 0x801E0560
+    follows_vram: o67
 
   - name: code_4D6580
     type: bin
     start: 0x4D6580
     vram: 0x801E0560
+    follows_vram: o67
 
   - name: code_4D9920
     type: bin
