@@ -65,7 +65,7 @@ segments:
     bss_contains_common: True
     subsegments:
       - [0x1000, hasm, hasm/entrypoint]
-      - [0x1050, asm]
+      - [0x1050, c]
       - [0xD3A0, asm]
       - [0xDB50, c]
       - [0x133F0, asm]
@@ -315,7 +315,7 @@ segments:
       - [0x669A0, data, contpfs]
       - [0x669B0, data, contramread]
       - [0x669C0, data] # unreferenced at the start.
-      - [0x68730, rodata, 1050]
+      - [0x68730, .rodata, 1050]
       - [0x68940, rodata, D3A0]
       - [0x68980, .rodata, DB50]
       - [0x68B38, rodata, 13CF0]
