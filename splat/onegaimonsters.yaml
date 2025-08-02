@@ -1132,21 +1132,60 @@ segments:
     subsegments:
       - [0x17F480, data] # data only?
 
-  - type: bin
+  - name: o55
+    type: code
     start: 0x188C80
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o52
+    vram: 0x801FEDF0
+    dir: overlays/o55
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x188C80, asm]
+      - [0x18A210, data]
 
-  - type: bin
+  - name: o56
+    type: code
     start: 0x18D3A0
-    follows_vram: main
+    bss_size: 0x40
+    follows_vram: o3
+    vram: 0x801F74E0
+    dir: overlays/o56
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x18D3A0, asm]
+      - [0x190B40, data]
+      - { type: bss, vram: 0x80202A50, name: o56_bss }
 
-  - type: bin
+  - name: o57
+    type: code
     start: 0x198910
-    follows_vram: main
+    bss_size: 0x960
+    follows_vram: o3
+    vram: 0x801F74E0
+    dir: overlays/o57
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x198910, asm]
+      - [0x19DEA0, data]
+      - { type: bss, vram: 0x801FD880, name: o57_bss }
 
-  - type: bin
+  - name: o58
+    type: code
     start: 0x19ECB0
-    follows_vram: main
+    bss_size: 0xC020
+    follows_vram: o3
+    vram: 0x801F74E0
+    dir: overlays/o58
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x19ECB0, asm]
+      - [0x1A25E0, data]
+      - { type: bss, vram: 0x801FC200, name: o58_bss }
 
   - type: bin
     start: 0x1A39D0
