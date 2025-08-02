@@ -1169,6 +1169,32 @@ segments:
     start: 0x1B7D00
     follows_vram: main
 
+  - name: code_1B7DD0
+    type: bin
+    start: 0x1B7DD0
+    vram: 0x801E0560
+    size: 0xE820
+    follows_vram: main
+
+  - name: code_1C65F0
+    type: bin
+    start: 0x1C65F0
+    follows_vram: main
+
+  - name: code_258690
+    type: bin
+    start: 0x258690
+    vram: 0x801E0560
+
+  - name: code_4D6580
+    type: bin
+    start: 0x4D6580
+    vram: 0x801E0560
+
+  - name: code_4D9920
+    type: bin
+    start: 0x4D9920
+
   - type: bin
     start: 0x55ECF0
     follows_vram: main
@@ -1205,7 +1231,7 @@ segments:
     start: 0x65DB70
     bss_size: 0
     follows_vram: code_1B4070
-    vram: 0x801E0560
+    vram: 0x801E0560 #801DC8D0?
     dir: overlays/code_65DB70
     exclusive_ram_id: ramid3
     symbol_name_format: $SEG_$VRAM_$ROM
@@ -1235,6 +1261,11 @@ segments:
     start: 0x728410
     follows_vram: main
 
+  - name: asset_926CF0
+    type: bin
+    start: 0x926CF0 # size: 0xF40
+    follows_vram: main
+
   - name: code_944550
     type: code
     start: 0x944550
@@ -1250,12 +1281,29 @@ segments:
       - [0x945D10, rodata]
       - { type: bss, vram: 0x801F8D00, name: bss1_code_944550 }
 
+# Loaded from func_80107D80
   - type: bin
     start: 0x945D70
+    vram: 0x800D9500
     follows_vram: main
 
   - type: bin
     start: 0x958D70
+    follows_vram: main
+
+  - type: bin
+    start: 0xE42C50
+    vram: 0x80177D80 # also 800EC500?
+    size: 0x4  # 4 bytes?
+    follows_vram: main
+
+  - type: bin
+    start: 0xE84390
+    vram: 0x800ECAA0
+    follows_vram: main
+
+  - type: bin
+    start: 0xE8A030
     follows_vram: main
 
   - [0x1000000]
