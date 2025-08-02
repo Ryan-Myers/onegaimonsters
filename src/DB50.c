@@ -27,7 +27,7 @@ void func_800FFF50(void) {
 void loadOverlay2(void) {
     u32 overlaySize;
 
-    overlaySize = &o3_ROM_START - &o2_ROM_START;
+    overlaySize = &o2_ROM_END - &o2_ROM_START;
     osInvalICache(&o2_VRAM, overlaySize);
     loadOverlayAtAddress(&o2_ROM_START, &o2_VRAM, overlaySize);
     bzero(&o2_BSS_START, (u32) &o2_BSS_END - (u32) &o2_BSS_START);
@@ -39,7 +39,7 @@ void loadOverlay2(void) {
 void loadOverlay3(void) {
     u32 overlaySize;
 
-    overlaySize = &o4_ROM_START - &o3_ROM_START;
+    overlaySize = &o3_ROM_END - &o3_ROM_START;
     osInvalICache(&o3_VRAM, overlaySize);
     loadOverlayAtAddress(&o3_ROM_START, &o3_VRAM, overlaySize);
     bzero(&o3_BSS_START, (u32) &o3_BSS_END - (u32) &o3_BSS_START);
@@ -51,7 +51,7 @@ void loadOverlay3(void) {
 void loadOverlay4(void) {
     u32 overlaySize;
 
-    overlaySize = &o5_ROM_START - &o4_ROM_START;
+    overlaySize = &o4_ROM_END - &o4_ROM_START;
     osInvalICache(&o4_VRAM, overlaySize);
     loadOverlayAtAddress(&o4_ROM_START, &o4_VRAM, overlaySize);
     bzero(&o4_BSS_START, (u32) &o4_BSS_END - (u32) &o4_BSS_START);

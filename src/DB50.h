@@ -6,24 +6,28 @@
 
 // Overlay 2
 extern u8 o2_ROM_START;
+extern u8 o2_ROM_END;
 extern u32 o2_VRAM;
 extern u32 o2_BSS_START;
 extern u32 o2_BSS_END;
 
 // Overlay 3
 extern u8 o3_ROM_START;
+extern u8 o3_ROM_END;
 extern u32 o3_VRAM;
 extern u32 o3_BSS_START;
 extern u32 o3_BSS_END;
 
 // Overlay 4
 extern u8 o4_ROM_START;
+extern u8 o4_ROM_END;
 extern u32 o4_VRAM;
 extern u32 o4_BSS_START;
 extern u32 o4_BSS_END;
 
 // Overlay 5
 extern u8 o5_ROM_START;
+extern u8 o5_ROM_END;
 
 // Overlay 66
 extern u32 o66_VRAM;

@@ -1350,16 +1350,44 @@ segments:
     follows_vram: main
 
   - name: code_258690
-    type: bin
+    type: code
     start: 0x258690
-    vram: 0x801E0560
+    bss_size: 0
     follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/code_258690
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x258690, data]
+
+  - name: code_279310
+    type: code
+    start: 0x279310
+    bss_size: 0
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/code_279310
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x279310, data]
+
+  - name: code_284FD0
+    type: bin
+    start: 0x284FD0
 
   - name: code_4D6580
-    type: bin
+    type: code
     start: 0x4D6580
-    vram: 0x801E0560
+    bss_size: 0
     follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/code_4D6580
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x4D6580, data]
 
   - name: code_4D9920
     type: bin
