@@ -4,7 +4,7 @@
 
 #ifdef NON_EQUIVALENT
 
-#define ALIGN(s, align) (((unsigned int)(s) + ((align)-1)) & ~((align)-1))
+#define ALIGN(s, align) (((unsigned int) (s) + ((align) - 1)) & ~((align) - 1))
 
 typedef struct MemoryPool {
     u32 baseAddress;
