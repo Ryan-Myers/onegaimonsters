@@ -267,11 +267,34 @@ INCLUDE_ASM("asm/nonmatchings/1050", func_800FF2A8);
 
 INCLUDE_ASM("asm/nonmatchings/1050", func_800FF38C);
 
-INCLUDE_ASM("asm/nonmatchings/1050", func_800FF4E4);
+extern s32 D_8014C52C;
 
-INCLUDE_ASM("asm/nonmatchings/1050", func_800FF4F8);
+s32 func_800FF4E4(void) {
+    return D_8014C52C == 0x63;
+}
 
-INCLUDE_ASM("asm/nonmatchings/1050", func_800FF50C);
+s32 func_800FF4F8(void) {
+    return D_8014C52C == 3;
+}
+
+void func_800F37D8();
+void func_800F3ED4();
+extern s32 D_8014C528;
+
+void func_800FF50C(void) {
+    switch (D_8014C528) {
+        case 4:
+            func_800F3ED4();
+            break;
+        case 3:
+        case 2:
+            func_800F37D8();
+            break;
+        case 1:
+            func_800F3ED4();
+            break;
+    }
+}
 
 INCLUDE_ASM("asm/nonmatchings/1050", func_800FF57C);
 
