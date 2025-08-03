@@ -1345,9 +1345,112 @@ segments:
       - [0x1B7DD0, data] # Data only?
 
   - name: code_1C65F0
-    type: bin
+    type: code
     start: 0x1C65F0
-    follows_vram: main
+    bss_size: 0
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/code_682020
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x1C65F0, bin] # Data only?
+
+  - name: code_1D6C20
+    type: code
+    start: 0x1D6C20
+    bss_size: 0
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/code_1D6C20
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x1D6C20, data] # Data only?
+
+  - name: code_1E1490
+    type: code
+    start: 0x1E1490
+    bss_size: 0
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/code_1E1490
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x1E1490, data] # Data only?
+
+  - name: code_1F19D0
+    type: code
+    start: 0x1F19D0
+    bss_size: 0
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/code_1F19D0
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x1F19D0, data] # Data only?
+
+  - name: code_2112F0
+    type: code
+    start: 0x2112F0
+    bss_size: 0
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/code_2112F0
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x2112F0, data] # Data only?
+
+  - name: code_231D50
+    type: code
+    start: 0x231D50
+    bss_size: 0
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/code_231D50
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x231D50, data] # Data only?
+
+  - name: code_23C570
+    type: code
+    start: 0x23C570
+    bss_size: 0
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/code_23C570
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x23C570, data] # Data only?
+
+  - name: code_245080
+    type: code
+    start: 0x245080
+    bss_size: 0
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/code_245080
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x245080, data] # Data only?
+
+  - name: code_252420
+    type: code
+    start: 0x252420
+    bss_size: 0
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/code_252420
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x252420, data] # Data only?
 
   - name: code_258690
     type: code
@@ -1374,8 +1477,212 @@ segments:
       - [0x279310, data]
 
   - name: code_284FD0
-    type: bin
+    type: code
     start: 0x284FD0
+    bss_size: 0
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/code_284FD0
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x284FD0, data]
+
+  - name: code_298220
+    type: bin
+    start: 0x298220
+
+  - name: code_2AAB50
+    type: bin
+    start: 0x2AAB50
+
+  - name: code_2BA8A0
+    type: bin
+    start: 0x2BA8A0
+
+  - name: code_2C4B90
+    type: bin
+    start: 0x2C4B90
+
+  - name: code_2D0840
+    type: bin
+    start: 0x2D0840
+
+  - name: code_2DB4F0
+    type: bin
+    start: 0x2DB4F0
+
+  - name: code_2E69B0
+    type: bin
+    start: 0x2E69B0
+
+  - name: code_2F33E0
+    type: bin
+    start: 0x2F33E0
+
+  - name: code_303660
+    type: bin
+    start: 0x303660
+
+  - name: code_312880
+    type: bin
+    start: 0x312880
+
+  - name: code_31D790
+    type: bin
+    start: 0x31D790
+
+  - name: code_328080
+    type: bin
+    start: 0x328080
+
+  - name: code_334610
+    type: bin
+    start: 0x334610
+
+  - name: code_341650
+    type: bin
+    start: 0x341650
+
+  - name: code_34DA50
+    type: bin
+    start: 0x34DA50
+
+  - name: code_358870
+    type: bin
+    start: 0x358870
+
+  - name: code_3639F0
+    type: bin
+    start: 0x3639F0
+
+  - name: code_373C80
+    type: bin
+    start: 0x373C80
+
+  - name: code_381890
+    type: bin
+    start: 0x381890
+
+  - name: code_38DAE0
+    type: bin
+    start: 0x38DAE0
+
+  - name: code_39AEA0
+    type: bin
+    start: 0x39AEA0
+
+  - name: code_3A60F0
+    type: bin
+    start: 0x3A60F0
+
+  - name: code_3B5740
+    type: bin
+    start: 0x3B5740
+
+  - name: code_3BF800
+    type: bin
+    start: 0x3BF800
+
+  - name: code_3CAAA0
+    type: bin
+    start: 0x3CAAA0
+
+  - name: code_3D2820
+    type: bin
+    start: 0x3D2820
+
+  - name: code_3DDB40
+    type: bin
+    start: 0x3DDB40
+
+  - name: code_3E8D80
+    type: bin
+    start: 0x3E8D80
+
+  - name: code_3F1BD0
+    type: bin
+    start: 0x3F1BD0
+
+  - name: code_3F8430
+    type: bin
+    start: 0x3F8430
+
+  - name: code_4017C0
+    type: bin
+    start: 0x4017C0
+
+  - name: code_40B670
+    type: bin
+    start: 0x40B670
+
+  - name: code_415A40
+    type: bin
+    start: 0x415A40
+
+  - name: code_421110
+    type: bin
+    start: 0x421110
+
+  - name: code_42D1C0
+    type: bin
+    start: 0x42D1C0
+
+  - name: code_4384B0
+    type: bin
+    start: 0x4384B0
+
+  - name: code_43FD10
+    type: bin
+    start: 0x43FD10
+
+  - name: code_447150
+    type: bin
+    start: 0x447150
+
+  - name: code_44EDC0
+    type: bin
+    start: 0x44EDC0
+
+  - name: code_4597C0
+    type: bin
+    start: 0x4597C0
+
+  - name: code_463140
+    type: bin
+    start: 0x463140
+
+  - name: code_46C930
+    type: bin
+    start: 0x46C930
+
+  - name: code_475190
+    type: bin
+    start: 0x475190
+
+  - name: code_47E280
+    type: bin
+    start: 0x47E280
+
+  - name: code_486A40
+    type: bin
+    start: 0x486A40
+
+  - name: code_492E30
+    type: bin
+    start: 0x492E30
+
+  - name: code_49DDD0
+    type: bin
+    start: 0x49DDD0
+
+  - name: code_4AC280
+    type: bin
+    start: 0x4AC280
+
+  - name: code_4C2C80
+    type: bin
+    start: 0x4C2C80
 
   - name: code_4D6580
     type: code
