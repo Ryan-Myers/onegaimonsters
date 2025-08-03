@@ -1354,7 +1354,7 @@ segments:
     exclusive_ram_id: ramid3
 
   - name: data_1E1490
-    type: data
+    type: bin
     start: 0x1E1490
     follows_vram: o67
     vram: 0x801E0560
@@ -2158,9 +2158,23 @@ segments:
       - [0x927C00, rodata, 926CF0]
       - { type: bss, vram: 0x801AA0A0, name: 926CF0 }
 
-  - name: asset_927C30
-    type: bin
+  - name: code_927C30
+    type: code
     start: 0x927C30
+    bss_size: 0xF140
+    follows_vram: o2
+    vram: 0x801DC8D0
+    dir: overlays/code_927C30
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x927C30, asm]
+      - [0x9316B0, data]
+      - { type: bss, vram: 0x801E76F0, name: 927C30 }
+
+  - name: asset_932A50
+    type: bin
+    start: 0x932A50
     follows_vram: main
 
   - name: code_944550
