@@ -2172,10 +2172,31 @@ segments:
       - [0x9316B0, data]
       - { type: bss, vram: 0x801E76F0, name: 927C30 }
 
-  - name: asset_932A50
-    type: bin
+  - name: code_932A50
+    type: code
     start: 0x932A50
-    follows_vram: main
+    bss_size: 0x10
+    follows_vram: o3
+    vram: 0x801F74E0
+    dir: overlays/code_932A50
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x932A50, asm]
+      - [0x934270, data]
+      - { type: bss, vram: 0x801F9AD0, name: 932A50 }
+
+  - name: code_935040
+    type: bin
+    start: 0x935040
+
+  - name: code_93C1D0
+    type: bin
+    start: 0x93C1D0
+
+  - name: code_943580
+    type: bin
+    start: 0x943580
 
   - name: code_944550
     type: code
