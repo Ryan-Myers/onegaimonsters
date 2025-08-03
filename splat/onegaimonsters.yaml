@@ -1384,6 +1384,7 @@ segments:
     dir: overlays/data_801E0560
     exclusive_ram_id: ramid3
 
+# First byte is not 0xB0 like the majority.
   - name: data_23C570
     type: bin
     start: 0x23C570
@@ -1392,6 +1393,7 @@ segments:
     dir: overlays/data_801E0560
     exclusive_ram_id: ramid3
 
+# First byte is not 0xB0 like the majority.
   - name: data_245080
     type: bin
     start: 0x245080
@@ -1400,6 +1402,7 @@ segments:
     dir: overlays/data_801E0560
     exclusive_ram_id: ramid3
 
+# First byte is not 0xB0 like the majority.
   - name: data_252420
     type: bin
     start: 0x252420
@@ -1408,6 +1411,7 @@ segments:
     dir: overlays/data_801E0560
     exclusive_ram_id: ramid3
 
+# First byte is not 0xB0 like the majority.
   - name: data_258690
     type: bin
     start: 0x258690
@@ -1824,31 +1828,231 @@ segments:
     dir: overlays/data_801E0560
     exclusive_ram_id: ramid3
 
-# END OF VRAM 0x801E0560 BINS
-
-  - name: code_4D6580
-    type: code
+  - name: data_4D6580
+    type: bin
     start: 0x4D6580
-    bss_size: 0
     follows_vram: o67
     vram: 0x801E0560
-    dir: overlays/code_4D6580
+    dir: overlays/data_801E0560
     exclusive_ram_id: ramid3
-    symbol_name_format: $SEG_$VRAM_$ROM
-    subsegments:
-      - [0x4D6580, data]
 
-  - name: code_4D9920
+  - name: data_4D9920
     type: bin
     start: 0x4D9920
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
 
-  - type: bin
+  - name: data_4DD810
+    type: bin
+    start: 0x4DD810
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_5018F0
+    type: bin
+    start: 0x5018F0
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_517AB0
+    type: bin
+    start: 0x517AB0
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_530E60
+    type: bin
+    start: 0x530E60
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_5525B0
+    type: bin
+    start: 0x5525B0
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_55ECF0
+    type: bin
     start: 0x55ECF0
-    follows_vram: main
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
 
-  - type: bin
+  - name: data_56BB50
+    type: bin
     start: 0x56BB50
-    follows_vram: main
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_5715C0
+    type: bin
+    start: 0x5715C0
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_57B820
+    type: bin
+    start: 0x57B820
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_57DA60
+    type: bin
+    start: 0x57DA60
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_58A7E0
+    type: bin
+    start: 0x58A7E0
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_58AE00
+    type: bin
+    start: 0x58AE00
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_594990
+    type: bin
+    start: 0x594990
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_5A6610
+    type: bin
+    start: 0x5A6610
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_5A6FB0
+    type: bin
+    start: 0x5A6FB0
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_5AF430
+    type: bin
+    start: 0x5AF430
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_5BC670
+    type: bin
+    start: 0x5BC670
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_5C2460
+    type: bin
+    start: 0x5C2460
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_5CBF90
+    type: bin
+    start: 0x5CBF90
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_5D2DB0
+    type: bin
+    start: 0x5D2DB0
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_5D6870
+    type: bin
+    start: 0x5D6870
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_5E9390
+    type: bin
+    start: 0x5E9390
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_5F1DC0
+    type: bin
+    start: 0x5F1DC0
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_5FA9C0
+    type: bin
+    start: 0x5FA9C0
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_602030
+    type: bin
+    start: 0x602030
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_606610
+    type: bin
+    start: 0x606610
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+# END OF VRAM 0x801E0560 BINS
 
   - name: code_60A840
     type: code
