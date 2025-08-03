@@ -2187,8 +2187,18 @@ segments:
       - { type: bss, vram: 0x801F9AD0, name: 932A50 }
 
   - name: code_935040
-    type: bin
+    type: code
     start: 0x935040
+    bss_size: 0xF100
+    follows_vram: o2
+    vram: 0x801DC8D0
+    dir: overlays/code_935040
+    exclusive_ram_id: ramid3
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x935040, asm]
+      - [0x93B8D0, data]
+      - { type: bss, vram: 0x801E3A60, name: 935040 }
 
   - name: code_93C1D0
     type: bin
