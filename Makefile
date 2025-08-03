@@ -37,7 +37,7 @@ endef
 
 # Directories
 BIN_DIRS  = assets
-BIN_OVERLAY_DIRS = assets/overlays/code_682020
+BIN_OVERLAY_DIRS = assets/overlays/data_801E0560
 BUILD_DIR = build
 SRC_DIR   = src
 OVERLAY_DIR = src/overlays
