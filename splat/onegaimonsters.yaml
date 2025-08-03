@@ -1316,6 +1316,7 @@ segments:
       - [0x1B4480, asm]
       - [0x1B79D0, data]
       - [0x1B7B90, rodata]
+    # END OF VRAM: 0x801E0560
 
 # START OF VRAM 0x801E0560 BINS
 
@@ -2076,22 +2077,39 @@ segments:
       - [0x62C4D0, data]
       - [0x65D090, rodata]
 
-# Could this be data only?
-  - name: code_65DB70
-    type: code
+# START OF VRAM 0x801E0560 BINS
+  - name: data_65DB70
+    type: bin
     start: 0x65DB70
-    bss_size: 0
     follows_vram: o67
     vram: 0x801E0560 #801DC8D0?
-    dir: overlays/code_65DB70
+    dir: overlays/data_801E0560
     exclusive_ram_id: ramid3
-    symbol_name_format: $SEG_$VRAM_$ROM
-    subsegments:
-      - [0x65DB70, data]
-  
-  - type: bin
+
+  - name: data_670D20
+    type: bin
     start: 0x670D20
-    follows_vram: main
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_6766F0
+    type: bin
+    start: 0x6766F0
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_6795F0
+    type: bin
+    start: 0x6795F0
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+# END OF VRAM 0x801E0560 BINS
   
   # Invalid instructions Must have split this wrong
   # Might have a bug on load, it invalidates 0x801F74E0 on, but loads into 0x802D4000 on.
@@ -2099,22 +2117,50 @@ segments:
     type: code
     start: 0x682020
     bss_size: 0
-    # follows_vram: code_1B4070
+    # follows_vram: o67 
     vram: 0x802D4000
     dir: overlays/data_801E0560
     exclusive_ram_id: ramid3
     symbol_name_format: $SEG_$VRAM_$ROM
     subsegments:
-      - [0x682020, bin]
+      - [0x682020, data]
 
-  - name: code_728410
+  - name: data_728410
     type: bin
     start: 0x728410
-    follows_vram: main
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
 
-  - name: asset_926CF0
+  - name: data_72FFB0
     type: bin
-    start: 0x926CF0 # size: 0xF40
+    start: 0x72FFB0
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+    #MISSING GAP?
+
+  - name: code_926CF0
+    type: code
+    start: 0x926CF0
+    bss_size: 0x10
+    follows_vram: main
+    vram: 0x801A9160
+    dir: overlays/code_926CF0
+    exclusive_ram_id: ramid1
+    symbol_name_format: $SEG_$VRAM_$ROM
+    subsegments:
+      - [0x926CF0, asm]
+      - [0x927BC0, data, 926CF0]
+      - [0x927C00, rodata, 926CF0]
+      - { type: bss, vram: 0x801AA0A0, name: 926CF0 }
+
+  - name: asset_927C30
+    type: bin
+    start: 0x927C30
     follows_vram: main
 
   - name: code_944550
