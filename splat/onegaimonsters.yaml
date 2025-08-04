@@ -2067,10 +2067,10 @@ segments:
     subsegments:
       - [0x60A840, asm]
       - [0x61E290, asm]
-      - [0x61E3B0, asm]
+      - [0x61E3B0, c]
       - [0x61E590, asm]
       - [0x61E780, asm]
-      - [0x621BE0, asm]
+      - [0x621BE0, c]
       - [0x629F60, asm]
       - [0x62BB80, asm]
       - [0x62C050, asm]
@@ -2111,19 +2111,13 @@ segments:
     exclusive_ram_id: ramid3
 # END OF VRAM 0x801E0560 BINS
   
-  # Invalid instructions Must have split this wrong
   # Might have a bug on load, it invalidates 0x801F74E0 on, but loads into 0x802D4000 on.
   - name: code_682020
-    type: code
+    type: bin
     start: 0x682020
-    bss_size: 0
-    # follows_vram: o67 
     vram: 0x802D4000
     dir: overlays/data_801E0560
     exclusive_ram_id: ramid3
-    symbol_name_format: $SEG_$VRAM_$ROM
-    subsegments:
-      - [0x682020, data]
 
   - name: data_728410
     type: bin
@@ -2141,7 +2135,123 @@ segments:
     dir: overlays/data_801E0560
     exclusive_ram_id: ramid3
 
-    #MISSING GAP?
+  - name: data_7429D0
+    type: bin
+    start: 0x7429D0
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+  
+  - name: data_745860
+    type: bin
+    start: 0x745860
+    vram: 0x802D4000
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_748430
+    type: bin
+    start: 0x748430
+    vram: 0x802D6BD0
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_79BDB0
+    type: bin
+    start: 0x79BDB0
+    vram: 0x802D6BD0
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_7CE070
+    type: bin
+    start: 0x7CE070
+    vram: 0x802D6BD0
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_7FFD20
+    type: bin
+    start: 0x7FFD20
+    vram: 0x802D6BD0
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_8319F0
+    type: bin
+    start: 0x8319F0
+    vram: 0x802D6BD0
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_85F7B0
+    type: bin
+    start: 0x85F7B0
+    vram: 0x802D6BD0
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_87D930
+    type: bin
+    start: 0x87D930
+    vram: 0x802D6BD0
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_89DB90
+    type: bin
+    start: 0x89DB90
+    vram: 0x802D6BD0
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_8BEEA0
+    type: bin
+    start: 0x8BEEA0
+    vram: 0x802D6BD0
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_8DF240
+    type: bin
+    start: 0x8DF240
+    vram: 0x802D6BD0
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_914930
+    type: bin
+    start: 0x914930
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_919FB0
+    type: bin
+    start: 0x919FB0
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_91A140
+    type: bin
+    start: 0x91A140
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+
+  - name: data_91B730
+    type: bin
+    start: 0x91B730
+    follows_vram: o67
+    vram: 0x801E0560
+    dir: overlays/data_801E0560
+    exclusive_ram_id: ramid3
+# END OF MORE BINS
 
   - name: code_926CF0
     type: code

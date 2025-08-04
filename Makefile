@@ -182,6 +182,7 @@ LD_FLAGS  += -Map $(TARGET).map
 
 $(BUILD_DIR)/$(SRC_DIR)/DB50.o: OPT_FLAGS := -O2 -g2
 $(BUILD_DIR)/$(SRC_DIR)/1050.o: OPT_FLAGS := -O2 -g2
+$(BUILD_DIR)/$(SRC_DIR)/overlays/code_60A840/621BE0.o: OPT_FLAGS := -O2 -g2
 
 ####################### LIBULTRA #########################
 
