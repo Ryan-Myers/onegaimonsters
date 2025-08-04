@@ -1,6 +1,10 @@
 #include "common.h"
 
-INCLUDE_ASM("asm/nonmatchings/overlays/o1/o1_69280", func_o1_801A9160_69280);
+void func_800FB004(void);
+
+void func_o1_801A9160_69280(void) {
+    func_800FB004();
+}
 
 INCLUDE_ASM("asm/nonmatchings/overlays/o1/o1_69280", func_o1_801A9180_692A0);
 

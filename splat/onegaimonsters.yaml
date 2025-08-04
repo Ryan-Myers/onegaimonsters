@@ -2354,10 +2354,12 @@ segments:
       - { type: bss, vram: 0x801F8D00, name: bss1_code_944550 }
 
 # Loaded from func_80107D80
-  - type: bin
+# dmaOverlay(0x945D70, 0x8016FC40, 0x13000)
+  - name: code_945D70
+    type: bin
     start: 0x945D70
     vram: 0x800D9500
-    follows_vram: main
+    dir: overlays/data_801E0560
 
   - type: bin
     start: 0x958D70
