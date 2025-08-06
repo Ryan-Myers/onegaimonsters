@@ -94,6 +94,6 @@ void loadOverlay4(void);
 void func_801001C4(s32 newVal);
 void func_801001E4(void);
 void func_801003EC(s32 arg0);
-s32 getAbs(s32 value);
+s32 abs(s32 value);
 
 #endif

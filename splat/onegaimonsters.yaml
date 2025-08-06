@@ -2366,6 +2366,21 @@ segments:
     follows_vram: main
 
   - type: bin
+    start: 0x9E9ECA
+    vram: 0x800B9F00
+    follows_vram: main
+
+  - type: bin
+    start: 0x9EA2A8
+    vram: 0x800B9700
+    follows_vram: main
+
+  - type: bin
+    start: 0x9EA302
+    vram: 0x800B7B00
+    follows_vram: main
+
+  - type: bin
     start: 0xE42C50
     vram: 0x80177D80 # also 800EC500?
     size: 0x4  # 4 bytes?
