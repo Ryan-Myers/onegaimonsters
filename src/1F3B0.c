@@ -45,19 +45,20 @@ void dmaOverlay(u32 devAddr, void *dramAddr, u32 size) {
 
 /**
  * Sets up si events, and starts thread 5
- * @return size of the si ioMesg
+ * @return controller bit pattern
  */
 u8 func_80111890(void) {
-    OSIoMesg ioMesg;
+    OSContStatus controllers[MAXCONTROLLERS];
+    u8 bitpattern;
 
     D_801821A0 = NULL;
     D_801821A4 = 0;
     osCreateMesgQueue(&siEventQueue, siMsgs, ARRAY_COUNT(siMsgs));
     osSetEventMesg(OS_EVENT_SI, &siEventQueue, NULL);
-    func_801163C0(&siEventQueue, &ioMesg.size, &ioMesg);
+    osContInit(&siEventQueue, &bitpattern, controllers);
     osCreateThread(&thread5_thread, 5, thread5_main, NULL, STACK_START(thread5_stack), 115);
     osStartThread(&thread5_thread);
-    return ioMesg.size >> 24;
+    return bitpattern;
 }
 
 static void thread5_main(void *unused) {

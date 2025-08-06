@@ -1,6 +1,6 @@
 #include "common.h"
 
 // Could be alCSPGetVol
-s16 func_80109CC0(ALCSPlayer *seqp) {
+s16 n_alSeqpGetVol(ALCSPlayer *seqp) {
     return seqp->vol;
 }

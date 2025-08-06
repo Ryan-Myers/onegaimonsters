@@ -13,10 +13,10 @@ typedef struct unk80107E30 {
     s16 unk2;
 } unk80107E30;
 
-void func_80114860(void *, u32);
-void *func_80115210(s32 arg0, s32 arg1, MemoryPool *memPool, u32 count, u32 elementSize);
-extern void *D_80175AB8;
-extern MemoryPool *D_8016FC40;
+void alSeqFileNew(ALSeqFile *file, u8 *base);
+// void *alHeapDBAlloc(s32 arg0, s32 arg1, MemoryPool *memPool, u32 count, u32 elementSize);
+extern ALSeqFile *D_80175AB8;
+extern ALHeap *D_8016FC40;
 
 /**
  * This function seems to only be called from func_80105A80, which itself seems to called from
@@ -35,9 +35,9 @@ void func_80107E30(u32 devAddr) {
     // Loads value 0x533100B2? So unk2 is 0x14C?
     dmaOverlay(devAddr, dramAddr, 4);
     size = (dramAddr->unk2 * 8) + 4; // So size is A64?
-    D_80175AB8 = func_80115210(0, 0, &D_8016FC40, 1, size);
+    D_80175AB8 = alHeapDBAlloc(0, 0, &D_8016FC40, 1, size);
     // We then dma the same 0xE42C50 to 800EC500? But this time it's 0xA64 bytes?
     // Making us load to E436B4?
     dmaOverlay(devAddr, D_80175AB8, size);
-    func_80114860(D_80175AB8, devAddr);
+    alSeqFileNew(D_80175AB8, devAddr);
 }
