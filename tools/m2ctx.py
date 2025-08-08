@@ -34,7 +34,7 @@ CPP_FLAGS = [
     "-Iultralib/include/compiler/ido",
     "-Iultralib/include/compiler/modern_gcc",
     "-D_LANGUAGE_C",
-    "-DF3DEX_GBI_2",
+    "-DF3DEX_GBI",
     "-D_MIPS_SZLONG=32",
     "-DSCRIPT(...)={}",
     "-D__attribute__(...)=",

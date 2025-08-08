@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/include/*",
+                "${workspaceFolder}/include/compiler/modern_gcc/*",
+                "${workspaceFolder}/include/PR/*",
+                "${workspaceFolder}/include/PRinternal/*",
+                "${workspaceFolder}/include/sys/*",
+                "${workspaceFolder}/src/*",
+                "${workspaceFolder}/src/ultralib/src/audio/*",
+                "${workspaceFolder}/src/ultralib/src/debug/*",
+                "${workspaceFolder}/src/ultralib/src/gu/*",
+                "${workspaceFolder}/src/ultralib/src/libc/*",
+                "${workspaceFolder}/src/ultralib/src/os/*"
+            ],
+            "compilerPath": "/usr/bin/clang-17",
+            "cStandard": "c17",
+            "intelliSenseMode": "linux-clang-x64"
+        }
+    ],
+    "version": 4
+}

@@ -1,0 +1,18 @@
+{
+    "C_Cpp.default.defines": [
+        "_FINAL_ROM",
+        "NDEBUG",
+        "TARGET_N64",
+        "NON_MATCHING",
+        "AVOID_UB",
+        "ANTI_TAMPER",
+        "_MIPS_SZLONG=32",
+        "_LANGUAGE_C",
+        "BUILD_VERSION=7",
+        "F3DEX_GBI",
+        "__USE_ISOC99"
+    ],
+    "files.associations": {
+        "*.h": "c"
+    }
+}

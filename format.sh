@@ -19,10 +19,21 @@ if (( $# > 0 )); then
 fi
 
 echo "Formatting C files. This will take a bit"
+
+# Create a list of files to process, excluding the ultralib directory
+# The -print0 and xargs -0 combo is the safest way to handle filenames
+# that might contain spaces or other special characters.
+files_to_process() {
+    find src -path "src/ultralib" -prune -o -type f -name "*.c" -print0
+}
+
 echo "Running clang-format..."
-clang-format ${FORMAT_OPTS} src/**/*.c
+files_to_process | xargs -0 clang-format ${FORMAT_OPTS}
+
 echo "Running clang-tidy..."
-clang-tidy ${TIDY_OPTS} src/**/*.c -- ${COMPILER_OPTS} &> /dev/null
+files_to_process | xargs -0 clang-tidy ${TIDY_OPTS} -- ${COMPILER_OPTS} &> /dev/null
+
 echo "Adding missing final new lines..."
-find src/ -type f -name "*.c" -exec sed -i -e '$a\' {} \;
-echo "Done formatting all files." 
+files_to_process | xargs -0 sed -i -e '$a\'
+
+echo "Done formatting all files."

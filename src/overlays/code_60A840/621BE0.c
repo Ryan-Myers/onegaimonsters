@@ -61,7 +61,7 @@ void func_code_60A840_8001F1F0_629630(s32 arg0) {
         sp10[2][i] = D_code_60A840_800536F8_65DB38[i];
     }
     osInvalICache(sp10[0][arg0], sp10[2][arg0] - sp10[1][arg0]);
-    loadOverlayAtAddress(sp10[1][arg0], sp10[0][arg0],sp10[2][arg0] - sp10[1][arg0]);
+    loadOverlayAtAddress(sp10[1][arg0], sp10[0][arg0], sp10[2][arg0] - sp10[1][arg0]);
 }
 #else
 INCLUDE_ASM("asm/nonmatchings/overlays/code_60A840/621BE0", func_code_60A840_8001F1F0_629630);

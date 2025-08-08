@@ -33,7 +33,6 @@ tools/gcc_kmc
 
 tools/n64crc
 
-.vscode/
 __pycache__/
 *__pycache__/
 expected/

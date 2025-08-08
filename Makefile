@@ -41,12 +41,12 @@ BIN_OVERLAY_DIRS = assets/overlays/data_801E0560
 BUILD_DIR = build
 SRC_DIR   = src
 OVERLAY_DIR = src/overlays
-# Workaround for an ultralib dir in src/ for now.
 LIBULTRA_DIR = src/ultralib
-ULTRALIB_DIR = ultralib
-ASM_DIRS  = asm asm/data asm/nonmatchings asm/data/libultra
+ASM_DIRS  = asm asm/data asm/nonmatchings asm/data/libultra asm/ultralib/src/n_audio asm/ultralib/src/gu asm/ultralib/src/os
+ASM_DIRS += asm/ultralib/src/audio asm/ultralib/src/io asm/ultralib/src/libc asm/data/ultralib/src/n_audio
+ASM_DIRS += asm/data/ultralib/src/gu asm/data/ultralib/src/os asm/data/ultralib/src/audio asm/data/ultralib/src/io
 HASM_DIRS = $(SRC_DIR)/hasm $(LIBULTRA_DIR)/src/os $(LIBULTRA_DIR)/src/gu $(LIBULTRA_DIR)/src/libc
-LIBULTRA_SRC_DIRS  = $(LIBULTRA_DIR) $(LIBULTRA_DIR)/src $(LIBULTRA_DIR)/src/audio
+LIBULTRA_SRC_DIRS  = $(LIBULTRA_DIR) $(LIBULTRA_DIR)/src $(LIBULTRA_DIR)/src/audio $(LIBULTRA_DIR)/src/n_audio
 LIBULTRA_SRC_DIRS += $(LIBULTRA_DIR)/src/debug $(LIBULTRA_DIR)/src/gu $(LIBULTRA_DIR)/src/io
 LIBULTRA_SRC_DIRS += $(LIBULTRA_DIR)/src/libc $(LIBULTRA_DIR)/src/os $(LIBULTRA_DIR)/src/sc
 LIBULTRA_SRC_DIRS += $(LIBULTRA_DIR)/src/vimodes
@@ -118,8 +118,7 @@ OPT_FLAGS      = -O2
 
 MIPSISET       = -mips2
 
-# Not sure about which F3D version is being used yet.
-DEFINES := _FINALROM NDEBUG TARGET_N64 F3DEX_GBI_2
+DEFINES := _FINALROM NDEBUG TARGET_N64 F3DEX_GBI
 
 VERIFY = verify
 
@@ -139,10 +138,8 @@ ASM_DEFINES = $(foreach d,$(DEFINES),$(if $(findstring =,$(d)),--defsym $(d),))
 
 INCLUDE_CFLAGS = $(foreach d,$(SRC_OVERLAYS_DIRS),-I $(d)) $(foreach d,$(ASM_OVERLAYS_DIRS),-I $(d))
 INCLUDE_CFLAGS += -I . -I include -I include/libc  -I include/PR -I include/sys -I $(BIN_DIRS) -I $(BIN_OVERLAY_DIRS) -I $(SRC_DIR) -I $(LIBULTRA_DIR)
-INCLUDE_CFLAGS += -I $(ULTRALIB_DIR)/include -I $(ULTRALIB_DIR)/include/libc -I $(ULTRALIB_DIR)/include/PR -I $(ULTRALIB_DIR)/include/sys
-INCLUDE_CFLAGS += -I $(ULTRALIB_DIR)/src/audio -I $(ULTRALIB_DIR)/include/PRinternal
 INCLUDE_CFLAGS += -I $(LIBULTRA_DIR)/src/gu -I $(LIBULTRA_DIR)/src/libc -I $(LIBULTRA_DIR)/src/io  -I $(LIBULTRA_DIR)/src/sc 
-INCLUDE_CFLAGS += -I $(LIBULTRA_DIR)/src/audio -I $(LIBULTRA_DIR)/src/os
+INCLUDE_CFLAGS += -I $(LIBULTRA_DIR)/src/audio -I $(LIBULTRA_DIR)/src/n_audio -I $(LIBULTRA_DIR)/src/os
 
 ASFLAGS        = -march=vr4300 -mabi=32 -G0 $(ASM_DEFINES) -no-pad-sections -EB $(INCLUDE_CFLAGS)
 OBJCOPYFLAGS   = -O binary

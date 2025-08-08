@@ -115,7 +115,7 @@ void func_801003EC(s32 arg0) {
     func_80106140();
 }
 
-INCLUDE_ASM("asm/nonmatchings/DB50", thread3_main);
+INCLUDE_ASM("asm/nonmatchings/DB50", mainproc);
 
 const char D_8015AF0C[] = "9H";
 const char D_8015AF10[] = "NOMJ";
