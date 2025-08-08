@@ -99,7 +99,7 @@ segments:
       - [0x166D0, asm, ultralib/src/n_audio/n_csplayer]
       - [0x178B0, c, ultralib/src/n_audio/n_seqpgetstate]
       - [0x178C0, c, ultralib/src/n_audio/n_seqpgetvol]
-      - [0x178D0, c, ultralib/src/n_audio/n_cspplay] # need to rename these to n_funcs
+      - [0x178D0, c, ultralib/src/n_audio/n_cspplay]
       - [0x17900, asm, ultralib/src/n_audio/n_seqpsetbank]
       - [0x17930, asm, ultralib/src/n_audio/n_seqpsetseq]
       - [0x17960, asm, ultralib/src/n_audio/n_seqpsetvol]
@@ -115,8 +115,8 @@ segments:
       - [0x18370, asm, ultralib/src/n_audio/n_sndpsetvol]
       - [0x183D0, asm, ultralib/src/n_audio/n_sndpstop]
       - [0x18430, asm, ultralib/src/n_audio/n_sndpsetsound]
-      - [0x18450, asm, ultralib/src/n_audio/n_event] # need to rename these to n_funcs
-      - [0x18720, asm, ultralib/src/n_audio/n_csq] # need to rename these to n_funcs or do I?
+      - [0x18450, asm, ultralib/src/n_audio/n_event]
+      - [0x18720, asm, ultralib/src/n_audio/n_csq]
       - [0x18F60, asm, ultralib/src/n_audio/n_auxbus]
       - [0x19000, asm, ultralib/src/n_audio/n_drvrNew]
       - [0x19520, asm, ultralib/src/n_audio/n_env]
@@ -195,12 +195,12 @@ segments:
       - [0x223F0, asm, ultralib/src/os/virtualtophysical]
       - [0x22450, c, ultralib/src/debug/assert]
       - [0x22460, asm, ultralib/src/audio/bnkf]
-      - [0x22730, asm, ultralib/src/audio/seq] # Still some unamed funcs
+      - [0x22730, asm, ultralib/src/audio/seq]
       - [0x22D20, asm, ultralib/src/audio/sl]
       - [0x22DD0, asm, ultralib/src/audio/heapinit]
       - [0x22E10, c, ultralib/src/audio/heapalloc]
       - [0x22E60, asm, ultralib/src/audio/copy]
-      - [0x22EA0, asm, ultralib/src/audio/cseq] #Name more funcs in here
+      - [0x22EA0, asm, ultralib/src/audio/cseq]
       - [0x23960, asm, ultralib/src/audio/syndelete]
       - [0x23970, asm, ultralib/src/audio/cents2ratio]
       - [0x239D0, asm, ultralib/src/io/aigetlen]
@@ -224,7 +224,7 @@ segments:
       - [0x247C0, asm, ultralib/src/audio/drvrnew]
       - [0x24FF0, asm, ultralib/src/audio/env]
       - [0x25CA0, asm, ultralib/src/audio/reverb]
-      - [0x26840, asm, ultralib/src/audio/save] # NAme some more funcs in here
+      - [0x26840, asm, ultralib/src/audio/save]
       - [0x26910, asm, ultralib/src/audio/synthesizer]
       - [0x26F50, asm, ultralib/src/io/aisetfreq]
       - [0x27070, asm, ultralib/src/io/cartrominit]
