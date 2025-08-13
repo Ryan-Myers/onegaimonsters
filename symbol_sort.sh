@@ -17,6 +17,6 @@ if [ ! -f "$input_file" ]; then
 fi
 
 # Sort by hex address using sort's ability to handle hex numbers
-sort -t'=' -k2,2V "$input_file" > "$output_file"
+sort -t'=' -k2,2g "$input_file" > "$output_file"
 
 echo "Symbols sorted by address and saved to: $output_file"

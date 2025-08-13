@@ -125,7 +125,21 @@ const char D_8015AF2C[] = "A";
 const char D_8015AF30[] = "B";
 const char D_8015AF34[] = "";
 
-INCLUDE_ASM("asm/nonmatchings/DB50", func_80104C38);
+extern void func_80110B10(void *, s32);
+extern s32 D_801830C8[][4];
+extern s32 D_801830D0[][4];
+extern s32 D_801830D4[][4];
+extern s32 D_801A90E0[];
+
+void func_80104C38(s32 arg0) {
+    func_80110B10(&D_801830C8[arg0], arg0);
+    func_80110B10(&D_801830C8[arg0], arg0);
+    if (D_801830D4[arg0][0] == 2) {
+        D_801A90E0[arg0] = 300;
+    } else {
+        D_801A90E0[arg0] = D_801830D0[arg0][0];
+    }
+}
 
 INCLUDE_ASM("asm/nonmatchings/DB50", func_80104CE0);
 

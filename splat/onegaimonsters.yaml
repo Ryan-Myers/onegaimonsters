@@ -26,7 +26,8 @@ options:
   asm_function_macro: glabel
   asm_jtbl_label_macro: jlabel
   asm_data_macro: dlabel
-  asm_emit_size_directive: False
+  asm_emit_size_directive: True
+  asm_end_label: .end
 
   # section_order: [".text", ".data", ".rodata", ".bss"]
   # auto_link_sections: [".data", ".rodata", ".bss"]
@@ -45,7 +46,7 @@ options:
   data_string_guesser_level: 2
   libultra_symbols: True
   hardware_regs: True
-  # gfx_ucode: # one of [f3d, f3db, f3dex, f3dexb, f3dex2]
+  gfx_ucode: f3dex # one of [f3d, f3db, f3dex, f3dexb, f3dex2]
   hasm_in_src_path: True
 segments:
   - name: header
@@ -67,11 +68,12 @@ segments:
       - [0x1000, hasm, hasm/entrypoint]
       - [0x1050, c]
       - [0xD3A0, c, gfxinit] # File name is most likely gfxinit.c according to a leftover assert.
+      - [0xD920, c, atan2lookup]
       - [0xDB50, c]
-      - [0x133F0, asm]
+      - [0x133F0, c]
       - [0x134E0, c, main]
-      - [0x135F0, asm]
-      - [0x13630, asm]
+      - [0x135F0, c]
+      - [0x13630, c]
       - [0x13680, asm]
       - [0x138B0, asm]
       - [0x13960, asm]
@@ -150,7 +152,7 @@ segments:
       - [0x1E330, asm]
       - [0x1E380, asm]
       - [0x1E410, asm]
-      - [0x1E4C0, asm]
+      - [0x1E4C0, c]
       - [0x1E7C0, asm]
       - [0x1E850, asm]
       - [0x1E8D0, asm]
@@ -301,8 +303,8 @@ segments:
       - [0x2E4B0, asm, ultralib/src/os/yieldthread]
       - [0x2E500, asm, ultralib/src/io/si]
       - [0x2E520, asm, ultralib/src/io/pfsisplug]
-      # https://github.com/AngheloAlf/drmario64/blob/master/src/libegcs/libgcc2.c
-      - [0x2E800, asm, libgcc] #Starts with a nop?
+      # https://github.com/AngheloAlf/drmario64/blob/master/src/libkmc/mmuldi3.s
+      - [0x2E800, asm, mmuldi3]
       - [0x2EBD0, data, ucode_boot] #rspbootTextStart
       - [0x2ECA0, data, ucode_audio] # aspMain
       - [0x2FAC0, data, n_aspMain]
@@ -310,7 +312,9 @@ segments:
       - [0x31B50, data, gspF3DLX_fifo]
       - [0x32F80, data, gspL3DEX_fifo]
       - [0x33F70, data, 1050]
-      - [0x60660, data, gfxinit]
+      - [0x60590, .data, gfxinit]
+      - [0x60660, .data, atan2lookup]
+      - [0x60760, data]
       - [0x60780, data, DB50] #Massive amounts of display lists
       - [0x64D70, data] # Shared amongst many files?
       # - [0x64DD0, data, 13CF0]
@@ -361,6 +365,7 @@ segments:
       - [0x681E0, data] #RSP Gfx ucode L3DEX         1.23 Yoshitaka Yasumoto Nintendo.
       - [0x68730, .rodata, 1050]
       - [0x68940, .rodata, gfxinit]
+      - [0x68960, .rodata, atan2lookup]
       - [0x68980, .rodata, DB50]
       - [0x68B38, rodata, 13CF0] # Odd split number...
       - [0x68B50, rodata, ultralib/src/n_audio/n_synthesizer]
@@ -372,7 +377,7 @@ segments:
       - [0x68D20, rodata, ultralib/src/n_audio/n_resample]
       - [0x68D30, rodata, ultralib/src/n_audio/n_reverb]
       - [0x68D70, rodata, ultralib/src/n_audio/n_seqplayer]
-      - [0x68DD0, rodata, 1E4C0]
+      - [0x68DD0, .rodata, 1E4C0]
       - [0x68DF0, rodata, ultralib/src/gu/cosf]
       - [0x68E50, rodata, ultralib/src/gu/lookatref]
       - [0x68E60, rodata, ultralib/src/gu/perspective]

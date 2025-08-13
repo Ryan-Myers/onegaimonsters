@@ -1,13 +1,8 @@
+#include "main.h"
 #include "1F3B0.h"
 #include "common.h"
 #include "PR/sched.h"
 #include "PRinternal/macros.h"
-
-extern void mainproc(void *);
-extern void osViSetSpecialFeatures(u32);
-extern void osCreateScheduler_alt(u8 mode, u8 numFields);
-extern void (*D_801842F0)(void);
-extern STACK(mainThreadStack, 0x2000) ALIGNED(0x10);
 
 static void idle(void *);
 

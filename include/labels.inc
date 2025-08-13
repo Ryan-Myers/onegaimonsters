@@ -2,6 +2,7 @@
     .global \label
     .type \label, @function
     \label:
+    .ent    \label
 .endm
 
 .macro endlabel label
@@ -18,15 +19,6 @@
 .endm
 
 .macro jlabel label
-#if VERSION_CN
-    .global \label
-    .type \label, @function
-#endif
-    \label:
-.endm
-
-.macro leaf label
     .global \label
     \label:
-    .ent    \label
 .endm

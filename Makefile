@@ -116,7 +116,7 @@ CRC      = $(TOOLS_DIR)/n64crc $(BUILD_DIR)/$(BASENAME).z64 $(COLORIZE)
 
 OPT_FLAGS      = -O2
 
-MIPSISET       = -mips2
+MIPSISET       = -mips3
 
 DEFINES := _FINALROM NDEBUG TARGET_N64 F3DEX_GBI
 
@@ -126,7 +126,7 @@ ifeq ($(NON_MATCHING),1)
 	MATCHDEFS += NON_MATCHING=1
 	MATCHDEFS += AVOID_UB=1
 	VERIFY = no_verify
-	MIPSISET = -mips2
+	MIPSISET = -mips3
 	C_STANDARD := -std=gnu99
 else
 	C_STANDARD := -std=gnu90
@@ -154,7 +154,7 @@ endif
 #IDO Warnings to Ignore. These are coding style warnings we don't follow
 CC_WARNINGS := -w
 
-CFLAGS := -G 0 -nostdinc -fno-PIC -G 0 -mno-abicalls
+CFLAGS := -G 0 -nostdinc -fno-PIC -mno-abicalls -Wa,--force-n64align -mabi=32 -mgp32 -mfp32
 CFLAGS += $(C_DEFINES)
 CFLAGS += $(INCLUDE_CFLAGS)
 
@@ -162,7 +162,7 @@ CFLAGS += $(INCLUDE_CFLAGS)
 CHECK_WARNINGS := -Wall -Wextra -Wno-format-security -Wno-unknown-pragmas -Wunused-function -Wno-unused-parameter
 CHECK_WARNINGS += -Werror-implicit-function-declaration -Wno-unused-variable -Wno-missing-braces -Wno-int-conversion -Wno-main
 CHECK_WARNINGS += -Wno-builtin-declaration-mismatch -Wno-pointer-to-int-cast -Wno-int-to-pointer-cast -Wno-switch
-CC_CHECK := $(GCC) -fsyntax-only -fno-builtin -funsigned-char $(C_STANDARD) -D_LANGUAGE_C $(CHECK_WARNINGS) $(INCLUDE_CFLAGS) $(C_DEFINES) $(GCC_COLOR)
+CC_CHECK := $(GCC) -fsyntax-only -fno-builtin -funsigned-char $(C_STANDARD) -D_LANGUAGE_C -I include/compiler/modern_gcc $(CHECK_WARNINGS) $(INCLUDE_CFLAGS) $(C_DEFINES) $(GCC_COLOR)
 
 # Only add -m32 for x86_64 machines.
 ifneq ($(filter x86_64%,$(UNAME_M)),)
@@ -177,14 +177,23 @@ LD_FLAGS  += -Map $(TARGET).map
 
 ### Optimisation Overrides
 
-$(BUILD_DIR)/$(SRC_DIR)/DB50.o: OPT_FLAGS := -O2 -g2
+# No Optimization on these files
+$(BUILD_DIR)/$(SRC_DIR)/135F0.o: OPT_FLAGS := -O0 -g2
+$(BUILD_DIR)/$(SRC_DIR)/13630.o: OPT_FLAGS := -O0 -g2
+
+# Add g2
 $(BUILD_DIR)/$(SRC_DIR)/1050.o: OPT_FLAGS := -O2 -g2
+$(BUILD_DIR)/$(SRC_DIR)/DB50.o: OPT_FLAGS := -O2 -g2
+$(BUILD_DIR)/$(SRC_DIR)/gfxinit.o: OPT_FLAGS := -O2 -g2
+$(BUILD_DIR)/$(SRC_DIR)/atan2lookup.o: OPT_FLAGS := -O2 -g2
+$(BUILD_DIR)/$(SRC_DIR)/133F0.o: OPT_FLAGS := -O2 -g2
+
 $(BUILD_DIR)/$(SRC_DIR)/overlays/code_60A840/621BE0.o: OPT_FLAGS := -O2 -g2
 $(BUILD_DIR)/$(SRC_DIR)/overlays/o1/o1_69280.o: OPT_FLAGS := -O2 -g2
 
 ####################### LIBULTRA #########################
 
-$(BUILD_DIR)/$(OLD_LIBULTRA_DIR)/%.c.o: OPT_FLAGS := -O2
+$(BUILD_DIR)/$(LIBULTRA_DIR)/%.c.o: OPT_FLAGS := -O2
 # $(BUILD_DIR)/$(LIBULTRA_DIR)/src/audio/%.c.o: OPT_FLAGS := -O3
 # $(BUILD_DIR)/$(LIBULTRA_DIR)/src/audio/mips1/%.c.o: OPT_FLAGS := -O2
 # $(BUILD_DIR)/$(LIBULTRA_DIR)/src/os/%.c.o: OPT_FLAGS := -O1
@@ -295,7 +304,7 @@ $(TARGET).elf: dirs $(LD_SCRIPT) $(O_FILES)
 $(BUILD_DIR)/%.o: %.c
 	$(call print,Compiling:,$<,$@)
 	$(V)$(CC_CHECK) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
-	$(V)$(CC) -c $(CFLAGS) $(CC_WARNINGS) $(OPT_FLAGS) $(MIPSISET) -o $@ $<
+	$(V)$(CC) -c $(CFLAGS) -I include/compiler/gcc $(CC_WARNINGS) $(OPT_FLAGS) $(MIPSISET) -o $@ $<
 
 # $(BUILD_DIR)/$(LIBULTRA_DIR)/src/libc/llcvt.c.o: $(LIBULTRA_DIR)/src/libc/llcvt.c
 # 	$(call print,Compiling mips3:,$<,$@)

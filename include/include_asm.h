@@ -25,6 +25,8 @@
     )
 #endif
 __asm__(".include \"include/labels.inc\"\n");
+#elif defined(PERMUTER)
+#define INCLUDE_ASM(FOLDER, NAME) GLOBAL_ASM("asm/nonmatchings/gfxinit/func_800FFD24.s")
 #else
 #ifndef INCLUDE_ASM
 #define INCLUDE_ASM(FOLDER, NAME)

@@ -1,6 +1,5 @@
+#include "1E2B0.h"
 #include "common.h"
-
-extern volatile s32 D_801821A8;
 
 /**
  * Poor mans thread synchronization

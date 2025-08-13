@@ -1,3 +1,4 @@
+#include "1050.h"
 #include "common.h"
 
 INCLUDE_ASM("asm/nonmatchings/1050", func_800F3450);
@@ -136,13 +137,6 @@ INCLUDE_ASM("asm/nonmatchings/1050", func_800FD17C);
 
 INCLUDE_ASM("asm/nonmatchings/1050", func_800FD1B4);
 
-extern s32 D_8015B690;
-extern s32 D_8015B694;
-extern s32 D_8015B698;
-extern s32 D_8015B69C;
-extern s32 D_8015B6C4;
-extern s32 D_8015B6D0;
-
 void func_800FD258(void) {
     D_8015B6D0 = 0;
     D_8015B6C4 = 0;
@@ -155,10 +149,6 @@ void func_800FD258(void) {
 // Has display lists
 INCLUDE_ASM("asm/nonmatchings/1050", func_800FD290);
 
-extern s32 D_8015B694;
-extern s32 D_8015B6A4;
-extern s32 D_8015B6B4;
-
 void func_800FD78C(s32 arg0, s32 arg1) {
     D_8015B694 = 1;
     D_8015B6A4 = arg0 * 4;
@@ -168,10 +158,6 @@ void func_800FD78C(s32 arg0, s32 arg1) {
 void func_800FD7B8(void) {
     D_8015B694 = 0;
 }
-
-extern s32 D_8015B690;
-extern s32 D_8015B6A0;
-extern s32 D_8015B6B0;
 
 void func_800FD7C8(s32 arg0, s32 arg1) {
     D_8015B690 = 1;
@@ -183,10 +169,6 @@ void func_800FD7F4(void) {
     D_8015B690 = 0;
 }
 
-extern s32 D_8015B698;
-extern s32 D_8015B6A8;
-extern s32 D_8015B6B8;
-
 void func_800FD804(s32 arg0, s32 arg1) {
     D_8015B698 = 1;
     D_8015B6A8 = arg0 * 4;
@@ -196,10 +178,6 @@ void func_800FD804(s32 arg0, s32 arg1) {
 void func_800FD830(void) {
     D_8015B698 = 0;
 }
-
-extern s32 D_8015B69C;
-extern s32 D_8015B6AC;
-extern s32 D_8015B6BC;
 
 void func_800FD840(s32 arg0, s32 arg1) {
     D_8015B69C = 1;
@@ -267,8 +245,6 @@ INCLUDE_ASM("asm/nonmatchings/1050", func_800FF2A8);
 
 INCLUDE_ASM("asm/nonmatchings/1050", func_800FF38C);
 
-extern s32 D_8014C52C;
-
 s32 func_800FF4E4(void) {
     return D_8014C52C == 0x63;
 }
@@ -276,10 +252,6 @@ s32 func_800FF4E4(void) {
 s32 func_800FF4F8(void) {
     return D_8014C52C == 3;
 }
-
-void func_800F37D8();
-void func_800F3ED4();
-extern s32 D_8014C528;
 
 void func_800FF50C(void) {
     switch (D_8014C528) {
@@ -296,6 +268,19 @@ void func_800FF50C(void) {
     }
 }
 
-INCLUDE_ASM("asm/nonmatchings/1050", func_800FF57C);
+void func_800FF57C(s32 *arg0, s32 arg1, s32 arg2, s32 arg3) {
+    s32 new_var2;
+    if (D_801882E4[0] & 0x800) {
+        func_80105D60(0, 11000.0f);
+        *arg0 = (s32) ((*arg0 + arg1) - 1) % arg1;
+    }
+    if (D_801882E4[0] & 0x400) {
+        func_80105D60(0, 11000.0f);
+        *arg0 = (s32) (*arg0 + 1) % arg1;
+    }
+    new_var2 = ((*arg0) * 6) + arg3;
+    D_8015B6C8 = arg2 * 4;
+    D_8015B6CC = new_var2 * 4;
+}
 
-INCLUDE_ASM("asm/nonmatchings/1050", func_800FF6C4);
+INCLUDE_ASM("asm/nonmatchings/1050", func_800FF6C0);

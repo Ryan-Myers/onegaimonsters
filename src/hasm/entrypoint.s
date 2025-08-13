@@ -12,7 +12,7 @@ glabel mainThreadStackEnd
 
 .section .text, "ax"
 
-leaf entrypoint
+glabel entrypoint
     lui        $t0, %hi(main_BSS_START)
     addiu      $t0, $t0, %lo(main_BSS_START)
     lui        $t1, %hi(main_BSS_SIZE)

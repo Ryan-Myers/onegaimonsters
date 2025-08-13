@@ -1,22 +1,8 @@
+#include "15A30.h"
 #include "1F3B0.h"
 #include "common.h"
 #include "DB50.h"
-
-typedef struct MemoryPool {
-    u32 baseAddress;
-    u32 currentAllocationOffset;
-    u32 poolSize;
-} MemoryPool;
-
-typedef struct unk80107E30 {
-    u16 unk0;
-    s16 unk2;
-} unk80107E30;
-
-void alSeqFileNew(ALSeqFile *file, u8 *base);
-// void *alHeapDBAlloc(s32 arg0, s32 arg1, MemoryPool *memPool, u32 count, u32 elementSize);
-extern ALSeqFile *D_80175AB8;
-extern ALHeap *D_8016FC40;
+#include "libaudio.h"
 
 /**
  * This function seems to only be called from func_80105A80, which itself seems to called from

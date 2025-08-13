@@ -1,7 +1,6 @@
+#include "1E250.h"
 #include "common.h"
 #include "PR/sched.h"
-
-extern void (*D_801574D4)(OSScTask *);
 
 void func_80110650(void (*func)(OSScTask *)) {
     OSIntMask savedMask;

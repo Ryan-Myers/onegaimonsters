@@ -1,4 +1,3 @@
-
 #ifndef _1F3B0_H
 #define _1F3B0_H
 
@@ -15,10 +14,10 @@ void osScAddClient_alt(OSScClient *c, OSMesgQueue *msgQ, s16 id);
 void func_801163C0(OSMesgQueue *, u32 *, OSIoMesg *);
 
 // These BSS vars are defined in another file
-extern OSMesgQueue D_80182158;  // bss6
-extern unk801821A0 *D_801821A0; // bss6
-extern s32 D_801821A4;  // bss6
-extern OSMesgQueue siEventQueue; // bss6
+extern OSMesgQueue D_80182158;
+extern unk801821A0 *D_801821A0;
+extern s32 D_801821A4;
+extern OSMesgQueue siEventQueue;
 
 void setupPiManager(void);
 void dmaOverlay(u32 devAddr, void *dramAddr, u32 size);

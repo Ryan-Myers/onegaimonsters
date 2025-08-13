@@ -1,7 +1,6 @@
 #include "1E210.h"
+#include "1E2B0.h"
 #include "common.h"
-
-s32 func_801106B0(void);
 
 void func_80110610(void (*func)(s32)) {
     OSIntMask savedMask;
