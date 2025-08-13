@@ -6,9 +6,11 @@
 
 .section .bss
 
-glabel mainThreadStack
-.space 0x2000
-glabel mainThreadStackEnd
+.equ mainThreadStackSize, 0x2000
+
+dlabel mainThreadStack
+.space mainThreadStackSize
+.size mainThreadStack, mainThreadStackSize
 
 .section .text, "ax"
 
@@ -26,9 +28,9 @@ glabel entrypoint
      nop
     lui        $t2, %hi(boot)
     addiu      $t2, $t2, %lo(boot)
-    lui        $sp, %hi(mainThreadStackEnd)
+    lui        $sp, %hi(mainThreadStack + mainThreadStackSize)
     jr         $t2
-     addiu     $sp, $sp, %lo(mainThreadStackEnd)
+     addiu     $sp, $sp, %lo(mainThreadStack + mainThreadStackSize)
     nop
     nop
     nop

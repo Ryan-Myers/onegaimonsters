@@ -173,7 +173,7 @@ TARGET     = $(BUILD_DIR)/$(BASENAME)
 LD_SCRIPT  = splat/$(BASENAME).ld
 
 LD_FLAGS   = -T $(LD_SCRIPT) -T $(SYMBOLS_DIR)/undefined_syms.txt  -T $(SYMBOLS_DIR)/undefined_funcs_auto.txt  -T $(SYMBOLS_DIR)/undefined_syms_auto.txt
-LD_FLAGS  += -Map $(TARGET).map
+LD_FLAGS  += -Map $(TARGET).map --emit-relocs
 
 ### Optimisation Overrides
 
