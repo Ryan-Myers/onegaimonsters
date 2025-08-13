@@ -1,15 +1,9 @@
 #include "common.h"
+#include "1E7C0.h"
 
-extern OSMesgQueue D_80182158;
-extern s32 D_8015762C;
-
-typedef struct unkMesg_80110BC0 {
-    s16 unk0;
-    OSMesgQueue *mq;
-    s32 unk8;
-    s32 unkC;
-} unkMesg_80110BC0;
-
+// Passed &D_801830C8 into arg0
+// Returns into D_o1_801AAA50_6AB70 which seems to be passed to func_800FE990 arg0
+// Definitely seems to be an integer return, and not an address.
 s32 func_80110BC0(s32 arg0) {
     OSMesgQueue mq;
     unkMesg_80110BC0 mesg;
