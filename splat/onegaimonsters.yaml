@@ -305,8 +305,8 @@ segments:
       - [0x2E520, asm, ultralib/src/io/pfsisplug]
       # https://github.com/AngheloAlf/drmario64/blob/master/src/libkmc/mmuldi3.s
       - [0x2E800, asm, mmuldi3]
-      - [0x2EBD0, textbin, ucode_boot] #rspbootTextStart
-      - [0x2ECA0, textbin, ucode_audio] # aspMain
+      - [0x2EBD0, textbin, rspboot]
+      - [0x2ECA0, textbin, aspMain]
       - [0x2FAC0, textbin, n_aspMain]
       - [0x30720, textbin, gspF3DEX_fifo]
       - [0x31B50, textbin, gspF3DLX_fifo]
@@ -355,8 +355,8 @@ segments:
       - [0x66990, data, ultralib/src/io/piacs]
       - [0x669A0, data, ultralib/src/io/contpfs]
       - [0x669B0, data, ultralib/src/io/contramread]
-      - [0x669C0, data] # unreferenced at the start.
-      - [0x66C80, data] #n_aspmain RODATA start?
+      - [0x669C0, databin, aspMain]
+      - [0x66C80, databin, n_aspMain]
       - [0x66F30, databin, gspF3DEX_fifo] #RSP Gfx ucode F3DEX         1.23 Yoshitaka Yasumoto Nintendo.
       - [0x67730, databin, gspF3DLX_fifo] #RSP Gfx ucode F3DLX         1.23 Yoshitaka Yasumoto Nintendo.
       - [0x67F30, databin, gspL3DEX_fifo] #RSP Gfx ucode L3DEX         1.23 Yoshitaka Yasumoto Nintendo.
