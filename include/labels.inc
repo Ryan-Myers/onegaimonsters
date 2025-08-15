@@ -14,6 +14,7 @@
 
 .macro dlabel label
     .global \label
+    .type \label, @object
     \label:
 .endm
 

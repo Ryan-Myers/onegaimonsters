@@ -42,7 +42,8 @@ BUILD_DIR = build
 SRC_DIR   = src
 OVERLAY_DIR = src/overlays
 LIBULTRA_DIR = src/ultralib
-ASM_DIRS  = asm asm/data asm/nonmatchings asm/data/libultra asm/ultralib/src/n_audio asm/ultralib/src/gu asm/ultralib/src/os
+ASM_DIRS  = asm asm/data asm/data/ucodes asm/nonmatchings 
+ASM_DIRS += asm/data/libultra asm/ultralib/src/n_audio asm/ultralib/src/gu asm/ultralib/src/os
 ASM_DIRS += asm/ultralib/src/audio asm/ultralib/src/io asm/ultralib/src/libc asm/data/ultralib/src/n_audio
 ASM_DIRS += asm/data/ultralib/src/gu asm/data/ultralib/src/os asm/data/ultralib/src/audio asm/data/ultralib/src/io
 HASM_DIRS = $(SRC_DIR)/hasm $(LIBULTRA_DIR)/src/os $(LIBULTRA_DIR)/src/gu $(LIBULTRA_DIR)/src/libc
@@ -319,6 +320,24 @@ $(BUILD_DIR)/%.o: %.c
 $(BUILD_DIR)/%.o: %.s
 	$(call print,Assembling:,$<,$@)
 	$(V)$(AS) $(ASFLAGS) -MD $(BUILD_DIR)/$*.d -o $@ $< 
+
+# More specific rule for ucodes/
+$(BUILD_DIR)/asm/data/ucodes/%.o: asm/data/ucodes/%.s
+	$(call print,Assembling ucodes:,$<,$@)
+	$(V)$(AS) -march=mips2 -G0 --traditional-format --strip-local-absolute -no-pad-sections -EB -I include -o $@ $< 
+	$(V)$(OBJCOPY) \
+		--set-section-alignment .text=4 \
+		--set-section-alignment .data=4 \
+		--set-section-alignment .symtab=4 \
+		--set-section-alignment .strtab=4 \
+		--set-section-alignment .shstrtab=4 \
+		--remove-section=.gnu.attributes \
+		--remove-section=.reginfo \
+		--remove-section=.pdr \
+		--remove-section=.bss \
+		--remove-section=.MIPS.abiflags \
+		$@
+	$(V)$(PYTHON) $(TOOLS_DIR)/patchucode.py $@ || rm $@
 
 $(BUILD_DIR)/%.o: %.bin
 	$(call print,Linking Binary:,$<,$@)

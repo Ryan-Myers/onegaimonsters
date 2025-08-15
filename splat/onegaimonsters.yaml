@@ -305,12 +305,12 @@ segments:
       - [0x2E520, asm, ultralib/src/io/pfsisplug]
       # https://github.com/AngheloAlf/drmario64/blob/master/src/libkmc/mmuldi3.s
       - [0x2E800, asm, mmuldi3]
-      - [0x2EBD0, textbin, rspboot]
-      - [0x2ECA0, textbin, aspMain]
-      - [0x2FAC0, textbin, n_aspMain]
-      - [0x30720, textbin, gspF3DEX_fifo]
-      - [0x31B50, textbin, gspF3DLX_fifo]
-      - [0x32F80, textbin, gspL3DEX_fifo]
+      - [0x2EBD0, textbin, ucodes/rspboot]
+      - [0x2ECA0, textbin, ucodes/aspMain]
+      - [0x2FAC0, textbin, ucodes/n_aspMain]
+      - [0x30720, textbin, ucodes/gspF3DEX.fifo]
+      - [0x31B50, textbin, ucodes/gspF3DLX.fifo]
+      - [0x32F80, textbin, ucodes/gspL3DEX.fifo]
       - [0x33F70, data, 1050]
       - [0x60590, .data, gfxinit]
       - [0x60660, .data, atan2lookup]
@@ -355,11 +355,11 @@ segments:
       - [0x66990, data, ultralib/src/io/piacs]
       - [0x669A0, data, ultralib/src/io/contpfs]
       - [0x669B0, data, ultralib/src/io/contramread]
-      - [0x669C0, databin, aspMain]
-      - [0x66C80, databin, n_aspMain]
-      - [0x66F30, databin, gspF3DEX_fifo] #RSP Gfx ucode F3DEX         1.23 Yoshitaka Yasumoto Nintendo.
-      - [0x67730, databin, gspF3DLX_fifo] #RSP Gfx ucode F3DLX         1.23 Yoshitaka Yasumoto Nintendo.
-      - [0x67F30, databin, gspL3DEX_fifo] #RSP Gfx ucode L3DEX         1.23 Yoshitaka Yasumoto Nintendo.
+      - [0x669C0, databin, ucodes/aspMain]
+      - [0x66C80, databin, ucodes/n_aspMain]
+      - [0x66F30, databin, ucodes/gspF3DEX.fifo] #RSP Gfx ucode F3DEX         1.23 Yoshitaka Yasumoto Nintendo.
+      - [0x67730, databin, ucodes/gspF3DLX.fifo] #RSP Gfx ucode F3DLX         1.23 Yoshitaka Yasumoto Nintendo.
+      - [0x67F30, databin, ucodes/gspL3DEX.fifo] #RSP Gfx ucode L3DEX         1.23 Yoshitaka Yasumoto Nintendo.
       - [0x68730, .rodata, 1050]
       - [0x68940, .rodata, gfxinit]
       - [0x68960, .rodata, atan2lookup]
@@ -1323,7 +1323,7 @@ segments:
     subsegments:
       - [0x1ABBC0, asm]
       - [0x1AE310, data]
-      - { type: bss, vram: 0x801FA420, name: o64_bss }
+      - { type: bss, vram: 0x801FA210, name: o64_bss }
 
   - name: o65
     type: code
