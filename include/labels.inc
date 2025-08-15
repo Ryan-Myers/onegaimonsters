@@ -2,7 +2,6 @@
     .global \label
     .type \label, @function
     \label:
-    .ent    \label
 .endm
 
 .macro endlabel label

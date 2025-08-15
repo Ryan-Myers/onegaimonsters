@@ -27,7 +27,7 @@ options:
   asm_jtbl_label_macro: jlabel
   asm_data_macro: dlabel
   asm_emit_size_directive: True
-  asm_end_label: .end
+  # asm_end_label: .end
 
   # section_order: [".text", ".data", ".rodata", ".bss"]
   # auto_link_sections: [".data", ".rodata", ".bss"]
@@ -305,12 +305,12 @@ segments:
       - [0x2E520, asm, ultralib/src/io/pfsisplug]
       # https://github.com/AngheloAlf/drmario64/blob/master/src/libkmc/mmuldi3.s
       - [0x2E800, asm, mmuldi3]
-      - [0x2EBD0, data, ucode_boot] #rspbootTextStart
-      - [0x2ECA0, data, ucode_audio] # aspMain
-      - [0x2FAC0, data, n_aspMain]
-      - [0x30720, data, gspF3DEX_fifo]
-      - [0x31B50, data, gspF3DLX_fifo]
-      - [0x32F80, data, gspL3DEX_fifo]
+      - [0x2EBD0, textbin, ucode_boot] #rspbootTextStart
+      - [0x2ECA0, textbin, ucode_audio] # aspMain
+      - [0x2FAC0, textbin, n_aspMain]
+      - [0x30720, textbin, gspF3DEX_fifo]
+      - [0x31B50, textbin, gspF3DLX_fifo]
+      - [0x32F80, textbin, gspL3DEX_fifo]
       - [0x33F70, data, 1050]
       - [0x60590, .data, gfxinit]
       - [0x60660, .data, atan2lookup]
@@ -357,12 +357,9 @@ segments:
       - [0x669B0, data, ultralib/src/io/contramread]
       - [0x669C0, data] # unreferenced at the start.
       - [0x66C80, data] #n_aspmain RODATA start?
-      - [0x66F30, data] #gspF3DEX_fifoTextStart - RODATA START?
-      - [0x671E0, data] #RSP Gfx ucode F3DEX         1.23 Yoshitaka Yasumoto Nintendo.
-      - [0x67730, data] #gspF3DLX_fifoTextStart text end?
-      - [0x679E0, data] #RSP Gfx ucode F3DLX         1.23 Yoshitaka Yasumoto Nintendo.
-      - [0x67F30, data]
-      - [0x681E0, data] #RSP Gfx ucode L3DEX         1.23 Yoshitaka Yasumoto Nintendo.
+      - [0x66F30, databin, gspF3DEX_fifo] #RSP Gfx ucode F3DEX         1.23 Yoshitaka Yasumoto Nintendo.
+      - [0x67730, databin, gspF3DLX_fifo] #RSP Gfx ucode F3DLX         1.23 Yoshitaka Yasumoto Nintendo.
+      - [0x67F30, databin, gspL3DEX_fifo] #RSP Gfx ucode L3DEX         1.23 Yoshitaka Yasumoto Nintendo.
       - [0x68730, .rodata, 1050]
       - [0x68940, .rodata, gfxinit]
       - [0x68960, .rodata, atan2lookup]

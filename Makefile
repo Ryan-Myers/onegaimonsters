@@ -154,7 +154,7 @@ endif
 #IDO Warnings to Ignore. These are coding style warnings we don't follow
 CC_WARNINGS := -w
 
-CFLAGS := -G 0 -nostdinc -fno-PIC -mno-abicalls -Wa,--force-n64align -mabi=32 -mgp32 -mfp32
+CFLAGS := -G 0 -nostdinc -fno-PIC -mno-abicalls -Wa,--force-n64align -mabi=32 -mgp32 -mfp32 -funsigned-char
 CFLAGS += $(C_DEFINES)
 CFLAGS += $(INCLUDE_CFLAGS)
 
