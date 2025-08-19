@@ -228,8 +228,8 @@ $(BUILD_DIR)/$(LIBULTRA_DIR)/src/n_audio/%.o: OPT_FLAGS := -O3
 # $(BUILD_DIR)/$(LIBULTRA_DIR)/src/audio/cents2ratio.c.o: MIPSISET := -mips2
 
 #Ignore warnings for libultra files
-$(BUILD_DIR)/$(LIBULTRA_DIR)/%.c.o: CC_WARNINGS := -w
-$(BUILD_DIR)/$(LIBULTRA_DIR)/%.c.o: CC_CHECK := :
+$(BUILD_DIR)/$(LIBULTRA_DIR)/%.o: CC_WARNINGS := -w
+$(BUILD_DIR)/$(LIBULTRA_DIR)/%.o: CC_CHECK := :
 
 ### Targets
 
