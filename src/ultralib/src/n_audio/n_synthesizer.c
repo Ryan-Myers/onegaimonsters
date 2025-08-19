@@ -17,7 +17,6 @@
  * Copyright Laws of the United States.
  *====================================================================*/
 #include "n_synthInternals.h"
-#include "common.h"
 
 #ifdef AUD_PROFILE
 #include <os.h>
@@ -260,9 +259,17 @@ void _n_freePVoice(N_PVoice *pvoice)
   the truncation error produced by casting
   a float to an int.
   */
-INCLUDE_ASM("asm/nonmatchings/ultralib/src/n_audio/n_synthesizer", _n_timeToSamplesNoRound);
+s32 _n_timeToSamplesNoRound( s32 micros)
+{
+  f32 tmp = ((f32)micros) * n_syn->outputRate / 1000000.0 + 0.5;
+  
+  return (s32)tmp;
+}
 
-INCLUDE_ASM("asm/nonmatchings/ultralib/src/n_audio/n_synthesizer", _n_timeToSamples);
+s32 _n_timeToSamples( s32 micros)
+{
+  return _n_timeToSamplesNoRound( micros) & ~0xf;
+}
 
 static s32 __n_nextSampleTime(ALPlayer **client) 
 {

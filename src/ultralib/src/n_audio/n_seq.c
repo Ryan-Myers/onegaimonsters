@@ -29,10 +29,8 @@
 
 static s32 readVarLen(ALSeq *s);
 static u8  read8(ALSeq *s);
-#if 0
 static s16 read16(ALSeq *s);
 static s32 read32(ALSeq *s);
-#endif
 
 void n_alSeqNextEvent(ALSeq *seq, N_ALEvent *event)
 {
@@ -183,7 +181,6 @@ static u8 read8(ALSeq *seq)
     return *seq->curPtr++;
 }
 
-#if 0
 static s16 read16(ALSeq *seq)
 {
     s16 tmp;
@@ -205,7 +202,6 @@ static s32 read32(ALSeq *seq)
 
     return tmp;
 }
-#endif
 
 static s32 readVarLen(ALSeq *seq)
 {
