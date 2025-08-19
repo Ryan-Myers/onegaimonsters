@@ -197,6 +197,7 @@ $(BUILD_DIR)/$(SRC_DIR)/overlays/o1/o1_69280.o: OPT_FLAGS := -O2 -g2
 $(BUILD_DIR)/$(LIBULTRA_DIR)/%.c.o: OPT_FLAGS := -O2
 $(BUILD_DIR)/$(LIBULTRA_DIR)/src/audio/%.o: OPT_FLAGS := -O3
 $(BUILD_DIR)/$(LIBULTRA_DIR)/src/n_audio/%.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/$(LIBULTRA_DIR)/src/gu/%.o: OPT_FLAGS := -O3
 # $(BUILD_DIR)/$(LIBULTRA_DIR)/src/audio/%.c.o: OPT_FLAGS := -O3
 # $(BUILD_DIR)/$(LIBULTRA_DIR)/src/audio/mips1/%.c.o: OPT_FLAGS := -O2
 # $(BUILD_DIR)/$(LIBULTRA_DIR)/src/os/%.c.o: OPT_FLAGS := -O1
