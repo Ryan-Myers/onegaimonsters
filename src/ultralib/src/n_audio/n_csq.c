@@ -211,7 +211,7 @@ static u32 __n_alCSeqGetTrackEvent(ALCSeq *seq, u32 track, N_ALEvent *event)
     return TRUE;
 }
 
-
+//TODO: Diff from libultra?
 INCLUDE_ASM("asm/nonmatchings/ultralib/src/n_audio/n_csq", n_alCSeqNewMarker);
 
 
