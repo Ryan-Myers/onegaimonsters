@@ -1,7 +1,7 @@
 BASENAME  = onegaimonsters
 NON_MATCHING ?= 0
-# Unknonwn yet
-LIBULTRA_VERSION_DEFINE := -DBUILD_VERSION=7 -DBUILD_VERSION_STRING=\"2.0J\"
+# Seems to be a patched I version, that's mostly similar to J?
+LIBULTRA_VERSION_DEFINE := -DBUILD_VERSION=7 -DBUILD_VERSION_STRING=\"2.0J\" -DPATCHED_I=1
 
 # Whether to hide commands or not
 VERBOSE ?= 0
@@ -134,11 +134,12 @@ else
 endif
 
 DEFINES += $(MATCHDEFS)
-C_DEFINES := $(foreach d,$(DEFINES),-D$(d)) $(LIBULTRA_VERSION_DEFINE) -D_MIPS_SZLONG=32 -D__USE_ISOC99 -D_LANGUAGE_C
+C_DEFINES := $(foreach d,$(DEFINES),-D$(d)) -D_MIPS_SZLONG=32 -D__USE_ISOC99 -D_LANGUAGE_C
 ASM_DEFINES = $(foreach d,$(DEFINES),$(if $(findstring =,$(d)),--defsym $(d),))
 
 INCLUDE_CFLAGS = $(foreach d,$(SRC_OVERLAYS_DIRS),-I $(d)) $(foreach d,$(ASM_OVERLAYS_DIRS),-I $(d))
-INCLUDE_CFLAGS += -I . -I include -I include/libc  -I include/PR -I include/sys -I $(BIN_DIRS) -I $(BIN_OVERLAY_DIRS) -I $(SRC_DIR) -I $(LIBULTRA_DIR)
+INCLUDE_CFLAGS += -I . -I include -I include/libc  -I include/PR -I include/PRinternal -I include/sys
+INCLUDE_CFLAGS += -I $(BIN_DIRS) -I $(BIN_OVERLAY_DIRS) -I $(SRC_DIR) -I $(LIBULTRA_DIR)
 INCLUDE_CFLAGS += -I $(LIBULTRA_DIR)/src/gu -I $(LIBULTRA_DIR)/src/libc -I $(LIBULTRA_DIR)/src/io  -I $(LIBULTRA_DIR)/src/sc 
 INCLUDE_CFLAGS += -I $(LIBULTRA_DIR)/src/audio -I $(LIBULTRA_DIR)/src/n_audio -I $(LIBULTRA_DIR)/src/os
 
@@ -198,6 +199,10 @@ $(BUILD_DIR)/$(LIBULTRA_DIR)/%.c.o: OPT_FLAGS := -O2
 $(BUILD_DIR)/$(LIBULTRA_DIR)/src/audio/%.o: OPT_FLAGS := -O3
 $(BUILD_DIR)/$(LIBULTRA_DIR)/src/n_audio/%.o: OPT_FLAGS := -O3
 $(BUILD_DIR)/$(LIBULTRA_DIR)/src/gu/%.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/$(LIBULTRA_DIR)/src/io/%.o: OPT_FLAGS := -O3
+
+$(BUILD_DIR)/$(LIBULTRA_DIR)/src/io/aisetnextbuf.o: LIBULTRA_VERSION_DEFINE := -DBUILD_VERSION=6 -DBUILD_VERSION_STRING=\"2.0I\"
+
 # $(BUILD_DIR)/$(LIBULTRA_DIR)/src/audio/%.c.o: OPT_FLAGS := -O3
 # $(BUILD_DIR)/$(LIBULTRA_DIR)/src/audio/mips1/%.c.o: OPT_FLAGS := -O2
 # $(BUILD_DIR)/$(LIBULTRA_DIR)/src/os/%.c.o: OPT_FLAGS := -O1
@@ -308,7 +313,7 @@ $(TARGET).elf: dirs $(LD_SCRIPT) $(O_FILES)
 $(BUILD_DIR)/%.o: %.c
 	$(call print,Compiling:,$<,$@)
 	$(V)$(CC_CHECK) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
-	$(V)$(CC) -c $(CFLAGS) -I include/compiler/gcc $(CC_WARNINGS) $(OPT_FLAGS) $(MIPSISET) -o $@ $<
+	$(V)$(CC) -c $(CFLAGS) -I include/compiler/gcc $(CC_WARNINGS) $(OPT_FLAGS) $(MIPSISET) $(LIBULTRA_VERSION_DEFINE) -o $@ $<
 
 # $(BUILD_DIR)/$(LIBULTRA_DIR)/src/libc/llcvt.c.o: $(LIBULTRA_DIR)/src/libc/llcvt.c
 # 	$(call print,Compiling mips3:,$<,$@)

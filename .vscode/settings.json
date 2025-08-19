@@ -10,7 +10,8 @@
         "_LANGUAGE_C",
         "BUILD_VERSION=7",
         "F3DEX_GBI",
-        "__USE_ISOC99"
+        "__USE_ISOC99",
+        "PATCHED_I=1",
     ],
     "files.associations": {
         "*.h": "c"

@@ -101,7 +101,7 @@ extern OSMesgQueue __osPiAccessQueue;
 extern u32 __osPiAccessQueueEnabled;
 
 // These symbols were all renamed in 2.0J.
-#if BUILD_VERSION < VERSION_J
+#if 1
 #define __osEPiRawStartDma osEPiRawStartDma
 #define __osEPiRawReadIo osEPiRawReadIo
 #define __osEPiRawWriteIo osEPiRawWriteIo

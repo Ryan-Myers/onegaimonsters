@@ -1,3 +1,8 @@
-#include "common.h"
+#include "PR/rcp.h"
 
-INCLUDE_ASM("asm/nonmatchings/ultralib/src/io/aigetstat", osAiGetStatus);
+// TODO: this comes from a header
+#ident "$Revision: 1.17 $"
+
+u32 osAiGetStatus(void) {
+    return IO_READ(AI_STATUS_REG);
+}
