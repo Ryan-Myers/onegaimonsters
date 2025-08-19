@@ -54,6 +54,7 @@ typedef void *OSMesg;
 
 /*
  * Structure for message queue
+    Size: 0x18
  */
 typedef struct OSMesgQueue_s {
     OSThread    *mtqueue;       /* Queue to store threads blocked on empty mailboxes (receive) */

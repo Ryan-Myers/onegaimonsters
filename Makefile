@@ -1,7 +1,7 @@
 BASENAME  = onegaimonsters
 NON_MATCHING ?= 0
-# Unknonwn yet
-LIBULTRA_VERSION_DEFINE := -DBUILD_VERSION=7 -DBUILD_VERSION_STRING=\"2.0J\"
+# Seems to be a patched I version, that's mostly similar to J?
+LIBULTRA_VERSION_DEFINE := -DBUILD_VERSION=7 -DBUILD_VERSION_STRING=\"2.0J\" -DPATCHED_I=1
 
 # Whether to hide commands or not
 VERBOSE ?= 0
@@ -42,7 +42,8 @@ BUILD_DIR = build
 SRC_DIR   = src
 OVERLAY_DIR = src/overlays
 LIBULTRA_DIR = src/ultralib
-ASM_DIRS  = asm asm/data asm/nonmatchings asm/data/libultra asm/ultralib/src/n_audio asm/ultralib/src/gu asm/ultralib/src/os
+ASM_DIRS  = asm asm/data asm/data/ucodes asm/nonmatchings 
+ASM_DIRS += asm/data/libultra asm/ultralib/src/n_audio asm/ultralib/src/gu asm/ultralib/src/os
 ASM_DIRS += asm/ultralib/src/audio asm/ultralib/src/io asm/ultralib/src/libc asm/data/ultralib/src/n_audio
 ASM_DIRS += asm/data/ultralib/src/gu asm/data/ultralib/src/os asm/data/ultralib/src/audio asm/data/ultralib/src/io
 HASM_DIRS = $(SRC_DIR)/hasm $(LIBULTRA_DIR)/src/os $(LIBULTRA_DIR)/src/gu $(LIBULTRA_DIR)/src/libc
@@ -118,7 +119,7 @@ OPT_FLAGS      = -O2
 
 MIPSISET       = -mips3
 
-DEFINES := _FINALROM NDEBUG TARGET_N64 F3DEX_GBI
+DEFINES := _FINALROM NDEBUG TARGET_N64 F3DEX_GBI N_MICRO
 
 VERIFY = verify
 
@@ -133,11 +134,12 @@ else
 endif
 
 DEFINES += $(MATCHDEFS)
-C_DEFINES := $(foreach d,$(DEFINES),-D$(d)) $(LIBULTRA_VERSION_DEFINE) -D_MIPS_SZLONG=32 -D__USE_ISOC99 -D_LANGUAGE_C
+C_DEFINES := $(foreach d,$(DEFINES),-D$(d)) -D_MIPS_SZLONG=32 -D__USE_ISOC99 -D_LANGUAGE_C
 ASM_DEFINES = $(foreach d,$(DEFINES),$(if $(findstring =,$(d)),--defsym $(d),))
 
 INCLUDE_CFLAGS = $(foreach d,$(SRC_OVERLAYS_DIRS),-I $(d)) $(foreach d,$(ASM_OVERLAYS_DIRS),-I $(d))
-INCLUDE_CFLAGS += -I . -I include -I include/libc  -I include/PR -I include/sys -I $(BIN_DIRS) -I $(BIN_OVERLAY_DIRS) -I $(SRC_DIR) -I $(LIBULTRA_DIR)
+INCLUDE_CFLAGS += -I . -I include -I include/libc  -I include/PR -I include/PRinternal -I include/sys
+INCLUDE_CFLAGS += -I $(BIN_DIRS) -I $(BIN_OVERLAY_DIRS) -I $(SRC_DIR) -I $(LIBULTRA_DIR)
 INCLUDE_CFLAGS += -I $(LIBULTRA_DIR)/src/gu -I $(LIBULTRA_DIR)/src/libc -I $(LIBULTRA_DIR)/src/io  -I $(LIBULTRA_DIR)/src/sc 
 INCLUDE_CFLAGS += -I $(LIBULTRA_DIR)/src/audio -I $(LIBULTRA_DIR)/src/n_audio -I $(LIBULTRA_DIR)/src/os
 
@@ -154,7 +156,7 @@ endif
 #IDO Warnings to Ignore. These are coding style warnings we don't follow
 CC_WARNINGS := -w
 
-CFLAGS := -G 0 -nostdinc -fno-PIC -mno-abicalls -Wa,--force-n64align -mabi=32 -mgp32 -mfp32
+CFLAGS := -G 0 -nostdinc -fno-PIC -mno-abicalls -Wa,--force-n64align -mabi=32 -mgp32 -mfp32 -funsigned-char
 CFLAGS += $(C_DEFINES)
 CFLAGS += $(INCLUDE_CFLAGS)
 
@@ -173,7 +175,7 @@ TARGET     = $(BUILD_DIR)/$(BASENAME)
 LD_SCRIPT  = splat/$(BASENAME).ld
 
 LD_FLAGS   = -T $(LD_SCRIPT) -T $(SYMBOLS_DIR)/undefined_syms.txt  -T $(SYMBOLS_DIR)/undefined_funcs_auto.txt  -T $(SYMBOLS_DIR)/undefined_syms_auto.txt
-LD_FLAGS  += -Map $(TARGET).map
+LD_FLAGS  += -Map $(TARGET).map --emit-relocs
 
 ### Optimisation Overrides
 
@@ -194,6 +196,14 @@ $(BUILD_DIR)/$(SRC_DIR)/overlays/o1/o1_69280.o: OPT_FLAGS := -O2 -g2
 ####################### LIBULTRA #########################
 
 $(BUILD_DIR)/$(LIBULTRA_DIR)/%.c.o: OPT_FLAGS := -O2
+$(BUILD_DIR)/$(LIBULTRA_DIR)/src/audio/%.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/$(LIBULTRA_DIR)/src/n_audio/%.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/$(LIBULTRA_DIR)/src/gu/%.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/$(LIBULTRA_DIR)/src/io/%.o: OPT_FLAGS := -O3
+
+$(BUILD_DIR)/$(LIBULTRA_DIR)/src/io/aisetnextbuf.o: LIBULTRA_VERSION_DEFINE := -DBUILD_VERSION=6 -DBUILD_VERSION_STRING=\"2.0I\"
+$(BUILD_DIR)/$(LIBULTRA_DIR)/src/os/destroythread.o: LIBULTRA_VERSION_DEFINE := -DBUILD_VERSION=6 -DBUILD_VERSION_STRING=\"2.0I\"
+
 # $(BUILD_DIR)/$(LIBULTRA_DIR)/src/audio/%.c.o: OPT_FLAGS := -O3
 # $(BUILD_DIR)/$(LIBULTRA_DIR)/src/audio/mips1/%.c.o: OPT_FLAGS := -O2
 # $(BUILD_DIR)/$(LIBULTRA_DIR)/src/os/%.c.o: OPT_FLAGS := -O1
@@ -226,8 +236,8 @@ $(BUILD_DIR)/$(LIBULTRA_DIR)/%.c.o: OPT_FLAGS := -O2
 # $(BUILD_DIR)/$(LIBULTRA_DIR)/src/audio/cents2ratio.c.o: MIPSISET := -mips2
 
 #Ignore warnings for libultra files
-$(BUILD_DIR)/$(LIBULTRA_DIR)/%.c.o: CC_WARNINGS := -w
-$(BUILD_DIR)/$(LIBULTRA_DIR)/%.c.o: CC_CHECK := :
+$(BUILD_DIR)/$(LIBULTRA_DIR)/%.o: CC_WARNINGS := -w
+$(BUILD_DIR)/$(LIBULTRA_DIR)/%.o: CC_CHECK := :
 
 ### Targets
 
@@ -304,7 +314,7 @@ $(TARGET).elf: dirs $(LD_SCRIPT) $(O_FILES)
 $(BUILD_DIR)/%.o: %.c
 	$(call print,Compiling:,$<,$@)
 	$(V)$(CC_CHECK) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
-	$(V)$(CC) -c $(CFLAGS) -I include/compiler/gcc $(CC_WARNINGS) $(OPT_FLAGS) $(MIPSISET) -o $@ $<
+	$(V)$(CC) -c $(CFLAGS) -I include/compiler/gcc $(CC_WARNINGS) $(OPT_FLAGS) $(MIPSISET) $(LIBULTRA_VERSION_DEFINE) -o $@ $<
 
 # $(BUILD_DIR)/$(LIBULTRA_DIR)/src/libc/llcvt.c.o: $(LIBULTRA_DIR)/src/libc/llcvt.c
 # 	$(call print,Compiling mips3:,$<,$@)
@@ -319,6 +329,19 @@ $(BUILD_DIR)/%.o: %.c
 $(BUILD_DIR)/%.o: %.s
 	$(call print,Assembling:,$<,$@)
 	$(V)$(AS) $(ASFLAGS) -MD $(BUILD_DIR)/$*.d -o $@ $< 
+
+# More specific rule for ucodes/
+$(BUILD_DIR)/asm/data/ucodes/%.o: asm/data/ucodes/%.s
+	$(call print,Assembling ucodes:,$<,$@)
+	$(V)$(AS) -march=mips2 -G0 --traditional-format --strip-local-absolute -no-pad-sections -EB -I include -o $@ $< 
+	$(V)$(OBJCOPY) \
+		--set-section-alignment .text=4 \
+		--remove-section=.gnu.attributes \
+		--remove-section=.reginfo \
+		--remove-section=.pdr \
+		--remove-section=.bss \
+		--remove-section=.MIPS.abiflags \
+		$@
 
 $(BUILD_DIR)/%.o: %.bin
 	$(call print,Linking Binary:,$<,$@)
