@@ -16,16 +16,15 @@
  * DOD or NASA FAR Supplement. Unpublished - rights reserved under the
  * Copyright Laws of the United States.
  *====================================================================*/
+#include "n_synthInternals.h"
 
-#include <libaudio.h>
-#include "n_libaudio.h"
-
-void n_alCSPPlay(N_ALCSPlayer *seqp)
+void n_alSynDelete(void)
 {
-    N_ALEvent evt;
-    
-    evt.type = AL_SEQP_PLAY_EVT;
-                    
-    n_alEvtqPostEvent(&seqp->evtq, &evt, 0);
+#if 1
+  n_syn->head = 0;
+#endif
+  n_syn->n_seqp1         = NULL;
+  n_syn->n_seqp2         = NULL;
+  n_syn->n_sndp          = NULL;
 }
 

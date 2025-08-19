@@ -119,7 +119,7 @@ OPT_FLAGS      = -O2
 
 MIPSISET       = -mips3
 
-DEFINES := _FINALROM NDEBUG TARGET_N64 F3DEX_GBI
+DEFINES := _FINALROM NDEBUG TARGET_N64 F3DEX_GBI N_MICRO
 
 VERIFY = verify
 
@@ -327,17 +327,12 @@ $(BUILD_DIR)/asm/data/ucodes/%.o: asm/data/ucodes/%.s
 	$(V)$(AS) -march=mips2 -G0 --traditional-format --strip-local-absolute -no-pad-sections -EB -I include -o $@ $< 
 	$(V)$(OBJCOPY) \
 		--set-section-alignment .text=4 \
-		--set-section-alignment .data=4 \
-		--set-section-alignment .symtab=4 \
-		--set-section-alignment .strtab=4 \
-		--set-section-alignment .shstrtab=4 \
 		--remove-section=.gnu.attributes \
 		--remove-section=.reginfo \
 		--remove-section=.pdr \
 		--remove-section=.bss \
 		--remove-section=.MIPS.abiflags \
 		$@
-	$(V)$(PYTHON) $(TOOLS_DIR)/patchucode.py $@ || rm $@
 
 $(BUILD_DIR)/%.o: %.bin
 	$(call print,Linking Binary:,$<,$@)
