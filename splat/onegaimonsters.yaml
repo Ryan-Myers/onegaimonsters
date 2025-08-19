@@ -343,19 +343,19 @@ segments:
       - [0x654B0, .data, ultralib/src/audio/env]
       - [0x655B0, .data, ultralib/src/audio/reverb]
       - [0x655D0, .data, ultralib/src/io/cartrominit]
-      - [0x655E0, data, ultralib/src/io/pimgr]
-      - [0x65610, data, ultralib/src/io/vimgr]
+      - [0x655E0, .data, ultralib/src/io/pimgr]
+      - [0x65610, .data, ultralib/src/io/vimgr]
       - [0x65630, .data, ultralib/src/io/vitbl]
       - [0x667B0, data, ultralib/src/os/exceptasm]
       - [0x667E0, data, ultralib/src/os/initialize]
       - [0x66800, data, ultralib/src/os/seteventmesg]
       - [0x66810, data, ultralib/src/os/timerintr]
-      - [0x66820, data, ultralib/src/io/vi]
-      - [0x66890, data, ultralib/src/io/siacs]
+      - [0x66820, .data, ultralib/src/io/vi]
+      - [0x66890, .data, ultralib/src/io/siacs]
       - [0x668A0, .data, ultralib/src/vimodes/vimodentsclan1]
       - [0x668F0, .data, ultralib/src/vimodes/vimodepallan1]
       - [0x66940, .data, ultralib/src/vimodes/vimodempallan1]
-      - [0x66990, data, ultralib/src/io/piacs]
+      - [0x66990, .data, ultralib/src/io/piacs]
       - [0x669A0, .data, ultralib/src/io/contpfs]
       - [0x669B0, .data, ultralib/src/io/contramread]
       - [0x669C0, databin, ucodes/aspMain]
@@ -404,13 +404,13 @@ segments:
       - { type: .bss, vram: 0x80169250, name: 1F3B0 }
       - { type: bss, vram: 0x8016B500, name: 1F650 }
       - { type: bss, vram: 0x8016D6D0, name: 1F810 }
-      - { type: bss, vram: 0x8016D6E0, name: ultralib/src/io/sptask }
+      - { type: .bss, vram: 0x8016D6E0, name: ultralib/src/io/sptask }
       - { type: .bss, vram: 0x8016D720, name: ultralib/src/io/motor }
-      - { type: bss, vram: 0x8016D820, name: ultralib/src/io/pimgr }
-      - { type: bss, vram: 0x8016E9F0, name: ultralib/src/io/vimgr }
-      - { type: bss, vram: 0x8016FC10, name: ultralib/src/io/siacs }
-      - { type: bss, vram: 0x8016FC20, name: ultralib/src/io/piacs }
-      - { type: bss, vram: 0x8016FC40, name: 14900 } # Seems to be used in multiple files.
+      - { type: .bss, vram: 0x8016D820, name: ultralib/src/io/pimgr }
+      - { type: .bss, vram: 0x8016E9F0, name: ultralib/src/io/vimgr }
+      - { type: .bss, vram: 0x8016FC10, name: ultralib/src/io/siacs }
+      - { type: .bss, vram: 0x8016FC20, name: ultralib/src/io/piacs }
+      - { type: bss, vram: 0x8016FC30, name: 8016FC30 } # Seems to be used in multiple files.
       # - { type: bss, vram: 0x8017052C, name: timerintr } # Weird alignment
       - { type: bss, vram: 0x80170F98, name: ultralib/src/os/exceptasm } # What is this alignment?
       - { type: bss, vram: 0x80171148, name: bss5 }

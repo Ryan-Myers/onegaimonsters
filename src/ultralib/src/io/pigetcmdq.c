@@ -1,5 +1,10 @@
-#include "common.h"
+#include "PR/os_internal.h"
+#include "PRinternal/piint.h"
 
-INCLUDE_ASM("asm/nonmatchings/ultralib/src/io/pigetcmdq", osPiGetCmdQueue);
-
-INCLUDE_ASM("asm/nonmatchings/ultralib/src/io/pigetcmdq", MusPtrBankGetCurrent);
+OSMesgQueue* osPiGetCmdQueue(void) {
+    if (!__osPiDevMgr.active) {
+        return NULL;
+    } else {
+        return __osPiDevMgr.cmdQueue;
+    }
+}
