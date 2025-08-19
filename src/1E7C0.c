@@ -1,5 +1,5 @@
-#include "common.h"
 #include "1E7C0.h"
+#include "common.h"
 
 // Passed &D_801830C8 into arg0
 // Returns into D_o1_801AAA50_6AB70 which seems to be passed to func_800FE990 arg0

@@ -13,7 +13,6 @@ typedef struct unkMesg_80110F00 {
     s32 unk18;
 } unkMesg_80110F00;
 
-
 void func_80110F00(s32 arg0, s32 arg1, s32 arg2) {
     OSMesgQueue mq;
     unkMesg_80110F00 mesg;

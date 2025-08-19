@@ -17,7 +17,7 @@ typedef struct unkMesg_80110FA0 {
 // arg1 is rodata "ONEGAI MONSTER"
 // arg2 is rodata "B"
 void func_80110FA0(s32 arg0, char *arg1, char *arg2) {
-    OSMesgQueue mq;    
+    OSMesgQueue mq;
     OSMesg dummy[1];
     unkMesg_80110FA0 mesg;
     u8 sp48[16];
@@ -27,10 +27,10 @@ void func_80110FA0(s32 arg0, char *arg1, char *arg2) {
     if (D_8015762C == 0) {
         return;
     }
-    
+
     bzero(&sp48, ARRAY_COUNT(sp48));
     bzero(&sp58, ARRAY_COUNT(sp58));
-    for (i = 0; arg1[i] != '\0'; i++) { }
+    for (i = 0; arg1[i] != '\0'; i++) {}
     func_801120A0(arg1, sp48, i);
     func_801120A0(arg2, sp58, 1);
     osCreateMesgQueue(&mq, dummy, 1);
