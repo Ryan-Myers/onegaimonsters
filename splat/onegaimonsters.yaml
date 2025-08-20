@@ -392,7 +392,7 @@ segments:
       - [0x691B0, .rodata, ultralib/src/io/aisetfreq]
       - [0x691C0, .rodata, ultralib/src/io/viswapcontext]
       - [0x691D0, rodata, ultralib/src/os/exceptasm]
-      - [0x69220, rodata, ultralib/src/gu/libm_vals]
+      - [0x69220, .rodata, ultralib/src/gu/libm_vals]
       - [0x69230, .rodata, ultralib/src/audio/resample]
       - [0x69260, .rodata, ultralib/src/io/devmgr]
       - { type: bss, vram: 0x8015B680, name: 1050 }
