@@ -32,7 +32,9 @@ options:
   # section_order: [".text", ".data", ".rodata", ".bss"]
   # auto_link_sections: [".data", ".rodata", ".bss"]
 
-  symbol_addrs_path: splat/symbols/symbol_addrs.txt
+  symbol_addrs_path: 
+    - splat/symbols/symbol_addrs.txt
+    - splat/symbols/symbol_addrs_libultra.txt
   reloc_addrs_path: splat/symbols/reloc_addrs.txt
 
   undefined_funcs_auto_path: splat/symbols/undefined_funcs_auto.txt
