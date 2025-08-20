@@ -62,7 +62,7 @@ segments:
     start: 0x1000
     vram: 0x800F3400
     bss_size: 0x4DAE0
-    subalign: 0x8
+    subalign: null
     bss_contains_common: True
     subsegments:
       - [0x1000, hasm, hasm/entrypoint]
@@ -367,7 +367,7 @@ segments:
       - [0x68940, .rodata, gfxinit]
       - [0x68960, .rodata, atan2lookup]
       - [0x68980, .rodata, DB50]
-      - [0x68B38, .rodata, 13CF0] # Odd split number...
+      - [0x68B10, .rodata, 13CF0]
       - [0x68B50, .rodata, ultralib/src/n_audio/n_synthesizer]
       - [0x68B70, .rodata, ultralib/src/n_audio/n_csplayer]
       - [0x68C20, .rodata, ultralib/src/n_audio/n_sndplayer]
@@ -412,8 +412,8 @@ segments:
       - { type: .bss, vram: 0x8016FC20, name: ultralib/src/io/piacs }
       - { type: bss, vram: 0x8016FC30, name: 8016FC30 } # Seems to be used in multiple files.
       # - { type: bss, vram: 0x8017052C, name: timerintr } # Weird alignment
-      - { type: bss, vram: 0x80170F98, name: ultralib/src/os/exceptasm } # What is this alignment?
-      - { type: bss, vram: 0x80171148, name: bss5 }
+      # - { type: bss, vram: 0x80170F98, name: ultralib/src/os/exceptasm } # What is this alignment?
+      # - { type: bss, vram: 0x80171148, name: bss5 }
       - { type: .bss, vram: 0x80175E20, name: hasm/entrypoint }
       - { type: bss, vram: 0x80177E20, name: bss6 }
 

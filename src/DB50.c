@@ -118,13 +118,6 @@ void func_801003EC(s32 arg0) {
 INCLUDE_ASM("asm/nonmatchings/DB50", mainproc);
 
 const char D_8015AF0C[] = "9H";
-const char D_8015AF10[] = "NOMJ";
-const char D_8015AF18[] = "ONEGAI MONSTER";
-const char D_8015AF28[] = "";
-const char D_8015AF2C[] = "A";
-const char D_8015AF30[] = "B";
-const char D_8015AF34[] = "";
-
 extern void func_80110B10(void *, s32);
 extern s32 D_801830C8[][4];
 extern s32 D_801830D0[][4];
