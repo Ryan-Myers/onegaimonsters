@@ -193,49 +193,14 @@ $(BUILD_DIR)/$(SRC_DIR)/133F0.o: OPT_FLAGS := -O2 -g2
 $(BUILD_DIR)/$(SRC_DIR)/overlays/code_60A840/621BE0.o: OPT_FLAGS := -O2 -g2
 $(BUILD_DIR)/$(SRC_DIR)/overlays/o1/o1_69280.o: OPT_FLAGS := -O2 -g2
 
-####################### LIBULTRA #########################
+# Libultra files are compiled with -O3
+$(BUILD_DIR)/$(LIBULTRA_DIR)/%.o: OPT_FLAGS := -O3
 
-$(BUILD_DIR)/$(LIBULTRA_DIR)/%.c.o: OPT_FLAGS := -O2
-$(BUILD_DIR)/$(LIBULTRA_DIR)/src/audio/%.o: OPT_FLAGS := -O3
-$(BUILD_DIR)/$(LIBULTRA_DIR)/src/n_audio/%.o: OPT_FLAGS := -O3
-$(BUILD_DIR)/$(LIBULTRA_DIR)/src/gu/%.o: OPT_FLAGS := -O3
-$(BUILD_DIR)/$(LIBULTRA_DIR)/src/io/%.o: OPT_FLAGS := -O3
-
+# These files are a match to libultra version I, and not our default J.
 $(BUILD_DIR)/$(LIBULTRA_DIR)/src/io/aisetnextbuf.o: LIBULTRA_VERSION_DEFINE := -DBUILD_VERSION=6 -DBUILD_VERSION_STRING=\"2.0I\"
 $(BUILD_DIR)/$(LIBULTRA_DIR)/src/os/destroythread.o: LIBULTRA_VERSION_DEFINE := -DBUILD_VERSION=6 -DBUILD_VERSION_STRING=\"2.0I\"
 
-# $(BUILD_DIR)/$(LIBULTRA_DIR)/src/audio/%.c.o: OPT_FLAGS := -O3
-# $(BUILD_DIR)/$(LIBULTRA_DIR)/src/audio/mips1/%.c.o: OPT_FLAGS := -O2
-# $(BUILD_DIR)/$(LIBULTRA_DIR)/src/os/%.c.o: OPT_FLAGS := -O1
-# $(BUILD_DIR)/$(LIBULTRA_DIR)/src/io/%.c.o: OPT_FLAGS := -O1
-# $(BUILD_DIR)/$(LIBULTRA_DIR)/src/io/vimgr.c.o: OPT_FLAGS := -O2
-# $(BUILD_DIR)/$(LIBULTRA_DIR)/src/io/pimgr.c.o: OPT_FLAGS := -O2
-# $(BUILD_DIR)/$(LIBULTRA_DIR)/src/io/motor.c.o: OPT_FLAGS := -O2
-# $(BUILD_DIR)/$(LIBULTRA_DIR)/src/libc/xprintf.c.o : OPT_FLAGS := -O3
-# $(BUILD_DIR)/$(LIBULTRA_DIR)/src/audio/env.c.o: OPT_FLAGS := -g
-# $(BUILD_DIR)/$(LIBULTRA_DIR)/src/libc/llcvt.c.o: OPT_FLAGS := -O1
-# $(BUILD_DIR)/$(LIBULTRA_DIR)/src/libc/llcvt.c.o: MIPSISET := -mips3 -32
-# $(BUILD_DIR)/$(LIBULTRA_DIR)/src/libc/ll.c.o: OPT_FLAGS := -O1
-# $(BUILD_DIR)/$(LIBULTRA_DIR)/src/libc/ll.c.o: MIPSISET := -mips3 -32
-# $(BUILD_DIR)/$(LIBULTRA_DIR)/src/libc/ldiv.c.o: OPT_FLAGS := -O3
-# $(BUILD_DIR)/$(LIBULTRA_DIR)/src/libc/ldiv.c.o: MIPSISET := -mips2
-# $(BUILD_DIR)/$(LIBULTRA_DIR)/src/libc/xldtob.c.o: OPT_FLAGS := -O3
-# $(BUILD_DIR)/$(LIBULTRA_DIR)/src/libc/xldtob.c.o: MIPSISET := -mips2
-
-# $(BUILD_DIR)/$(LIBULTRA_DIR)/src/audio/mips1/%.c.o: MIPSISET := -mips1
-# $(BUILD_DIR)/$(LIBULTRA_DIR)/src/io/pimgr.c.o: MIPSISET := -mips1
-# $(BUILD_DIR)/$(LIBULTRA_DIR)/src/sc/sched.c.o: MIPSISET := -mips1
-# $(BUILD_DIR)/$(LIBULTRA_DIR)/src/io/motor.c.o: MIPSISET := -mips1
-# $(BUILD_DIR)/$(LIBULTRA_DIR)/src/audio/env.c.o: MIPSISET := -mips1
-
-# $(BUILD_DIR)/src/libultra/cents2ratio.c.o: OPT_FLAGS := -g
-# $(BUILD_DIR)/src/libultra/cents2ratio.c.o: MIPSISET := -mips2
-
-
-# $(BUILD_DIR)/$(LIBULTRA_DIR)/src/audio/cents2ratio.c.o: OPT_FLAGS := -g
-# $(BUILD_DIR)/$(LIBULTRA_DIR)/src/audio/cents2ratio.c.o: MIPSISET := -mips2
-
-#Ignore warnings for libultra files
+# Ignore warnings for libultra files
 $(BUILD_DIR)/$(LIBULTRA_DIR)/%.o: CC_WARNINGS := -w
 $(BUILD_DIR)/$(LIBULTRA_DIR)/%.o: CC_CHECK := :
 

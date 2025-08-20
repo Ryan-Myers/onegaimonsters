@@ -1,3 +1,4 @@
+func_code_60A840_80000400_60A840 = 0x80000400; // BOOT_ADDRESS_ULTRA but also seeminly the start of overlay code_60A840
 entrypoint = 0x800F3400;
 func_800FF6C0 = 0x800FF6C0; // type:func starts with nop
 get_angle_from_xz = 0x800FFD20; // type:func starts with nop

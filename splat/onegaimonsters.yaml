@@ -27,14 +27,17 @@ options:
   asm_jtbl_label_macro: jlabel
   asm_data_macro: dlabel
   asm_emit_size_directive: True
+  rom_address_padding: True
   # asm_end_label: .end
 
-  # section_order: [".text", ".data", ".rodata", ".bss"]
-  # auto_link_sections: [".data", ".rodata", ".bss"]
+  section_order: [".text", ".data", ".rodata", ".bss"]
+  auto_link_sections: [".data", ".rodata", ".bss"]
 
   symbol_addrs_path: 
     - splat/symbols/symbol_addrs.txt
     - splat/symbols/symbol_addrs_libultra.txt
+    - splat/symbols/ignored_addresses.txt
+    
   reloc_addrs_path: splat/symbols/reloc_addrs.txt
 
   undefined_funcs_auto_path: splat/symbols/undefined_funcs_auto.txt
