@@ -2,58 +2,9 @@
 #define _DB50_H
 
 #include "common.h"
+#include "segment_symbols.h"
 
-// Overlay 2
-extern u8 o2_ROM_START;
-extern u8 o2_ROM_END;
-extern u32 o2_VRAM;
-extern u32 o2_BSS_START;
-extern u32 o2_BSS_END;
-
-// Overlay 3
-extern u8 o3_ROM_START;
-extern u8 o3_ROM_END;
-extern u32 o3_VRAM;
-extern u32 o3_BSS_START;
-extern u32 o3_BSS_END;
-
-// Overlay 4
-extern u8 o4_ROM_START;
-extern u8 o4_ROM_END;
-extern u32 o4_VRAM;
-extern u32 o4_BSS_START;
-extern u32 o4_BSS_END;
-
-// Overlay 5
-extern u8 o5_ROM_START;
-extern u8 o5_ROM_END;
-
-// Overlay 66
-extern u32 o66_VRAM;
-
-// Overlay 67
-extern u8 o67_ROM_START;
-extern u8 o67_ROM_END;
-extern u32 o67_VRAM;
-extern u32 o67_BSS_START;
-extern u32 o67_BSS_END;
-
-// Overlay code_1B7D00
-extern u8 code_1B7D00_ROM_START;
-
-// Overlay code_682020
-extern u8 code_682020_ROM_START;
-extern u8 code_682020_ROM_END;
-extern u32 code_682020_VRAM;
-
-// Overlay code_60A840
-extern u8 code_60A840_ROM_START;
-extern u8 code_60A840_ROM_END;
-extern u32 code_60A840_VRAM;
-
-
-// Overlay code_728410
-extern u8 code_728410_ROM_START;
+#define MAX_DMA_SIZE 0x18000
 
 /**
  * This has VRAM and DRAM seperated as for some reason, sometimes they invalidate I cache and dma different addresses in VRAM
@@ -65,19 +16,19 @@ extern u8 code_728410_ROM_START;
         u32 size; \
         void *dramAddr; \
         \
-        osInvalICache(&(vram_name##_VRAM), &(overlay_name##_ROM_END) - &(overlay_name##_ROM_START)); \
+        osInvalICache(&(vram_name##_VRAM), (overlay_name##_ROM_END) - (overlay_name##_ROM_START)); \
         devAddr = (u32)&(overlay_name##_ROM_START); \
-        size = (u32)&(overlay_name##_ROM_END) - (u32)&(overlay_name##_ROM_START); \
+        size = (u32)(overlay_name##_ROM_END) - (u32)(overlay_name##_ROM_START); \
         dramAddr = &(overlay_name##_VRAM); \
         while (size != 0) { \
-            if (size < 0x18000) { \
+            if (size < MAX_DMA_SIZE) { \
                 dmaOverlay(devAddr, dramAddr, size); \
                 size = 0; \
             } else { \
-                dmaOverlay(devAddr, dramAddr, 0x18000); \
-                size -= 0x18000; \
-                devAddr += 0x18000; \
-                dramAddr = (void*)((u32)dramAddr + 0x18000); \
+                dmaOverlay(devAddr, dramAddr, MAX_DMA_SIZE); \
+                size -= MAX_DMA_SIZE; \
+                devAddr += MAX_DMA_SIZE; \
+                dramAddr = (void*)((u32)dramAddr + MAX_DMA_SIZE); \
             } \
         } \
     }

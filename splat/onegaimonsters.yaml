@@ -26,9 +26,9 @@ options:
   asm_function_macro: glabel
   asm_jtbl_label_macro: jlabel
   asm_data_macro: dlabel
+  asm_function_alt_macro: alabel
+  # asm_end_label: endlabel
   asm_emit_size_directive: True
-  rom_address_padding: True
-  # asm_end_label: .end
 
   section_order: [".text", ".data", ".rodata", ".bss"]
   auto_link_sections: [".data", ".rodata", ".bss"]
@@ -36,6 +36,7 @@ options:
   symbol_addrs_path: 
     - splat/symbols/symbol_addrs.txt
     - splat/symbols/symbol_addrs_libultra.txt
+    - splat/symbols/symbol_addrs_overlays.txt
     - splat/symbols/ignored_addresses.txt
     
   reloc_addrs_path: splat/symbols/reloc_addrs.txt
@@ -2424,37 +2425,44 @@ segments:
     vram: 0x800D9500
     dir: overlays/data_801E0560
 
-  - type: bin
+  - name: bin_958D70
+    type: bin
     start: 0x958D70
     follows_vram: main
 
-  - type: bin
+  - name: bin_9E9ECA
+    type: bin
     start: 0x9E9ECA
     vram: 0x800B9F00
     follows_vram: main
 
-  - type: bin
+  - name: bin_9EA2A8
+    type: bin
     start: 0x9EA2A8
     vram: 0x800B9700
     follows_vram: main
 
-  - type: bin
+  - name: bin_9EA302
+    type: bin
     start: 0x9EA302
     vram: 0x800B7B00
     follows_vram: main
 
-  - type: bin
+  - name: bin_E42C50
+    type: bin
     start: 0xE42C50
     vram: 0x80177D80 # also 800EC500?
     size: 0x4  # 4 bytes?
     follows_vram: main
 
-  - type: bin
+  - name: bin_E84390
+    type: bin
     start: 0xE84390
     vram: 0x800ECAA0
     follows_vram: main
 
-  - type: bin
+  - name: bin_E8A030
+    type: bin
     start: 0xE8A030
     follows_vram: main
 

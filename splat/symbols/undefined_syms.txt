@@ -13,7 +13,6 @@ osCicId = 0x80000310;
 osVersion = 0x80000314;
 osMemSize = 0x80000318;
 osAppNMIBuffer = 0x8000031C;
-entrypoint = 0x80000400;
 
 SP_MEM_ADDR_REG = 0xA4040000;
 SP_DRAM_ADDR_REG = 0xA4040004;

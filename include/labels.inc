@@ -9,7 +9,9 @@
 
 .macro alabel label
     .global \label
+    .type \label, @function
     \label:
+    .aent    \label
 .endm
 
 .macro dlabel label
