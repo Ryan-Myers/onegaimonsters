@@ -25,36 +25,27 @@ void func_800FFF50(void) {
  * Loads Overlay 2 into memory
  */
 void loadOverlay2(void) {
-    u32 overlaySize;
-
-    overlaySize = o2_ROM_END - o2_ROM_START;
-    osInvalICache(&o2_VRAM, overlaySize);
-    loadOverlayAtAddress(&o2_ROM_START, &o2_VRAM, overlaySize);
-    bzero(&o2_BSS_START, (u32) &o2_BSS_END - (u32) &o2_BSS_START);
+    osInvalICache(SEGMENT_VRAM_START(o2), SEGMENT_ROM_SIZE(o2));
+    loadOverlayAtAddress(SEGMENT_ROM_START(o2), SEGMENT_VRAM_START(o2), SEGMENT_ROM_SIZE(o2));
+    ZERO_OVERLAY_BSS(o2);
 }
 
 /**
  * Loads Overlay 3 into memory
  */
 void loadOverlay3(void) {
-    u32 overlaySize;
-
-    overlaySize = o3_ROM_END - o3_ROM_START;
-    osInvalICache(&o3_VRAM, overlaySize);
-    loadOverlayAtAddress(&o3_ROM_START, &o3_VRAM, overlaySize);
-    bzero(&o3_BSS_START, (u32) &o3_BSS_END - (u32) &o3_BSS_START);
+    osInvalICache(SEGMENT_VRAM_START(o3), SEGMENT_ROM_SIZE(o3));
+    loadOverlayAtAddress(SEGMENT_ROM_START(o3), SEGMENT_VRAM_START(o3), SEGMENT_ROM_SIZE(o3));
+    ZERO_OVERLAY_BSS(o3);
 }
 
 /**
  * Loads Overlay 4 into memory
  */
 void loadOverlay4(void) {
-    u32 overlaySize;
-
-    overlaySize = o4_ROM_END - o4_ROM_START;
-    osInvalICache(&o4_VRAM, overlaySize);
-    loadOverlayAtAddress(&o4_ROM_START, &o4_VRAM, overlaySize);
-    bzero(&o4_BSS_START, (u32) &o4_BSS_END - (u32) &o4_BSS_START);
+    osInvalICache(SEGMENT_VRAM_START(o4), SEGMENT_ROM_SIZE(o4));
+    loadOverlayAtAddress(SEGMENT_ROM_START(o4), SEGMENT_VRAM_START(o4), SEGMENT_ROM_SIZE(o4));
+    ZERO_OVERLAY_BSS(o4);
 }
 
 /**

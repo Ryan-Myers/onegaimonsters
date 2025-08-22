@@ -24,6 +24,7 @@ CPP_FLAGS = [
     "-Isrc/ultralib",
     "-Isrc/ultralib/src",
     "-Isrc/ultralib/src/audio",
+    "-Isrc/ultralib/src/n_audio",
     "-Isrc/ultralib/src/debug",
     "-Isrc/ultralib/src/gt",
     "-Isrc/ultralib/src/gu",

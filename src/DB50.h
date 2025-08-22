@@ -16,10 +16,10 @@
         u32 size; \
         void *dramAddr; \
         \
-        osInvalICache(&(vram_name##_VRAM), (overlay_name##_ROM_END) - (overlay_name##_ROM_START)); \
-        devAddr = (u32)&(overlay_name##_ROM_START); \
-        size = (u32)(overlay_name##_ROM_END) - (u32)(overlay_name##_ROM_START); \
-        dramAddr = &(overlay_name##_VRAM); \
+        osInvalICache(SEGMENT_VRAM_START(vram_name), SEGMENT_ROM_SIZE(overlay_name)); \
+        devAddr = SEGMENT_ROM_START(overlay_name); \
+        size = SEGMENT_ROM_SIZE(overlay_name); \
+        dramAddr = SEGMENT_VRAM_START(overlay_name); \
         while (size != 0) { \
             if (size < MAX_DMA_SIZE) { \
                 dmaOverlay(devAddr, dramAddr, size); \
@@ -28,13 +28,13 @@
                 dmaOverlay(devAddr, dramAddr, MAX_DMA_SIZE); \
                 size -= MAX_DMA_SIZE; \
                 devAddr += MAX_DMA_SIZE; \
-                dramAddr = (void*)((u32)dramAddr + MAX_DMA_SIZE); \
+                dramAddr += MAX_DMA_SIZE; \
             } \
         } \
     }
 
 #define LOAD_OVERLAY(overlay_name) LOAD_OVERLAY_ALT(overlay_name, overlay_name)
-#define ZERO_OVERLAY_BSS(overlay_name) bzero(&overlay_name##_BSS_START, (u32) &overlay_name##_BSS_END - (u32) &overlay_name##_BSS_START);
+#define ZERO_OVERLAY_BSS(overlay_name) bzero(SEGMENT_BSS_START(overlay_name), SEGMENT_BSS_SIZE(overlay_name));
 
 void func_800FFF50(void);
 void loadOverlayAtAddress(u32 devAddr, void *dramAddr, u32 size);
