@@ -6,11 +6,18 @@
 
 #define MAX_DMA_SIZE 0x18000
 
+#define LOAD_CODE_SEGMENT(overlay_name) \
+    { \
+        osInvalICache(SEGMENT_VRAM_START(overlay_name), SEGMENT_ROM_SIZE(overlay_name)); \
+        loadOverlayAtAddress(SEGMENT_ROM_START(overlay_name), SEGMENT_VRAM_START(overlay_name), SEGMENT_ROM_SIZE(overlay_name)); \
+        ZERO_OVERLAY_BSS(overlay_name); \
+    }
+
 /**
  * This has VRAM and DRAM seperated as for some reason, sometimes they invalidate I cache and dma different addresses in VRAM
  * That could be a bug though.
  */
-#define LOAD_OVERLAY_ALT(overlay_name, vram_name) \
+#define LOAD_DATA_SEGMENT_ALT(overlay_name, vram_name) \
     { \
         u32 devAddr; \
         u32 size; \
@@ -33,8 +40,13 @@
         } \
     }
 
-#define LOAD_OVERLAY(overlay_name) LOAD_OVERLAY_ALT(overlay_name, overlay_name)
+#define LOAD_DATA_SEGMENT(overlay_name) LOAD_DATA_SEGMENT_ALT(overlay_name, overlay_name)
 #define ZERO_OVERLAY_BSS(overlay_name) bzero(SEGMENT_BSS_START(overlay_name), SEGMENT_BSS_SIZE(overlay_name));
+
+#define LOAD_OVERLAY(overlay_name) \
+    LOAD_DATA_SEGMENT(overlay_name); \
+    ZERO_OVERLAY_BSS(overlay_name); \
+
 
 void func_800FFF50(void);
 void loadOverlayAtAddress(u32 devAddr, void *dramAddr, u32 size);
