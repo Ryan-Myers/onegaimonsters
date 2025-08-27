@@ -68,3 +68,11 @@ INCLUDE_ASM("asm/nonmatchings/overlays/code_60A840/621BE0", func_code_60A840_800
 #endif
 
 INCLUDE_ASM("asm/nonmatchings/overlays/code_60A840/621BE0", func_code_60A840_8001F2FC_62973C);
+
+INCLUDE_RODATA("asm/nonmatchings/overlays/code_60A840/621BE0", D_code_60A840_80053698_65DAD8);
+
+INCLUDE_RODATA("asm/nonmatchings/overlays/code_60A840/621BE0", D_code_60A840_800536C8_65DB08);
+
+INCLUDE_RODATA("asm/nonmatchings/overlays/code_60A840/621BE0", D_code_60A840_800536F8_65DB38);
+
+INCLUDE_RODATA("asm/nonmatchings/overlays/code_60A840/621BE0", D_code_60A840_80053728_65DB68);

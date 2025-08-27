@@ -15,7 +15,6 @@ dlabel mainThreadStack
 .section .text, "ax"
 
 glabel entrypoint
-.ent entrypoint
     lui        $t0, %hi(main_BSS_START)
     addiu      $t0, $t0, %lo(main_BSS_START)
     lui        $t1, %hi(main_BSS_SIZE)
@@ -37,4 +36,4 @@ glabel entrypoint
     nop
     nop
     nop
-.end entrypoint
+endlabel entrypoint
