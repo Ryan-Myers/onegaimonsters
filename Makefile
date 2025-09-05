@@ -174,7 +174,7 @@ endif
 TARGET     = $(BUILD_DIR)/$(BASENAME)
 LD_SCRIPT  = splat/$(BASENAME).ld
 
-LD_FLAGS   = -T $(LD_SCRIPT) -T $(SYMBOLS_DIR)/undefined_syms.txt  -T $(SYMBOLS_DIR)/undefined_funcs_auto.txt  -T $(SYMBOLS_DIR)/undefined_syms_auto.txt
+LD_FLAGS   = -T $(LD_SCRIPT) -T $(SYMBOLS_DIR)/undefined_syms.txt  -T $(SYMBOLS_DIR)/undefined_funcs_auto.txt -T $(SYMBOLS_DIR)/undefined_syms_auto.txt
 LD_FLAGS  += -Map $(TARGET).map --emit-relocs
 
 ### Optimisation Overrides
@@ -280,16 +280,6 @@ $(BUILD_DIR)/%.o: %.c
 	$(call print,Compiling:,$<,$@)
 	$(V)$(CC_CHECK) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(V)$(CC) -c $(CFLAGS) -I include/compiler/gcc $(CC_WARNINGS) $(OPT_FLAGS) $(MIPSISET) $(LIBULTRA_VERSION_DEFINE) -o $@ $<
-
-# $(BUILD_DIR)/$(LIBULTRA_DIR)/src/libc/llcvt.c.o: $(LIBULTRA_DIR)/src/libc/llcvt.c
-# 	$(call print,Compiling mips3:,$<,$@)
-# 	@$(CC) -c $(CFLAGS) $(CC_WARNINGS) $(OPT_FLAGS) $(MIPSISET) -o $@ $<
-# 	$(V)$(PYTHON) $(TOOLS_DIR)/patchmips3.py $@ || rm $@
-
-# $(BUILD_DIR)/$(LIBULTRA_DIR)/src/libc/ll.c.o: $(LIBULTRA_DIR)/src/libc/ll.c
-# 	$(call print,Compiling mips3:,$<,$@)
-# 	@$(CC) -c $(CFLAGS) $(CC_WARNINGS) $(OPT_FLAGS) $(MIPSISET) -o $@ $<
-# 	$(V)$(PYTHON) $(TOOLS_DIR)/patchmips3.py $@ || rm $@
 
 $(BUILD_DIR)/%.o: %.s
 	$(call print,Assembling:,$<,$@)

@@ -15,5 +15,6 @@
     ],
     "files.associations": {
         "*.h": "c"
-    }
+    },
+    "makefile.configureOnOpen": false
 }

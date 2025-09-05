@@ -16,9 +16,9 @@
                 "${workspaceFolder}/src/ultralib/src/libc/*",
                 "${workspaceFolder}/src/ultralib/src/os/*"
             ],
-            "compilerPath": "/usr/bin/clang-17",
-            "cStandard": "c17",
-            "intelliSenseMode": "linux-clang-x64"
+            "compilerPath": "${workspaceFolder}/tools/gcc_kmc/linux/2.7.2/gcc",
+            "cStandard": "c89",
+            "intelliSenseMode": "${default}"
         }
     ],
     "version": 4
