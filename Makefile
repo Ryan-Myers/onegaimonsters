@@ -9,6 +9,14 @@ ifeq ($(VERBOSE),0)
   V := @
 endif
 
+# Experimental option for nonmatching builds. GCC may not function identically to ido.
+COMPILER ?= kmc
+$(eval $(call validate-option,NON_MATCHING,kmc gcc))
+
+ifneq ($(COMPILER),kmc)
+	NON_MATCHING := 1
+endif
+
 PRINT = printf
 GREP  = grep -rl
 
@@ -276,10 +284,42 @@ $(TARGET).elf: dirs $(LD_SCRIPT) $(O_FILES)
 	@$(PRINT) "$(GREEN)Linking: $(BLUE)$@$(NO_COL)\n"
 	$(V)$(LD) $(LD_FLAGS) -o $@
 
+
+ifeq ($(COMPILER),gcc)
+$(BUILD_DIR)/%.o: %.c
+	$(call print,Compiling with gcc:,$<,$@)
+	$(V)$(CROSS)gcc -c -I include/compiler/modern_gcc $(OPT_FLAGS) $(MIPSISET) $(LIBULTRA_VERSION_DEFINE) \
+	-DNDEBUG -DAVOID_UB -DNON_MATCHING $(INCLUDE_CFLAGS) $(C_DEFINES) \
+	-EB \
+	-march=vr4300 \
+	-mabi=32 \
+	-mno-check-zero-division \
+	-mno-abicalls \
+	-mgp32 \
+	-mfp32 \
+	-mhard-float \
+	-ffreestanding \
+	-fno-builtin \
+	-fno-common \
+	-mno-long-calls \
+	-ffast-math \
+	-funsafe-math-optimizations \
+	-fno-merge-constants \
+	-fno-strict-aliasing \
+	-fno-zero-initialized-in-bss \
+	-fsingle-precision-constant \
+	-funsigned-char \
+	-fwrapv \
+	-falign-functions=16 \
+	-G 0 \
+	-g \
+	-o $@ $<
+else
 $(BUILD_DIR)/%.o: %.c
 	$(call print,Compiling:,$<,$@)
 	$(V)$(CC_CHECK) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(V)$(CC) -c $(CFLAGS) -I include/compiler/gcc $(CC_WARNINGS) $(OPT_FLAGS) $(MIPSISET) $(LIBULTRA_VERSION_DEFINE) -o $@ $<
+endif
 
 $(BUILD_DIR)/%.o: %.s
 	$(call print,Assembling:,$<,$@)
