@@ -35,7 +35,7 @@ typedef struct {
 #define FLAGS_HASH 8
 #define FLAGS_ZERO 16
 
-int _Printf(void* pfn(void*,const char*,size_t), void *arg, const char *fmt, va_list ap);
+// int _Printf(void* pfn(void*,const char*,size_t), void *arg, const char *fmt, va_list ap);
 void _Litob(_Pft *px, char code);
 void _Ldtob(_Pft* px, char code);
 

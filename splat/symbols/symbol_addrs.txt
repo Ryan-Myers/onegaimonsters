@@ -65,3 +65,6 @@ mainThreadStack = 0x80175E20; // size:0x2000
 D_80182158 = 0x80182158; // size:0x18
 siEventQueue = 0x80189048; // size:0x18
 D_80189090 = 0x80189090; // size:0x2000 stack?
+gCompanyCode = 0x80157620; // type:u16
+gGameCode = 0x80157624; // type:u32
+set_company_game_code = 0x80110DF0;
